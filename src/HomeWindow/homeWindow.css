@@ -1,0 +1,29 @@
+
+.root {
+    -fx-background-image: url("../tempback.jpg");
+}
+
+.button {
+    -fx-opacity: 100;
+    -fx-background-color: transparent;
+    -fx-color-label-visible: black;
+}
+
+.button:hover .image-view{
+    -fx-scale-x: 1.2 ;
+    -fx-scale-y: 1.2 ;
+}
+
+#appButton {
+    -fx-graphic: url("../app.png");
+}
+#dbButton {
+    -fx-graphic: url("../database.png");
+}
+#visButton {
+    -fx-graphic: url("../visual.png");
+}
+#repButton {
+    -fx-graphic: url("../doc.png");
+}
+

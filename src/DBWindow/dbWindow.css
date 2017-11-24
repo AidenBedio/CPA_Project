@@ -1,0 +1,126 @@
+#bgPane {
+    -fx-background-image: url("../clean.jpg");
+}
+
+#detailPane{
+    -fx-background-color: #003b57;
+}
+
+.button{
+    -fx-background-color: transparent;
+}
+
+#appButton{
+    -fx-opacity: 100;
+}
+
+#dbButton{
+    -fx-opacity: 100;
+}
+
+#visButton{
+    -fx-opacity: 100;
+}
+
+#repButton{
+    -fx-opacity: 100;
+}
+
+#searchButton{
+    -fx-graphic: url("../searhcB.png");
+    -fx-scale-x: .09;
+    -fx-scale-y: .09;
+}
+
+#homeButton {
+
+    -fx-graphic: url("../logoangkla.png");
+    -fx-scale-x: .3;
+    -fx-scale-y: .3;
+}
+
+#homeButton:hover .image-view {
+    -fx-scale-x: 1.2 ;
+    -fx-scale-y: 1.2 ;
+}
+
+#appButton:hover {
+    -fx-scale-x: 1.1 ;
+    -fx-scale-y: 1.1 ;
+}
+#dbButton:hover  {
+    -fx-scale-x: 1.1 ;
+    -fx-scale-y: 1.1 ;
+}
+#visButton:hover {
+    -fx-scale-x: 1.1 ;
+    -fx-scale-y: 1.1 ;
+}
+#repButton:hover {
+    -fx-scale-x: 1.1 ;
+    -fx-scale-y: 1.1 ;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #00a7c6;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #003b57;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #005d7a;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #00407e;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.text-field {
+    -fx-border-color: white;
+    -fx-border-width: 0 0 1 0; // top, right, bottom, left
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+/*
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+*/
+
+.scroll-bar{
+    -fx-background-color: #001e25;
+}

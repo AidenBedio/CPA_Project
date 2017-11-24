@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@visWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.visController">
+   <children>
+      <TableView fx:id="tableShip" layoutX="979.0" layoutY="157.0" prefHeight="597.0" prefWidth="367.0">
+        <columns>
+          <TableColumn id="Name" fx:id="Name" prefWidth="115.0" text="Vessel Name" />
+            <TableColumn id="ETA" fx:id="ETA" prefWidth="129.0" text="ETA" />
+          <TableColumn id="ETD" fx:id="ETD" prefWidth="122.0" text="ETD" />
+        </columns>
+      </TableView>
+      <TabPane layoutX="20.0" layoutY="129.0" prefHeight="625.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Area 1">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Area1.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas1" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab text="Area 2">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../area2.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas2" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content></Tab>
+            <Tab text="Area 3">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../area3.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas3" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Area 4">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Area4.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas31" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Area 5">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Area5.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas32" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Area 6">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Area6.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas33" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Area 7">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Area7.jpg" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas331" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" />
+      <Button id="appButton" layoutX="150.0" layoutY="60.0" mnemonicParsing="false" text="Application" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button id="dbButton" layoutX="237.0" layoutY="60.0" mnemonicParsing="false" text="Database" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button id="visButton" layoutX="326.0" layoutY="60.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button id="repButton" layoutX="408.0" layoutY="60.0" mnemonicParsing="false" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="35.0" layoutY="80.0" text="Angkla" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="7.0" fitWidth="200.0" layoutX="318.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../bar.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="visualTimer" layoutX="979.0" layoutY="24.0" prefHeight="51.0" prefWidth="367.0" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Button id="realTimeButton" fx:id="realTimeButton" layoutX="854.0" layoutY="128.0" mnemonicParsing="false" onAction="#RealTime" text="Real Time" textFill="WHITE" />
+      <Button id="snapButton" fx:id="snapButton" layoutX="927.0" layoutY="128.0" mnemonicParsing="false" onAction="#SnapTime" text="Snap" textFill="WHITE" />
+      <DatePicker fx:id="datePicker" layoutX="1156.0" layoutY="129.0" prefHeight="25.0" prefWidth="190.0" />
+      <Button id="queryButton" fx:id="queryButton" layoutX="1304.0" layoutY="95.0" mnemonicParsing="false" onAction="#availability" text="Query" textFill="WHITE" />
+      <ComboBox id="hourFrom" fx:id="hourFrom" layoutX="979.0" layoutY="95.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
+      <ComboBox id="minuteFrom" fx:id="minuteFrom" layoutX="1062.0" layoutY="95.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
+      <Label fx:id="to" layoutX="1134.0" layoutY="99.0" text="To" textFill="WHITE" />
+      <ComboBox id="hourTo" fx:id="hourTo" layoutX="1151.0" layoutY="95.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
+      <ComboBox id="minuteTo" fx:id="minuteTo" layoutX="1233.0" layoutY="95.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
+   </children>
+</Pane>
