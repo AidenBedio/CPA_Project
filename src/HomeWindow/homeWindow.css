@@ -15,7 +15,7 @@
 }
 
 #appButton {
-    -fx-graphic: url("../app.png");
+    -fx-graphic: url("../App.png");
 }
 #dbButton {
     -fx-graphic: url("../database.png");
