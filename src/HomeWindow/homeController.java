@@ -39,24 +39,32 @@ public class homeController {
 
         Parent newWindow = null;
 
-        if (nextScene.equals("Database")){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../DBWindow/dbWindow.fxml"));
-            newWindow = loader.load();
-            dbController dbController = loader.getController();
-            dbController.loadDataFromDatabase();
-        } else if (nextScene.equals("Report")){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
-            newWindow = loader.load();
-            repController reportController = loader.getController();
-            //FIXME
-            //reportController.loadFromDatabase();
-        } else if (nextScene.equals("Visual")){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../VisWindow/visWindow.fxml"));
-            newWindow = loader.load();
-            visController vController = loader.getController();
-            vController.setTime();
-        } else if (nextScene.equals("Application")){
-            newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+        switch (nextScene) {
+            case "Database": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../DBWindow/dbWindow.fxml"));
+                newWindow = loader.load();
+                dbController dbController = loader.getController();
+                dbController.loadDataFromDatabase();
+                break;
+            }
+            case "Report": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
+                newWindow = loader.load();
+                repController reportController = loader.getController();
+                //FIXME
+                //reportController.loadFromDatabase();
+                break;
+            }
+            case "Visual": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../VisWindow/visWindow.fxml"));
+                newWindow = loader.load();
+                visController vController = loader.getController();
+                vController.setTime();
+                break;
+            }
+            case "Application":
+                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+                break;
         }
 
 

@@ -2,6 +2,8 @@ package VisWindow;
 
 import DBWindow.ConnectionConfiguration;
 import DBWindow.Ship;
+import DBWindow.dbController;
+import RepWindow.repController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,8 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
@@ -19,15 +24,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.DateFormat;
@@ -46,6 +54,19 @@ public class visController implements Initializable{
     private static final double INIT_DIST = 27; //distance from first bollard and leftmost part sa map
     //	private static final double FIRST_BOL1 = 33;// first bollard number for current map
     private static final double FIRST_BOL2A1 = 27;
+
+    @FXML
+    private Pane visPane;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button appButton;
+    @FXML
+    private Button dbButton;
+    @FXML
+    private Button visButton;
+    @FXML
+    private Button repButton;
 
     @FXML
     private Button realTimeButton;
@@ -85,6 +106,7 @@ public class visController implements Initializable{
     private ObservableList<Ship> data = FXCollections.observableArrayList();
     private ObservableList<ShipModel> onScreenShip = FXCollections.observableArrayList();
 
+    private String nextScene;
 
     private MouseGestures mg = new MouseGestures();
 
@@ -461,6 +483,63 @@ public class visController implements Initializable{
         }
         System.out.println();
         return arrVal;
+
+    }
+
+    private void loadNextScreen() throws IOException {
+
+        ConnectionConfiguration connect = new ConnectionConfiguration();
+
+        Parent newWindow = null;
+
+        switch (nextScene) {
+            case "Application":
+                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+                break;
+            case "Report": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
+                newWindow = loader.load();
+                repController reportController = loader.getController();
+                //FIXME
+                //reportController.loadFromDatabase();
+                break;
+            }
+            case "Database": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../DBWindow/dbWindow.fxml"));
+                newWindow = loader.load();
+                dbController dbController = loader.getController();
+                dbController.loadDataFromDatabase();
+                break;
+            }
+            case "HomeButton":
+                newWindow = FXMLLoader.load(getClass().getResource("../HomeWindow/homeWindow.fxml"));
+                break;
+        }
+
+
+
+        Scene newScene = new Scene(newWindow);
+        Stage window = (Stage) visPane.getScene().getWindow();
+        window.setFullScreenExitHint("");
+        window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        window.setScene(newScene);
+        window.setFullScreen(true);
+        window.show();
+    }
+
+    public void changeScreenButton(javafx.event.ActionEvent event) throws IOException, InterruptedException {
+
+        if (event.getSource() == homeButton){
+            nextScene = "HomeButton";
+        } else if (event.getSource() == appButton){
+            nextScene = "Application";
+        } else if (event.getSource() == dbButton){
+            nextScene = "Database";
+        } else if (event.getSource() == repButton){
+            nextScene = "Report";
+        }
+
+        loadNextScreen();
 
     }
 

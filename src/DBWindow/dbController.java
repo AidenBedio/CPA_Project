@@ -1,16 +1,24 @@
 package DBWindow;
 
+import RepWindow.repController;
+import VisWindow.visController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,6 +28,16 @@ public class dbController implements Initializable {
 
     @FXML
     private Pane dbPane;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button appButton;
+    @FXML
+    private Button dbButton;
+    @FXML
+    private Button visButton;
+    @FXML
+    private Button repButton;
 
     @FXML
     private TextField searchField;
@@ -86,6 +104,7 @@ public class dbController implements Initializable {
     @FXML
     private TableColumn<Ship, String> Filled;
 
+    private String nextScene;
 
     private ObservableList<Ship> data;
     private ObservableList<Ship> data1;
@@ -297,6 +316,63 @@ public class dbController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void loadNextScreen() throws IOException {
+
+        ConnectionConfiguration connect = new ConnectionConfiguration();
+
+        Parent newWindow = null;
+
+        switch (nextScene) {
+            case "Application":
+                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+                break;
+            case "Report": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
+                newWindow = loader.load();
+                repController reportController = loader.getController();
+                //FIXME
+                //reportController.loadFromDatabase();
+                break;
+            }
+            case "Visual": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../VisWindow/visWindow.fxml"));
+                newWindow = loader.load();
+                visController vController = loader.getController();
+                vController.setTime();
+                break;
+            }
+            case "HomeButton":
+                newWindow = FXMLLoader.load(getClass().getResource("../HomeWindow/homeWindow.fxml"));
+                break;
+        }
+
+
+
+        Scene newScene = new Scene(newWindow);
+        Stage window = (Stage) dbPane.getScene().getWindow();
+        window.setFullScreenExitHint("");
+        window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        window.setScene(newScene);
+        window.setFullScreen(true);
+        window.show();
+    }
+
+    public void changeScreenButton(ActionEvent event) throws IOException, InterruptedException {
+
+        if (event.getSource() == homeButton){
+            nextScene = "HomeButton";
+        } else if (event.getSource() == appButton){
+            nextScene = "Application";
+        } else if (event.getSource() == visButton){
+            nextScene = "Visual";
+        } else if (event.getSource() == repButton){
+            nextScene = "Report";
+        }
+
+        loadNextScreen();
+
     }
 
 

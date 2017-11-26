@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@visWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.visController">
+<Pane id="bgPane" fx:id="visPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@visWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.visController">
    <children>
       <TableView fx:id="tableShip" layoutX="979.0" layoutY="157.0" prefHeight="597.0" prefWidth="367.0">
         <columns>
@@ -119,23 +119,23 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" />
-      <Button id="appButton" layoutX="5.0" mnemonicParsing="false" text="Application" textFill="WHITE">
+      <Button id="homeButton" fx:id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" onAction="#changeScreenButton" />
+      <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Application" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="dbButton" layoutX="145.0" mnemonicParsing="false" text="Database" textFill="WHITE">
+      <Button id="dbButton" fx:id="dbButton" layoutX="145.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Database" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" layoutX="280.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
+      <Button id="visButton" fx:id="visButton" layoutX="280.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="repButton" layoutX="380.0" mnemonicParsing="false" text="Report" textFill="WHITE">
+      <Button id="repButton" fx:id="repButton" layoutX="380.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Report" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>

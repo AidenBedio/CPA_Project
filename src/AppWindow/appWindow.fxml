@@ -8,34 +8,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #1F2A44;" stylesheets="@appWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppWindow.appController">
+<Pane id="bgPane" fx:id="appPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #1F2A44;" stylesheets="@appWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppWindow.appController">
    <children>
       <ImageView id="dbSelected" fitHeight="18.0" fitWidth="90.0" layoutX="143.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../bar.jpg" />
          </image>
       </ImageView>
-      <Button id="repButton" layoutX="380.0" mnemonicParsing="false" text="Report" textFill="WHITE">
+      <Button id="repButton" fx:id="repButton" layoutX="380.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Report" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" layoutX="280.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
+      <Button id="visButton" fx:id="visButton" layoutX="280.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Visual" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="dbButton" layoutX="145.0" mnemonicParsing="false" text="Database" textFill="WHITE">
+      <Button id="dbButton" fx:id="dbButton" layoutX="145.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Database" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="appButton" layoutX="5.0" mnemonicParsing="false" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="160.0" />
+      <Button id="homeButton" fx:id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="135.0" prefWidth="160.0" />
       <Label layoutX="35.0" layoutY="80.0" prefHeight="22.0" prefWidth="68.0" text="Angkla" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
