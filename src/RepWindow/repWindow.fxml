@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RepWindow.repController" />
+<Pane id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@repWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RepWindow.repController">
+   <children>
+      <Label layoutX="35.0" layoutY="80.0" prefHeight="22.0" prefWidth="68.0" text="Angkla" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="160.0" />
+      <Button id="appButton" layoutX="5.0" mnemonicParsing="false" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="Lato Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button id="dbButton" layoutX="145.0" mnemonicParsing="false" text="Database" textFill="WHITE">
+         <font>
+            <Font name="Lato Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button id="visButton" layoutX="280.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
+         <font>
+            <Font name="Lato Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button id="repButton" layoutX="380.0" mnemonicParsing="false" text="Report" textFill="WHITE">
+         <font>
+            <Font name="Lato Bold" size="35.0" />
+         </font>
+      </Button>
+      <ImageView id="dbSelected" fitHeight="18.0" fitWidth="90.0" layoutX="480.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../bar.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

@@ -42,7 +42,6 @@ public class homeController {
         if (nextScene.equals("Database")){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../DBWindow/dbWindow.fxml"));
             newWindow = loader.load();
-            //FIXME
             dbController dbController = loader.getController();
             dbController.loadDataFromDatabase();
         } else if (nextScene.equals("Report")){

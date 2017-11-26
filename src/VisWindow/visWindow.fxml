@@ -120,22 +120,22 @@
         </tabs>
       </TabPane>
       <Button id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" />
-      <Button id="appButton" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" text="Application" textFill="WHITE">
+      <Button id="appButton" layoutX="5.0" mnemonicParsing="false" text="Application" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="dbButton" layoutX="145.0" layoutY="10.0" mnemonicParsing="false" text="Database" textFill="WHITE">
+      <Button id="dbButton" layoutX="145.0" mnemonicParsing="false" text="Database" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" layoutX="280.0" layoutY="10.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
+      <Button id="visButton" layoutX="280.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="repButton" layoutX="380.0" layoutY="10.0" mnemonicParsing="false" text="Report" textFill="WHITE">
+      <Button id="repButton" layoutX="380.0" mnemonicParsing="false" text="Report" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>

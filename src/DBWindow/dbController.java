@@ -24,6 +24,8 @@ public class dbController implements Initializable {
     @FXML
     private TextField searchField;
     @FXML
+    private ComboBox<String> comboBox;
+    @FXML
     private TextField txt_name;
     @FXML
     private TextField txt_berth;
@@ -96,9 +98,9 @@ public class dbController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("I came here");
         //dbPane.setOpacity(0);
-        //comboBox.getItems().removeAll(comboBox.getItems());
-        //comboBox.getItems().addAll("Vessel Name", "Berth No","Bollard No", "ETA", "ETD", "Last Port", "Next Port");
-        //comboBox.setValue("Select Here");
+        comboBox.getItems().removeAll(comboBox.getItems());
+        comboBox.getItems().addAll("Vessel Name", "Berth No","Bollard No", "ETA", "ETD", "Last Port", "Next Port");
+        comboBox.setValue("Select Here");
         connect = new ConnectionConfiguration();
         setCellValueTextfield();
         //makeFadeInTransition();
@@ -166,62 +168,77 @@ public class dbController implements Initializable {
     }
 
     //FIXME
-//    @FXML
-//    private void searchFilter(ActionEvent event){
-//
-//        String input = new String(searchField.getText());
-//        Connection connection = null;
-//        PreparedStatement preparedStatement = null;
-//        ResultSet resultSet = null;
-//        try {
-//            search = FXCollections.observableArrayList();
-//            connection = ConnectionConfiguration.getConnection();
-//            if (comboBox.getValue() == "Vessel Name" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE vessel_name = ?");
-//            }else if (comboBox.getValue() == "Berth No" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE berth_pref = ?");
-//            }else if (comboBox.getValue() == "Bollard No" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE bollard = ?");
-//            }else if (comboBox.getValue() == "ETA" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA = ?");
-//            }else if (comboBox.getValue() == "ETD" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETD = ?");
-//            }else if (comboBox.getValue() == "Last Port" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE last_port = ?");
-//            }else if (comboBox.getValue() == "Next Port" ) {
-//                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE next_port = ?");
-//            }else{
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Information Dialog");
-//                alert.setHeaderText(null);
-//                alert.setContentText("Select from the dropbox or Input what you want to search");
-//                alert.showAndWait();
-//            }
-//            preparedStatement.setString(1, input);
-//            resultSet = preparedStatement.executeQuery();
-//
-//            while (resultSet.next()){
-//                search.add(new Ship(resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getFloat(5),
-//                        resultSet.getFloat(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
-//                        resultSet.getString(10), resultSet.getFloat(11), resultSet.getFloat(12), resultSet.getFloat(13),
-//                        resultSet.getTimestamp(14), resultSet.getTimestamp(15), resultSet.getFloat(16), resultSet.getFloat(17),
-//                        resultSet.getString(18), resultSet.getString(19), resultSet.getString(20), resultSet.getString(21)));
-//            }
-//        }catch (SQLException e){
-//            System.err.println("Error"+e);
-//        }
-//        Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
-//        Bollard_No.setCellValueFactory(new PropertyValueFactory<>("bollard"));
-//        Name.setCellValueFactory(new PropertyValueFactory<>("vessel_name"));
-//        ETA.setCellValueFactory(new PropertyValueFactory<>("ETA"));
-//        ETD.setCellValueFactory(new PropertyValueFactory<>("ETD"));
-//        Last_Port.setCellValueFactory(new PropertyValueFactory<>("last_port"));
-//        Next_Port.setCellValueFactory(new PropertyValueFactory<>("next_port"));
-//
-//
-//        tableShip.setItems(null);
-//        tableShip.setItems(search);
-//    }
+    @FXML
+    private void searchFilter(ActionEvent event){
+
+        String input = new String(searchField.getText());
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            search = FXCollections.observableArrayList();
+            connection = ConnectionConfiguration.getConnection();
+            if (comboBox.getValue() == "Vessel Name" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE vessel_name = ?");
+            }else if (comboBox.getValue() == "Berth No" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE berth_pref = ?");
+            }else if (comboBox.getValue() == "Bollard No" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE bollard = ?");
+            }else if (comboBox.getValue() == "ETA" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA = ?");
+            }else if (comboBox.getValue() == "ETD" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETD = ?");
+            }else if (comboBox.getValue() == "Last Port" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE last_port = ?");
+            }else if (comboBox.getValue() == "Next Port" ) {
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE next_port = ?");
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.initOwner(comboBox.getScene().getWindow());
+                alert.setHeaderText(null);
+                alert.setContentText("Select from the dropbox or Input what you want to search");
+                alert.showAndWait();
+            }
+            preparedStatement.setString(1, input);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                search.add(new Ship(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getFloat(5),
+                        resultSet.getFloat(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
+                        resultSet.getString(10), resultSet.getFloat(11), resultSet.getFloat(12), resultSet.getFloat(13),
+                        resultSet.getTimestamp(14), resultSet.getTimestamp(15), resultSet.getFloat(16), resultSet.getFloat(17),
+                        resultSet.getString(18), resultSet.getString(19), resultSet.getString(20), resultSet.getString(21)));
+                //System.out.println(search.get(0).getVoyage_num());
+            }
+        }catch (SQLException e){
+            System.err.println("Error"+e);
+        }
+
+        Name.setCellValueFactory(new PropertyValueFactory<>("vessel_name"));
+        Voyage.setCellValueFactory(new PropertyValueFactory<>("voyage_num"));
+        Nationality.setCellValueFactory(new PropertyValueFactory<>("nationality"));
+        GRT.setCellValueFactory(new PropertyValueFactory<>("GRT"));
+        LOA.setCellValueFactory(new PropertyValueFactory<>("LOA"));
+        Last_Port.setCellValueFactory(new PropertyValueFactory<>("last_port"));
+        Next_Port.setCellValueFactory(new PropertyValueFactory<>("next_port"));
+        Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
+        Bollard_No.setCellValueFactory(new PropertyValueFactory<>("bollard"));
+        Master.setCellValueFactory(new PropertyValueFactory<>("master"));
+        NRT.setCellValueFactory(new PropertyValueFactory<>("NRT"));
+        DWT.setCellValueFactory(new PropertyValueFactory<>("DWT"));
+        Beam.setCellValueFactory(new PropertyValueFactory<>("beam"));
+        ETA.setCellValueFactory(new PropertyValueFactory<>("ETA"));
+        ETD.setCellValueFactory(new PropertyValueFactory<>("ETD"));
+        Draft_fwd.setCellValueFactory(new PropertyValueFactory<>("draft_fwd"));
+        Draft_aft.setCellValueFactory(new PropertyValueFactory<>("draft_aft"));
+        Berth_post.setCellValueFactory(new PropertyValueFactory<>("berth_post"));
+        Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
+        Filled.setCellValueFactory(new PropertyValueFactory<>("filled"));
+
+        tableShip.setItems(null);
+        tableShip.setItems(search);
+    }
 
     @FXML
     private void updateDataDatabase(ActionEvent event){

@@ -2,10 +2,6 @@
     -fx-background-image: url("../clean.jpg");
 }
 
-#appPane{
-    -fx-background-color: #001e25;
-}
-
 .button{
     -fx-background-color: transparent;
 }
