@@ -26,7 +26,7 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Area1.jpg" />
+                              <Image url="@../AREA1.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas1" height="625.0" width="950.0" />
@@ -40,7 +40,7 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../area2.jpg" />
+                              <Image url="@../AREA2.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas2" height="625.0" width="950.0" />
@@ -53,7 +53,7 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../area3.jpg" />
+                              <Image url="@../AREA3.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas3" height="625.0" width="950.0" />
@@ -67,7 +67,7 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Area4.jpg" />
+                              <Image url="@../AREA4.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas31" height="625.0" width="950.0" />
@@ -81,7 +81,7 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Area5.jpg" />
+                              <Image url="@../AREA5.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas32" height="625.0" width="950.0" />
@@ -95,7 +95,7 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Area6.jpg" />
+                              <Image url="@../AREA6.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas33" height="625.0" width="950.0" />
@@ -109,10 +109,24 @@
                      <children>
                         <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Area7.jpg" />
+                              <Image url="@../AREA7.png" />
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas331" height="625.0" width="950.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Area 8">
+               <content>
+                  <Pane prefHeight="658.0" prefWidth="943.0">
+                     <children>
+                        <ImageView fitHeight="625.0" fitWidth="950.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../AREA8.png" />
+                           </image>
+                        </ImageView>
+                        <Canvas id="canvas" fx:id="canvas3311" height="625.0" width="950.0" />
                      </children>
                   </Pane>
                </content>

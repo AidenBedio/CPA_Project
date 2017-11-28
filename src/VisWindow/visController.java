@@ -304,6 +304,10 @@ public class visController implements Initializable{
                 ShipModel newShip = new ShipModel(s, (double) values.get(1), 250, (double)values.get(0), (double)25);
                 onScreenShip.add(newShip);
                 //FIXME (check first which panel to draw)
+//                newShip.setImage(new Image("file:ship.png"));
+////                newShip.setX(50);
+////                newShip.setY(50);
+//                System.out.println(newShip.getImage().toString());
                 pane.getChildren().add(newShip);
                 mg.makeDraggable(newShip);
             }

@@ -1,9 +1,9 @@
 #bgPane {
-    -fx-background-image: url("../clean.jpg");
+    -fx-background-image: url("../windowtry.png");
 }
 
 #detailPane{
-    -fx-background-color: #003b57;
+    -fx-background-color: #003144;
 }
 
 .button{
@@ -82,7 +82,8 @@
 }
 
 .table-view .column-header-background{
-    -fx-background-color: #00a7c6;
+    -fx-background-color: #4093b2;
+    /*#003144*/
 }
 
 .table-view .column-header-background .label{
@@ -99,13 +100,13 @@
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #003b57;
+    -fx-background-color: -fx-table-cell-border-color, #003144;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #005d7a;
+    -fx-background-color: -fx-table-cell-border-color, #002032;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
@@ -134,5 +135,5 @@
 */
 
 .scroll-bar{
-    -fx-background-color: #001e25;
+    -fx-background-color: #006381;
 }

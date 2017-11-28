@@ -31,11 +31,9 @@ public class homeController {
     @FXML
     public Button appButton;
 
-    public String nextScene;
+    private String nextScene;
 
     private void loadNextScreen() throws IOException {
-
-        ConnectionConfiguration connect = new ConnectionConfiguration();
 
         Parent newWindow = null;
 

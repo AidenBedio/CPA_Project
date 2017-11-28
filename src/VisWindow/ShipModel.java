@@ -2,12 +2,15 @@ package VisWindow;
 
 import DBWindow.Ship;
 import com.sun.javafx.geom.RoundRectangle2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.io.File;
 
 
-public class ShipModel extends Rectangle{
+public class ShipModel extends ImageView{
 
     private final RoundRectangle2D shape = new RoundRectangle2D();
 
@@ -19,10 +22,14 @@ public class ShipModel extends Rectangle{
         //rec = new Rectangle(x,y,w,h);
         //rec.setStroke(Color.GREEN);
 
-        setWidth(w);
-        setHeight(h);
-        setX(x);
-        setY(y);
+//        setWidth(w);
+//        setHeight(h);
+        //Image image = new Image(new File("za.png").toURI().toString());
+        Image image = new Image("ship.png");
+        setImage(image);
+        setX(10);
+        setY(10);
+        setRotate(45);
     }
 
 //    public Rectangle getRec(){

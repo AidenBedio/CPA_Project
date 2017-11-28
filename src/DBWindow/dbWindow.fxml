@@ -20,7 +20,7 @@
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font></Button>
-      <Button id="dbButton" fx:id="dbButton" layoutX="145.0" mnemonicParsing="false" text="Database" textFill="WHITE">
+      <Button id="dbButton" fx:id="dbButton" layoutX="145.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Database" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>

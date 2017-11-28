@@ -1,12 +1,13 @@
-
-.root {
-    -fx-background-image: url("../tempback.jpg");
+#homePane {
+    -fx-background-image: url("../homeBG.png");
 }
 
 .button {
     -fx-opacity: 100;
     -fx-background-color: transparent;
     -fx-color-label-visible: black;
+    -fx-scale-x: 0.035 ;
+    -fx-scale-y: 0.035 ;
 }
 
 .button:hover .image-view{
@@ -15,15 +16,15 @@
 }
 
 #appButton {
-    -fx-graphic: url("../App.png");
+    -fx-graphic: url("../Applicationdark.png");
 }
 #dbButton {
-    -fx-graphic: url("../database.png");
+    -fx-graphic: url("../Databasedark.png");
 }
 #visButton {
-    -fx-graphic: url("../visual.png");
+    -fx-graphic: url("../Visualdark.png");
 }
 #repButton {
-    -fx-graphic: url("../doc.png");
+    -fx-graphic: url("../Reportdark.png");
 }
 
