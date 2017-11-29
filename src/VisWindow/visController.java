@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HorizontalDirection;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -92,6 +93,16 @@ public class visController implements Initializable{
     private Canvas canvas2;
     @FXML
     private Canvas canvas3;
+    @FXML
+    private Canvas canvas4;
+    @FXML
+    private Canvas canvas5;
+    @FXML
+    private Canvas canvas6;
+    @FXML
+    private Canvas canvas7;
+    @FXML
+    private Canvas canvas8;
     @FXML
     private Label visualTimer;
     @FXML
@@ -297,19 +308,37 @@ public class visController implements Initializable{
             }
 
             if (!flag){
-                ArrayList values = appear(s.getBollard(),s.getBerth_post(), s.getBerth_pref());
-
-                System.out.println(values.get(0) +" "+  values.get(1));
-                //FIXME set X,Y
-                ShipModel newShip = new ShipModel(s, (double) values.get(1), 250, (double)values.get(0), (double)25);
-                onScreenShip.add(newShip);
-                //FIXME (check first which panel to draw)
-//                newShip.setImage(new Image("file:ship.png"));
-////                newShip.setX(50);
-////                newShip.setY(50);
-//                System.out.println(newShip.getImage().toString());
-                pane.getChildren().add(newShip);
-                mg.makeDraggable(newShip);
+                CreateShip(s);
+//                ArrayList values = appear(s.getBollard(),s.getBerth_post(), s.getBerth_pref());
+//
+//                System.out.println(values.get(0) +" "+  values.get(1));
+//                //FIXME set X,Y
+//                ShipModel newShip = new ShipModel(s, (double) values.get(1), 250, (double)values.get(0), (double)25);
+//                onScreenShip.add(newShip);
+//                //FIXME (check first which panel to draw)
+//                newShip.setImage(new Image("tryShip.png"));
+//                double scale = 1;
+//                int additional_bollardsx = 3;
+//                int additional_bollardsy = 2;
+////                newShip.setScaleX(scale + additional_bollardsx * .5);
+////                newShip.setScaleY(scale + additional_bollardsy * .5);
+////
+////                newShip.setX(60 + (30/2 * (additional_bollardsx * .5)));
+////                newShip.setY(300 - (30 * (additional_bollardsy * .5)));
+//
+//
+//                newShip.setScaleX(scale + (additional_bollardsy * .5)) ;
+//                newShip.setScaleY(scale + (additional_bollardsx * .5));
+//                newShip.setRotate(90);
+//
+//                newShip.setX(60 + (30 * .5 * additional_bollardsx + 15));
+//                newShip.setY(300 - ((30/2 * (additional_bollardsy * .5)) - 15));
+//
+//
+//
+////                System.out.println(newShip.getImage().toString());
+//                pane.getChildren().add(newShip);
+//                mg.makeDraggable(newShip);
             }
 
 
@@ -338,6 +367,288 @@ public class visController implements Initializable{
         System.out.println("\n\ndata size: " + data.size());
         tableShip.setItems(data);
         tableShip.refresh();
+    }
+
+    public void CreateShip(Ship s){
+        //FIXME SSSSSSSSSSSSSUUUUUUUUPEEEEEEEEEEERRRR FIXXX MEEEEEEEEEEEEEEEEEEEE
+        ArrayList values = appear(s.getBollard(),s.getBerth_post(), s.getBerth_pref());
+        ShipModel newShip = new ShipModel(s, (double) values.get(1), 250, (double)values.get(0), (double)25);
+        onScreenShip.add(newShip);
+
+        newShip.setImage(new Image("ship.png"));
+        Pane pane;
+        double baseX;
+        double baseY;
+        double addBollardX;
+        double addBollardY;
+        double offsetX;
+        double offsetY;
+        ArrayList bollard = parseBollard(s.getBollard());
+
+        if (bollard.size() == 2){
+
+            if ((double)bollard.get(0) >= 1  && (double)bollard.get(1) <= 33){
+                pane = (Pane) canvas1.getParent();
+                double scale = 950/35;
+                baseX = scale * 2;
+                baseY = scale * 11;
+                if (s.getBerth_post().equalsIgnoreCase("mediterranean")){
+                    offsetX = (double) bollard.get(0) - 2;
+                    addBollardX = 0;
+                    addBollardY = 1;
+
+                    newShip.setScaleX(1 + addBollardX * .5);
+                    newShip.setScaleY(1 + addBollardY * .5);
+
+                    newShip.setX(baseX + (scale * offsetX) + (scale/2 * (addBollardX * .5)));
+                    newShip.setY(baseY - (scale * (addBollardY * .5)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("starboard")){
+                    newShip.setRotate(90);
+                    offsetX = (double) bollard.get(0) - 1;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 2);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("portside")){
+
+                    newShip.setRotate(270);
+                    offsetX = (double) bollard.get(0) - 1;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 2);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("shipside")){
+
+                }
+
+                pane.getChildren().add(newShip);
+                mg.makeDraggable(newShip);
+
+            }else if ((double)bollard.get(0) >= 30  && (double)bollard.get(1) <= 35){
+                pane = (Pane) canvas2.getParent();
+
+                double scale = 950/32;
+                baseX = scale;
+                baseY = 950 * 11 /35;
+                if (s.getBerth_post().equalsIgnoreCase("mediterranean")){
+                    offsetX = (double) bollard.get(0) - 30;
+                    addBollardX = 0;
+                    addBollardY = 1;
+
+                    newShip.setScaleX(1 + addBollardX * .5);
+                    newShip.setScaleY(1 + addBollardY * .5);
+
+                    newShip.setX(baseX + (scale * offsetX) + (scale/2 * (addBollardX * .5)));
+                    newShip.setY(baseY - (scale * (addBollardY * .5)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("starboard")){
+                    newShip.setRotate(90);
+                    offsetX = (double) bollard.get(0) - 30;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 2);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + 3 + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+//                    newShip.setY(baseY);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("portside")){
+
+                    newShip.setRotate(270);
+                    offsetX = (double) bollard.get(0) - 30;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 2);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + 3 + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("shipside")){
+
+                }
+
+                pane.getChildren().add(newShip);
+                mg.makeDraggable(newShip);
+
+            }else if ((double)bollard.get(0) >= 34  && (double)bollard.get(1) <= 44){
+                pane = (Pane) canvas2.getParent();
+
+                double scale = 950/32;
+                baseX = scale;
+                baseY = 950 * 11 /35;
+                if (s.getBerth_post().equalsIgnoreCase("mediterranean")){
+                    offsetX = (double) bollard.get(0) - 30;
+                    addBollardX = 0;
+                    addBollardY = 1;
+
+                    newShip.setScaleX(1 + addBollardX * .5);
+                    newShip.setScaleY(1 + addBollardY * .5);
+
+                    newShip.setX(baseX + (scale * offsetX) + (scale/2 * (addBollardX * .5)));
+                    newShip.setY(baseY - (scale * (addBollardY * .5)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("starboard")){
+                    newShip.setRotate(90);
+                    offsetX = (double) bollard.get(0) - 30;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 2);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + 3 + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+//                    newShip.setY(baseY);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("portside")){
+
+                    newShip.setRotate(270);
+                    offsetX = (double) bollard.get(0) - 30;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 2);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + 3 + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("shipside")){
+
+                }
+
+                pane.getChildren().add(newShip);
+                mg.makeDraggable(newShip);
+
+            }else if ((double)bollard.get(0) >= 48  && (double)bollard.get(1) <= 64){
+                pane = (Pane) canvas2.getParent();
+
+                double scale = 950/32;
+                baseX = scale;
+                baseY = 950 * 15 /34;
+                if (s.getBerth_post().equalsIgnoreCase("mediterranean")){
+                    offsetX = (double) bollard.get(0) - 34;
+                    addBollardX = 0;
+                    addBollardY = 1;
+
+                    newShip.setScaleX(1 + addBollardX * .5);
+                    newShip.setScaleY(1 + addBollardY * .5);
+
+                    newShip.setX(baseX + (scale * offsetX) + (scale/2 * (addBollardX * .5)));
+                    newShip.setY(baseY - (scale * (addBollardY * .5)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("starboard")){
+                    newShip.setRotate(90);
+                    offsetX = (double) bollard.get(0) - 34;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 1);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + 3 + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+//                    newShip.setY(baseY);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("portside")){
+
+                    newShip.setRotate(270);
+                    offsetX = (double) bollard.get(0) - 34;
+                    addBollardX = ((double) bollard.get(1) - (double) bollard.get(0)- 1);
+                    addBollardY = 0;
+
+                    newShip.setScaleX(1 + addBollardY * .5);
+                    newShip.setScaleY(1 + addBollardX * .5);
+
+                    newShip.setX(baseX + (offsetX * scale) + 3 + (scale * .5 * addBollardX +(scale/2)));
+//                    newShip.setX(baseX);
+                    newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+
+                }else if (s.getBerth_post().equalsIgnoreCase("shipside")){
+
+                }
+
+                pane.getChildren().add(newShip);
+                mg.makeDraggable(newShip);
+
+            }else if ((double)bollard.get(0) >= 60  && (double)bollard.get(1) <= 65){
+                pane = (Pane) canvas3.getParent();
+
+            }else if ((double)bollard.get(0) >= 64  && (double)bollard.get(1) <= 90){
+                pane = (Pane) canvas3.getParent();
+
+            }else if ((double)bollard.get(0) >= 87  && (double)bollard.get(1) <= 92){
+                pane = (Pane) canvas4.getParent();
+
+            }else if ((double)bollard.get(0) >= 91  && (double)bollard.get(1) <= 107){
+                pane = (Pane) canvas4.getParent();
+
+            }else if ((double)bollard.get(0) >= 108  && (double)bollard.get(1) <= 117){
+                pane = (Pane) canvas4.getParent();
+
+            }else if ((double)bollard.get(0) >= 115  && (double)bollard.get(1) <= 119){
+                pane = (Pane) canvas5.getParent();
+
+            }else if ((double)bollard.get(0) >= 116  && (double)bollard.get(1) <= 129){
+                pane = (Pane) canvas5.getParent();
+
+            }else if ((double)bollard.get(0) >= 151  && (double)bollard.get(1) <= 164){
+                pane = (Pane) canvas5.getParent();
+
+            }else if ((double)bollard.get(0) >= 162  && (double)bollard.get(1) <= 165){
+                pane = (Pane) canvas6.getParent();
+
+            }else if ((double)bollard.get(0) >= 180  && (double)bollard.get(1) <= 196){
+                pane = (Pane) canvas6.getParent();
+
+            }else if ((double)bollard.get(0) >= 214  && (double)bollard.get(1) <= 220){
+                pane = (Pane) canvas6.getParent();
+
+            }else if ((double)bollard.get(0) >= 218  && (double)bollard.get(1) <= 223){
+                pane = (Pane) canvas7.getParent();
+
+            }else if ((double)bollard.get(0) >= 221  && (double)bollard.get(1) <= 229){
+                pane = (Pane) canvas7.getParent();
+
+            }else if ((double)bollard.get(0) >= 248  && (double)bollard.get(1) <= 250){
+                pane = (Pane) canvas7.getParent();
+
+            }else if ((double)bollard.get(0) >= 251  && (double)bollard.get(1) <= 260){
+                pane = (Pane) canvas7.getParent();
+
+            }else if ((double)bollard.get(0) >= 261  && (double)bollard.get(1) <= 262){
+                pane = (Pane) canvas7.getParent();
+
+            }else if ((double)bollard.get(0) >= 263  && (double)bollard.get(1) <= 267){
+                pane = (Pane) canvas7.getParent();
+
+            }else if ((double)bollard.get(0) >= 265  && (double)bollard.get(1) <= 272){
+                pane = (Pane) canvas8.getParent();
+
+            }
+        }
     }
 
     public void reset(){
