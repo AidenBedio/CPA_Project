@@ -25,11 +25,11 @@ public class ShipModel extends ImageView{
 //        setWidth(w);
 //        setHeight(h);
         //Image image = new Image(new File("za.png").toURI().toString());
-        Image image = new Image("ship.png");
-        setImage(image);
-        setX(10);
-        setY(10);
-        setRotate(45);
+        //Image image = new Image("ship.png");
+        //setImage(image);
+        //setX(10);
+        //setY(10);
+        //setRotate(45);
     }
 
 //    public Rectangle getRec(){

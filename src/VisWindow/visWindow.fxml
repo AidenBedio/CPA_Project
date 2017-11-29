@@ -70,7 +70,7 @@
                               <Image url="@../AREA4.png" />
                            </image>
                         </ImageView>
-                        <Canvas id="canvas" fx:id="canvas31" height="625.0" width="950.0" />
+                        <Canvas id="canvas" fx:id="canvas4" height="625.0" width="950.0" />
                      </children>
                   </Pane>
                </content>
@@ -84,7 +84,7 @@
                               <Image url="@../AREA5.png" />
                            </image>
                         </ImageView>
-                        <Canvas id="canvas" fx:id="canvas32" height="625.0" width="950.0" />
+                        <Canvas id="canvas" fx:id="canvas5" height="625.0" width="950.0" />
                      </children>
                   </Pane>
                </content>
@@ -98,7 +98,7 @@
                               <Image url="@../AREA6.png" />
                            </image>
                         </ImageView>
-                        <Canvas id="canvas" fx:id="canvas33" height="625.0" width="950.0" />
+                        <Canvas id="canvas" fx:id="canvas6" height="625.0" width="950.0" />
                      </children>
                   </Pane>
                </content>
@@ -112,7 +112,7 @@
                               <Image url="@../AREA7.png" />
                            </image>
                         </ImageView>
-                        <Canvas id="canvas" fx:id="canvas331" height="625.0" width="950.0" />
+                        <Canvas id="canvas" fx:id="canvas7" height="625.0" width="950.0" />
                      </children>
                   </Pane>
                </content>
@@ -126,7 +126,7 @@
                               <Image url="@../AREA8.png" />
                            </image>
                         </ImageView>
-                        <Canvas id="canvas" fx:id="canvas3311" height="625.0" width="950.0" />
+                        <Canvas id="canvas" fx:id="canvas8" height="625.0" width="950.0" />
                      </children>
                   </Pane>
                </content>
