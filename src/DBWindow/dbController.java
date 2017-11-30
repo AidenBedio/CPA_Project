@@ -145,10 +145,12 @@ public class dbController implements Initializable {
     public void loadDataFromDatabase(){
 
         data = FXCollections.observableArrayList();
+        Connection connection = null;
+        ResultSet resultSet = null;
         try {
-            Connection connection = connect.getConnection();
+            connection = connect.getConnection();
 
-            ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM ship WHERE filled = 'True'");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship WHERE filled = 'True'");
 
             while (resultSet.next()){
 
@@ -184,6 +186,22 @@ public class dbController implements Initializable {
         Filled.setCellValueFactory(new PropertyValueFactory<>("filled"));
 
         tableShip.setItems(data);
+
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     //FIXME
@@ -257,6 +275,28 @@ public class dbController implements Initializable {
 
         tableShip.setItems(null);
         tableShip.setItems(search);
+
+        if (preparedStatement != null){
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -315,6 +355,21 @@ public class dbController implements Initializable {
 
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            if (preparedStatement != null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
