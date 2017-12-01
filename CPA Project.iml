@@ -66,5 +66,6 @@
     <orderEntry type="library" name="commons-collections4-4.1" level="project" />
     <orderEntry type="library" name="commons-io-2" level="project" />
     <orderEntry type="library" name="commons-io-21" level="project" />
+    <orderEntry type="library" name="xmlbeans-2.6.01" level="project" />
   </component>
 </module>
