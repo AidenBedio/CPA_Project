@@ -349,7 +349,6 @@ public class appController implements Initializable {
             bollardNumberErrortxt.setOpacity(1);
         }else{
             dbollard = new String(txt_bollard.getText());
-            bollardNumberErrortxt.setOpacity(1);
         }
 
         String dmaster = null;
