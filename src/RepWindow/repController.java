@@ -152,10 +152,10 @@ public class repController implements Initializable{
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         java.util.Date date = new Date();
         Timestamp timestamp = Timestamp.valueOf(dateFormat.format(date));
-        ResultSet resultSet;
-        PreparedStatement preparedStatement;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        Connection connection = connect.getConnection();
         try {
-            Connection connection = connect.getConnection();
             data = FXCollections.observableArrayList();
             preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA <= ? and ETD >= ?");
             preparedStatement.setTimestamp(1, timestamp);
@@ -180,11 +180,33 @@ public class repController implements Initializable{
         ETA.setCellValueFactory(new PropertyValueFactory<>("ETA"));
         LastPort.setCellValueFactory(new PropertyValueFactory<>("last_port"));
         NextPort.setCellValueFactory(new PropertyValueFactory<>("next_port"));
-        //Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
+        Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
 
 
         tableShip.setItems(null);
         tableShip.setItems(data);
+
+        if (preparedStatement != null){
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
@@ -203,10 +225,10 @@ public class repController implements Initializable{
         String s = datePicker.getValue().toString();
         String timestamp = String.format("%s 00:00:00", s);
         String time = String.format("%s 23:59:59", s);
-        ResultSet resultSet;
-        PreparedStatement preparedStatement;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        Connection connection = connect.getConnection();
         try {
-            Connection connection = connect.getConnection();
             search = FXCollections.observableArrayList();
             preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
             preparedStatement.setString(1, timestamp);
@@ -233,10 +255,32 @@ public class repController implements Initializable{
         ETD.setCellValueFactory(new PropertyValueFactory<>("ETD"));
         LastPort.setCellValueFactory(new PropertyValueFactory<>("last_port"));
         NextPort.setCellValueFactory(new PropertyValueFactory<>("next_port"));
-        //Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
+        Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
 
         tableShip.setItems(null);
         tableShip.setItems(search);
+
+        if (preparedStatement != null){
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -252,13 +296,15 @@ public class repController implements Initializable{
             alert.setContentText("Save unsuccessful! Pick a date");
             alert.showAndWait();
         }
+
         String s = datePicker.getValue().toString();
         String timestamp = String.format("%s 00:00:00", s);
         String time = String.format("%s 23:59:59", s);
-        ResultSet resultSet;
-        PreparedStatement preparedStatement;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        Connection connection = connect.getConnection();
+
         try {
-            Connection connection = connect.getConnection();
             datab = FXCollections.observableArrayList();
             preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
             preparedStatement.setString(1, timestamp);
@@ -285,7 +331,7 @@ public class repController implements Initializable{
         ETD.setCellValueFactory(new PropertyValueFactory<>("ETD"));
         LastPort.setCellValueFactory(new PropertyValueFactory<>("last_port"));
         NextPort.setCellValueFactory(new PropertyValueFactory<>("next_port"));
-        //Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
+        Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
 
         tableShip.setItems(null);
         tableShip.setItems(datab);
@@ -341,6 +387,29 @@ public class repController implements Initializable{
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            if (preparedStatement != null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (resultSet != null){
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
+
 }

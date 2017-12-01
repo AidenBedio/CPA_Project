@@ -830,8 +830,7 @@ public class visController implements Initializable{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
                 newWindow = loader.load();
                 repController reportController = loader.getController();
-                //FIXME
-                //reportController.loadFromDatabase();
+                reportController.loadFromDatabase();
                 break;
             }
             case "Database": {
