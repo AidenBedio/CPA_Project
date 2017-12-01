@@ -373,7 +373,7 @@ public class visController implements Initializable{
     public void CreateShip(Ship s){
         //FIXME SSSSSSSSSSSSSUUUUUUUUPEEEEEEEEEEERRRR FIXXX MEEEEEEEEEEEEEEEEEEEE
         ArrayList values = appear(s.getBollard(),s.getBerth_post(), s.getBerth_pref());
-        ShipModel newShip = new ShipModel(s, (double) values.get(1), 250, (double)values.get(0), (double)25);
+        ShipModel newShip = new ShipModel(s);
         onScreenShip.add(newShip);
 
         newShip.setImage(new Image("ship.png"));
@@ -559,7 +559,8 @@ public class visController implements Initializable{
 
                 if ((double)bollard.get(0) >= 60  && (double)bollard.get(1) <= 64){
 
-                    ShipModel shipCopy = newShip ;
+                    ShipModel shipCopy = ShipModel.newInstance(newShip) ;
+                    onScreenShip.add(shipCopy);
 
                     Allocation(shipCopy, canvas3, "ship.png", 32, s.getBerth_post(),
                             1, (double)11/35, 60, (double) bollard.get(0),(double) bollard.get(1));
