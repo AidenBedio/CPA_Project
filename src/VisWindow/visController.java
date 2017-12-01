@@ -690,7 +690,19 @@ public class visController implements Initializable{
 
     public void Allocation(ShipModel newShip, Canvas canvas, String image, double divider, String berthPos,
                            double startOffsetX, double startOffsetY, double startingBollard, double bollardInit, double bollardEnd){
+        /*
+            newShip -> the shipmodel that is being processed
+            canvas -> the canvas to which the ship will be drawn (not exactly, the canvas that points to the Pane to which the ship will be drawn)
+            image -> the image url.
+            divider -> number of lines per screen. Area 1 = 35, Area 2-8 = 32
+            berthPos -> berthPosition if starboard, portside etc
+            startOffsetX -> number of lines before the first bollard (eg. area1 = 2, area2 = 1)
+            startOffsetY -> number of line before till the edge of the port
+            startingBollard -> literal number of the first bollard on the area
+            bollardInit -> the min value of the bollard range (bollards 13 - 17)  bollardInit = 13
+            bollardEnd -> the max value of the bollard range (bollards 13 - 17)  bollardEnd = 17
 
+         */
         double baseX;
         double baseY;
         double addBollardX;
