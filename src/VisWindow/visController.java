@@ -50,7 +50,7 @@ import java.util.ResourceBundle;
 
 public class visController implements Initializable{
 
-    private static final double DIST = 17; //distance per bollard
+    private static final double DIST = 16; //distance per bollard
     private static final double WIDTH = 20; // width sa barko
     private static final double INIT_DIST = 27; //distance from first bollard and leftmost part sa map
     //	private static final double FIRST_BOL1 = 33;// first bollard number for current map
@@ -634,7 +634,11 @@ public class visController implements Initializable{
         double layoutX = 0;
         System.out.print("berth :\t\t");
         for(Double d: berthpref) {
-            System.out.print(d + " ");
+            if (d == -1.0){
+                System.out.println(berthprefVal);
+            }else{
+                System.out.print(d + " ");
+            }
         }
         System.out.println();
 
@@ -651,7 +655,13 @@ public class visController implements Initializable{
             shipSize = DIST * (bollard.get(1) - bollard.get(0));
         }
 
-        layoutX = INIT_DIST + (DIST * (bollard.get(0) - FIRST_BOL2A1));
+        if (bollard.get(0) >= 48){
+            layoutX = INIT_DIST + (DIST * (bollard.get(0) - FIRST_BOL2A1 - 4));
+        }else {
+            layoutX = INIT_DIST + (DIST * (bollard.get(0) - FIRST_BOL2A1));
+        }
+
+        //layoutX = INIT_DIST + (DIST * (bollard.get(0) - FIRST_BOL2A1));
 
         //plot ship to map
         System.out.println("shipSize :\t" + shipSize);
@@ -663,6 +673,7 @@ public class visController implements Initializable{
         ret.add(layoutX);
 
         return ret;
+
     }
 
     //parse for berth
@@ -670,7 +681,8 @@ public class visController implements Initializable{
         ArrayList<Double> arrVal = new ArrayList<Double>();
         String from = " " , to = " ";
 
-        for(int i = 0; i < strVal.length(); i++){
+        for(int i = 0; i < strVal.length(); i++)
+
             if(strVal.charAt(i) >= '0' && strVal.charAt(i) <= '9'){
                 from += strVal.charAt(i);
             } else if(strVal.charAt(i) == '/') {
@@ -682,8 +694,12 @@ public class visController implements Initializable{
                 }
                 break;
 
+            } else {
+                if(i > 1)
+                    from = "-1.0";
+
             }
-        }
+
 
         //parse store print
 
@@ -721,7 +737,6 @@ public class visController implements Initializable{
 
             }
         }
-
 
         //parse store print
 
