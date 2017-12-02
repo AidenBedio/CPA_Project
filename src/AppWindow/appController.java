@@ -242,8 +242,7 @@ public class appController implements Initializable {
                 "Zambian", "Zimbabwean");
         nation.setValue("Filipino");
         fill.getItems().removeAll(fill.getItems());
-        fill.getItems().addAll("True", "False");
-        fill.setValue("False");
+        fill.getItems().addAll("Passenger", "Cargo", "Tanker", "Unspecified");
         schedule.getItems().removeAll(schedule.getItems());
         schedule.getItems().addAll("Everyday", "Weekdays", "MWFSat", "SunTFSat", "MTWThFS");
     }
@@ -508,10 +507,10 @@ public class appController implements Initializable {
 
         Integer dvalidity = null;
 
-        if (dfilled == "False"){
-            dvalidity = 1;
-        }else{
+        if (dfilled == "Passenger"){
             dvalidity = new Integer(validity.getText().toString());
+        }else{
+            dvalidity = 1;
         }
         boolean flag = false;
 
@@ -579,10 +578,6 @@ public class appController implements Initializable {
                 txt_nrt.clear();
                 txt_dwt.clear();
                 txt_beam.clear();
-                txt_eta.clear();
-                txt_etd.clear();
-                txt_dfwd.clear();
-                txt_daft.clear();
                 txt_berthingpost.clear();
                 txt_bollard.clear();
                 txt_remarks.clear();

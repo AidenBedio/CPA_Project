@@ -86,7 +86,7 @@
             <ComboBox fx:id="schedule" layoutX="570.0" layoutY="398.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="validity" layoutX="780.0" layoutY="398.0" prefHeight="25.0" prefWidth="109.0" />
             <TextField fx:id="txt_remarks" layoutX="118.0" layoutY="470.0" prefHeight="25.0" prefWidth="640.0" />
-            <Label layoutX="501.0" layoutY="351.0" text="Liner:" textFill="WHITE">
+            <Label layoutX="499.0" layoutY="351.0" text="Vessel type:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
