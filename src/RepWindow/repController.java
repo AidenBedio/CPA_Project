@@ -18,11 +18,14 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFHeader;
+import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Header;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,10 +33,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class repController implements Initializable{
@@ -223,6 +229,7 @@ public class repController implements Initializable{
             alert.showAndWait();
         }
         String s = datePicker.getValue().toString();
+
         String timestamp = String.format("%s 00:00:00", s);
         String time = String.format("%s 23:59:59", s);
         ResultSet resultSet = null;
@@ -298,6 +305,11 @@ public class repController implements Initializable{
         }
 
         String s = datePicker.getValue().toString();
+        String arrDate = String.valueOf(datePicker.getValue().getDayOfMonth());
+        String arrMonth = String.valueOf(datePicker.getValue().getMonth());
+        String arrYear = String.valueOf(datePicker.getValue().getYear());
+        String arrDay = String.valueOf(datePicker.getValue().getDayOfWeek());
+
         String timestamp = String.format("%s 00:00:00", s);
         String time = String.format("%s 23:59:59", s);
         ResultSet resultSet = null;
@@ -338,8 +350,36 @@ public class repController implements Initializable{
 
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
+
             XSSFSheet sheet = workbook.createSheet();
+            sheet.setMargin(Sheet.LeftMargin, 0.5);
+            sheet.setMargin(Sheet.RightMargin, 0.5);
+            sheet.setMargin(Sheet.TopMargin, 1.25);
+            sheet.setFitToPage(true);
+            sheet.setPrintGridlines(true);
+
             XSSFRow row = sheet.createRow(0);
+
+            XSSFCellStyle cellStyle = workbook.createCellStyle();
+
+            XSSFFont font = workbook.createFont();
+            font.setFontName("Times New Roman");
+            font.setBold(true);
+            font.setFontHeightInPoints((short) 10);
+            cellStyle.setFont(font);
+
+            LocalDate date = LocalDate.now();
+            String dateNow = String.valueOf(date.getDayOfMonth());
+            String month = String.valueOf(date.getMonth());
+            String year = String.valueOf(date.getYear());
+            String day = String.valueOf(date.getDayOfWeek());
+
+            Header header = sheet.getHeader();
+            header.setCenter(HSSFHeader.font("Times New Roman", "Bold") +
+                    HSSFHeader.fontSize((short) 10) + "CEBU PORT AUTHORITY\nPort Management Department\nHarbor Control Center\nDaily Berthing Order\n" +
+                    dateNow + " " + month + " " + year + " " + day + "\nVessels Arriving " + arrDate + " " + arrMonth + " " +
+            arrYear + " " + arrDay);
+
             row.createCell(0).setCellValue("Berth Number");
             row.createCell(1).setCellValue("Bollard Number");
             row.createCell(2).setCellValue("Vessel Name");
@@ -347,18 +387,12 @@ public class repController implements Initializable{
             row.createCell(4).setCellValue("ETD");
             row.createCell(5).setCellValue("Last Port");
             row.createCell(6).setCellValue("Next Port");
-            for (int i = 0; i < 7; i++) {
-                CellStyle styleHeading = workbook.createCellStyle();
-                XSSFFont font = workbook.createFont();
-                font.setBold(true);
-                font.setFontName(HSSFFont.FONT_ARIAL);
-                font.setFontHeightInPoints((short) 10);
-                styleHeading.setFont(font);
-                row.getCell(i).setCellStyle(styleHeading);
-            }
+            row.createCell(7).setCellValue("Remarks");
+
 
             for (int i = 0; i < tableShip.getItems().size(); i++) {
                 row = sheet.createRow(i + 1);
+
                 row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
                 row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
                 row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
@@ -366,17 +400,27 @@ public class repController implements Initializable{
                 row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
                 row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
                 row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
-                System.out.println(row.getCell(3).toString());
-                System.out.println(tableShip.getItems().get(i).getETD());
+                row.createCell(7).setCellValue(tableShip.getItems().get(i).getRemarks());
+
+                //System.out.println(row.getCell(3).toString());
+                //System.out.println(tableShip.getItems().get(i).getETD());
+
+            }
+            for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
+                row = sheet.getRow(i);
+                for (Iterator it = row.cellIterator(); it.hasNext();){
+                    Cell cell = (Cell) it.next();
+                    cell.setCellStyle(cellStyle);
+                }
             }
 
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 8; i++) {
                 sheet.autoSizeColumn(i);
             }
 
             FileOutputStream fos = null;
 
-            fos = new FileOutputStream(new File("E:/Angkla/DailyReport(" + s + ").xlsx"));
+            fos = new FileOutputStream(new File("E:/Angkla/DailyReport/(" + s + ").xlsx"));
             workbook.write(fos);
             fos.close();
             fos.close();
