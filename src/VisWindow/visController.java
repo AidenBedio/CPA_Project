@@ -374,14 +374,25 @@ public class visController implements Initializable{
 
         ShipModel newShip = new ShipModel(s);
         onScreenShip.add(newShip);
-
+        String image;
         ArrayList bollard = parseBollard(s.getBollard());
+
+        if (s.getFilled().equalsIgnoreCase("Liner")){
+            image = "liner.png";
+        }else if (s.getFilled().equalsIgnoreCase("Cargo")){
+            image = "cargo.png";
+        }else if (s.getFilled().equalsIgnoreCase("Tanker")){
+            image = "tanker.png";
+        }else{
+            image = "unspecified.png";
+        }
+
 
         if (bollard.size() == 2){
 
             if ((double)bollard.get(0) >= 1  && (double)bollard.get(1) <= 33){
 
-                Allocation(newShip, canvas1, "ship.png", 35, s.getBerth_post(),
+                Allocation(newShip, canvas1, image, 35, s.getBerth_post(),
                         2, (double)11/35, 1, (double) bollard.get(0),(double) bollard.get(1));
 
                 if ((double)bollard.get(0) >= 30  && (double)bollard.get(1) <= 33){
@@ -389,133 +400,118 @@ public class visController implements Initializable{
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas2, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas2, image, 32, s.getBerth_post(),
                             1, (double)11/35, 30, (double) bollard.get(0),(double) bollard.get(1));
                 }
 
             }else if ((double)bollard.get(0) >= 30  && (double)bollard.get(1) <= 44){
 
-                Allocation(newShip, canvas2, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas2, image, 32, s.getBerth_post(),
                         1, (double)11/35, 30, (double) bollard.get(0),(double) bollard.get(1));
 
             }else if ((double)bollard.get(0) >= 48  && (double)bollard.get(1) <= 64){
 
-                Allocation(newShip, canvas2, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas2, image, 32, s.getBerth_post(),
                         1, (double)15/34, 34, (double) bollard.get(0),(double) bollard.get(1));
-//                pane = (Pane) canvas2.getParent();
 
                 if ((double)bollard.get(0) >= 60  && (double)bollard.get(1) <= 64){
 
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas3, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas3, image, 32, s.getBerth_post(),
                             1, (double)11/35, 60, (double) bollard.get(0),(double) bollard.get(1));
 
                 }
 
             }else if ((double)bollard.get(0) >= 60  && (double)bollard.get(1) <= 90){
-                Allocation(newShip, canvas3, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas3, image, 32, s.getBerth_post(),
                         1, (double)11/35, 60, (double) bollard.get(0),(double) bollard.get(1));
 
                 if ((double)bollard.get(0) >= 86  && (double)bollard.get(1) <= 90){
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas4, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas4, image, 32, s.getBerth_post(),
                             1, (double)11/35, 86, (double) bollard.get(0),(double) bollard.get(1));
                 }
 
             }else if ((double)bollard.get(0) >= 86  && (double)bollard.get(1) <= 107){
-                Allocation(newShip, canvas4, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas4, image, 32, s.getBerth_post(),
                         1, (double)11/35, 86, (double) bollard.get(0),(double) bollard.get(1));
 
             }else if ((double)bollard.get(0) >= 108  && (double)bollard.get(1) <= 117){
-//                pane = (Pane) canvas4.getParent();
-                Allocation(newShip, canvas4, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas4, image, 32, s.getBerth_post(),
                         1, (double)12/35, 87, (double) bollard.get(0),(double) bollard.get(1));
 
                 if ((double)bollard.get(0) >= 114  && (double)bollard.get(1) <= 117){
-//                    pane = (Pane) canvas5.getParent();
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas5, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas5, image, 32, s.getBerth_post(),
                             1, (double)11/35, 114, (double) bollard.get(0),(double) bollard.get(1));
                 }
 
             }else if ((double)bollard.get(0) >= 114  && (double)bollard.get(1) <= 129){
-//                pane = (Pane) canvas5.getParent();
-                Allocation(newShip, canvas5, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas5, image, 32, s.getBerth_post(),
                         1, (double)11/35, 114, (double) bollard.get(0),(double) bollard.get(1));
             }else if ((double)bollard.get(0) >= 151  && (double)bollard.get(1) <= 164){
-//                pane = (Pane) canvas5.getParent();
-                Allocation(newShip, canvas5, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas5, image, 32, s.getBerth_post(),
                         1, (double)11/35, 134, (double) bollard.get(0),(double) bollard.get(1));
 
                 if ((double)bollard.get(0) >= 162  && (double)bollard.get(1) <= 165){
-//                    pane = (Pane) canvas6.getParent();
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas6, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas6, image, 32, s.getBerth_post(),
                             1, (double)11/35, 162, (double) bollard.get(0),(double) bollard.get(1));
-
                 }
 
             } else if ((double)bollard.get(0) >= 180  && (double)bollard.get(1) <= 196){
-//                pane = (Pane) canvas6.getParent();
-                Allocation(newShip, canvas6, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas6, image, 32, s.getBerth_post(),
                         1, (double)11/35, 175, (double) bollard.get(0),(double) bollard.get(1));
 
             }else if ((double)bollard.get(0) >= 213  && (double)bollard.get(1) <= 220){
-//                pane = (Pane) canvas6.getParent();
-                Allocation(newShip, canvas6, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas6, image, 32, s.getBerth_post(),
                         1, (double)11/35, 190, (double) bollard.get(0),(double) bollard.get(1));
 
                 if ((double)bollard.get(0) >= 218  && (double)bollard.get(1) <= 220){
-//                    pane = (Pane) canvas7.getParent();
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas7, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas7, image, 32, s.getBerth_post(),
                             1, (double)11/35, 218, (double) bollard.get(0),(double) bollard.get(1));
                 }
 
             }else if ((double)bollard.get(0) >= 218  && (double)bollard.get(1) <= 229){
-//                pane = (Pane) canvas7.getParent();
-                Allocation(newShip, canvas7, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas7, image, 32, s.getBerth_post(),
                         1, (double)11/35, 218, (double) bollard.get(0),(double) bollard.get(1));
 
             }else if ((double)bollard.get(0) >= 248  && (double)bollard.get(1) <= 250){
-//                pane = (Pane) canvas7.getParent();
-                Allocation(newShip, canvas7, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas7, image, 32, s.getBerth_post(),
                         1, (double)11/35, 235, (double) bollard.get(0),(double) bollard.get(1));
+
             }else if ((double)bollard.get(0) >= 251  && (double)bollard.get(1) <= 260){
-//                pane = (Pane) canvas7.getParent();
-                Allocation(newShip, canvas7, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas7, image, 32, s.getBerth_post(),
                         1, (double)12/35, 236, (double) bollard.get(0),(double) bollard.get(1));
+
             }else if ((double)bollard.get(0) >= 261  && (double)bollard.get(1) <= 262){
-//                pane = (Pane) canvas7.getParent();
-                Allocation(newShip, canvas7, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas7, image, 32, s.getBerth_post(),
                         1, (double)11/35, 237, (double) bollard.get(0),(double) bollard.get(1));
+
             }else if ((double)bollard.get(0) >= 263  && (double)bollard.get(1) <= 267){
-//                pane = (Pane) canvas7.getParent();
-                Allocation(newShip, canvas7, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas7, image, 32, s.getBerth_post(),
                         1, (double)12/35, 237, (double) bollard.get(0),(double) bollard.get(1));
 
                 if ((double)bollard.get(0) >= 265  && (double)bollard.get(1) <= 267){
-//                    pane = (Pane) canvas8.getParent();
                     ShipModel shipCopy = ShipModel.newInstance(newShip) ;
                     onScreenShip.add(shipCopy);
 
-                    Allocation(shipCopy, canvas8, "ship.png", 32, s.getBerth_post(),
+                    Allocation(shipCopy, canvas8, image, 32, s.getBerth_post(),
                             6, (double)12/35, 265, (double) bollard.get(0),(double) bollard.get(1));
-
                 }
             }else if ((double)bollard.get(0) >= 265  && (double)bollard.get(1) <= 272){
-//                pane = (Pane) canvas7.getParent();
-                Allocation(newShip, canvas8, "ship.png", 32, s.getBerth_post(),
+                Allocation(newShip, canvas8, image, 32, s.getBerth_post(),
                         6, (double)12/35, 265, (double) bollard.get(0),(double) bollard.get(1));
             }
         }
