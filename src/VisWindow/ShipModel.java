@@ -16,7 +16,7 @@ public class ShipModel extends ImageView{
 
     private Ship shipData;
 
-    ShipModel(Ship data, double x, int y, double w, double h){
+    ShipModel(Ship data){
         System.out.println("HELLOOO I WAS CREATED");
         this.shipData = data;
         //rec = new Rectangle(x,y,w,h);
@@ -30,6 +30,10 @@ public class ShipModel extends ImageView{
         //setX(10);
         //setY(10);
         //setRotate(45);
+    }
+
+    public static ShipModel newInstance(ShipModel sm){
+        return new ShipModel(sm.getShip());
     }
 
 //    public Rectangle getRec(){
