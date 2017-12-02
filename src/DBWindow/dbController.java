@@ -150,7 +150,7 @@ public class dbController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship WHERE filled = 'True'");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship");
 
             while (resultSet.next()){
 
@@ -183,7 +183,7 @@ public class dbController implements Initializable {
         Draft_aft.setCellValueFactory(new PropertyValueFactory<>("draft_aft"));
         Berth_post.setCellValueFactory(new PropertyValueFactory<>("berth_post"));
         Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
-        Filled.setCellValueFactory(new PropertyValueFactory<>("filled"));
+        Filled.setCellValueFactory(new PropertyValueFactory<>("liner"));
 
         tableShip.setItems(data);
 
@@ -271,7 +271,7 @@ public class dbController implements Initializable {
         Draft_aft.setCellValueFactory(new PropertyValueFactory<>("draft_aft"));
         Berth_post.setCellValueFactory(new PropertyValueFactory<>("berth_post"));
         Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
-        Filled.setCellValueFactory(new PropertyValueFactory<>("filled"));
+        Filled.setCellValueFactory(new PropertyValueFactory<>("liner"));
 
         tableShip.setItems(null);
         tableShip.setItems(search);
