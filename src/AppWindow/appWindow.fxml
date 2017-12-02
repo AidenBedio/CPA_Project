@@ -60,8 +60,33 @@
       </Label>
       <Pane id="appPane" layoutX="34.0" layoutY="188.0" prefHeight="555.0" prefWidth="928.0">
          <children>
+            <TextField fx:id="txt_name" layoutX="140.0" layoutY="57.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="txt_voyage" layoutX="142.0" layoutY="104.0" prefHeight="25.0" prefWidth="130.0" />
+            <TextField fx:id="txt_grt" layoutX="331.0" layoutY="104.0" prefHeight="25.0" prefWidth="130.0" />
+            <ComboBox fx:id="nation" layoutX="142.0" layoutY="151.0" prefHeight="25.0" prefWidth="130.0" />
+            <TextField fx:id="txt_loa" layoutX="331.0" layoutY="151.0" prefHeight="25.0" prefWidth="130.0" />
+            <TextField fx:id="txt_lp" layoutX="142.0" layoutY="199.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="txt_np" layoutX="142.0" layoutY="248.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="txt_berth" layoutX="141.0" layoutY="297.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="txt_bollard" layoutX="141.0" layoutY="345.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="txt_master" layoutX="571.0" layoutY="56.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="txt_nrt" layoutX="571.0" layoutY="105.0" prefHeight="25.0" prefWidth="130.0" />
+            <TextField fx:id="txt_dwt" layoutX="761.0" layoutY="105.0" prefHeight="25.0" prefWidth="130.0" />
+            <TextField fx:id="txt_beam" layoutX="571.0" layoutY="154.0" prefHeight="25.0" prefWidth="320.0" />
+            <DatePicker fx:id="etaDate" layoutX="572.0" layoutY="201.0" prefHeight="25.0" prefWidth="110.0" />
+            <ComboBox fx:id="etaHour" layoutX="725.0" layoutY="201.0" prefHeight="25.0" prefWidth="56.0" />
+            <ComboBox fx:id="etaMinute" layoutX="833.0" layoutY="201.0" prefHeight="25.0" prefWidth="57.0" />
+            <DatePicker fx:id="etdDate" layoutX="572.0" layoutY="249.0" prefHeight="25.0" prefWidth="110.0" />
+            <ComboBox fx:id="etdHour" layoutX="725.0" layoutY="249.0" prefHeight="25.0" prefWidth="57.0" />
+            <ComboBox fx:id="etdMinute" layoutX="834.0" layoutY="248.0" prefHeight="25.0" prefWidth="57.0" />
+            <ComboBox fx:id="berthPosition" layoutX="615.0" layoutY="298.0" prefHeight="25.0" prefWidth="97.0" />
+            <TextField fx:id="txt_dfwd" layoutX="779.0" layoutY="297.0" prefHeight="25.0" prefWidth="110.0" />
             <ComboBox fx:id="fill" layoutX="571.0" layoutY="349.0" prefHeight="25.0" prefWidth="141.0" />
-            <Label layoutX="501.0" layoutY="351.0" text="Filled:" textFill="WHITE">
+            <TextField fx:id="txt_daft" layoutX="779.0" layoutY="349.0" prefHeight="25.0" prefWidth="110.0" />
+            <ComboBox fx:id="schedule" layoutX="570.0" layoutY="398.0" prefHeight="25.0" prefWidth="141.0" />
+            <TextField fx:id="validity" layoutX="780.0" layoutY="398.0" prefHeight="25.0" prefWidth="109.0" />
+            <TextField fx:id="txt_remarks" layoutX="118.0" layoutY="470.0" prefHeight="25.0" prefWidth="640.0" />
+            <Label layoutX="499.0" layoutY="351.0" text="Vessel type:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -156,21 +181,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_daft" layoutX="779.0" layoutY="349.0" prefHeight="25.0" prefWidth="110.0" />
-            <TextField fx:id="txt_dfwd" layoutX="779.0" layoutY="297.0" prefHeight="25.0" prefWidth="110.0" />
-            <TextField fx:id="txt_beam" layoutX="571.0" layoutY="154.0" prefHeight="25.0" prefWidth="320.0" />
-            <TextField fx:id="txt_dwt" layoutX="761.0" layoutY="105.0" prefHeight="25.0" prefWidth="130.0" />
-            <TextField fx:id="txt_nrt" layoutX="571.0" layoutY="105.0" prefHeight="25.0" prefWidth="130.0" />
-            <TextField fx:id="txt_master" layoutX="571.0" layoutY="56.0" prefHeight="25.0" prefWidth="320.0" />
-            <TextField fx:id="txt_bollard" layoutX="141.0" layoutY="345.0" prefHeight="25.0" prefWidth="320.0" />
-            <TextField fx:id="txt_berth" layoutX="141.0" layoutY="297.0" prefHeight="25.0" prefWidth="320.0" />
-            <TextField fx:id="txt_np" layoutX="142.0" layoutY="248.0" prefHeight="25.0" prefWidth="320.0" />
-            <TextField fx:id="txt_lp" layoutX="142.0" layoutY="199.0" prefHeight="25.0" prefWidth="320.0" />
-            <TextField fx:id="txt_loa" layoutX="331.0" layoutY="151.0" prefHeight="25.0" prefWidth="130.0" />
-            <TextField fx:id="txt_grt" layoutX="331.0" layoutY="104.0" prefHeight="25.0" prefWidth="130.0" />
-            <ComboBox fx:id="nation" layoutX="142.0" layoutY="151.0" prefHeight="25.0" prefWidth="130.0" />
-            <TextField fx:id="txt_voyage" layoutX="142.0" layoutY="104.0" prefHeight="25.0" prefWidth="130.0" />
-            <TextField fx:id="txt_name" layoutX="140.0" layoutY="56.0" prefHeight="25.0" prefWidth="320.0" />
             <Button layoutX="772.0" layoutY="470.0" mnemonicParsing="false" onAction="#add" text="Add">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -317,10 +327,6 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <DatePicker fx:id="etaDate" layoutX="572.0" layoutY="201.0" prefHeight="25.0" prefWidth="110.0" />
-            <DatePicker fx:id="etdDate" layoutX="572.0" layoutY="249.0" prefHeight="25.0" prefWidth="110.0" />
-            <ComboBox fx:id="berthPosition" layoutX="615.0" layoutY="298.0" prefHeight="25.0" prefWidth="97.0" />
-            <ComboBox fx:id="etaHour" layoutX="725.0" layoutY="201.0" prefHeight="25.0" prefWidth="56.0" />
             <Label layoutX="686.0" layoutY="204.0" text="Hour:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
@@ -331,19 +337,26 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="etaMinute" layoutX="833.0" layoutY="201.0" prefHeight="25.0" prefWidth="57.0" />
             <Label layoutX="686.0" layoutY="252.0" text="Hour:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="etdHour" layoutX="725.0" layoutY="249.0" prefHeight="25.0" prefWidth="57.0" />
             <Label layoutX="784.0" layoutY="252.0" text="Minute:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="etdMinute" layoutX="834.0" layoutY="248.0" prefHeight="25.0" prefWidth="57.0" />
+            <Label layoutX="501.0" layoutY="402.0" text="Schedule:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="727.0" layoutY="403.0" text="Validity:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Label layoutX="72.0" layoutY="655.0" text="Remarks:" textFill="WHITE">
@@ -351,6 +364,5 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_remarks" layoutX="155.0" layoutY="656.0" prefHeight="25.0" prefWidth="640.0" />
    </children>
 </Pane>

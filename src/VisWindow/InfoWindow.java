@@ -87,33 +87,33 @@ public class InfoWindow {
         Label txt_remarks = new Label();
         Label txt_filled = new Label();
 
-        txt_name.setText(model.getShip().getVessel_name());
+        txt_name.setText("Vessel Name: " + model.getShip().getVessel_name());
         System.out.println(txt_name.getText() + " BACOOOOOOOOOOOOOOOOOOOOOOOOOOOONNSSS!!");
-        txt_voyage.setText(model.getShip().getVoyage_num());
-        txt_nationality.setText(model.getShip().getNationality());
-        txt_grt.setText(String.valueOf(model.getShip().getGRT()));
-        txt_loa.setText(String.valueOf(model.getShip().getLOA()));
-        txt_lp.setText(model.getShip().getLast_port());
-        txt_np.setText(model.getShip().getNext_port());
-        txt_berth.setText(model.getShip().getBerth_pref());
-        txt_bollard.setText(model.getShip().getBollard());
-        txt_master.setText(model.getShip().getMaster());
-        txt_nrt.setText(String.valueOf(model.getShip().getNRT()));
-        txt_dwt.setText(String.valueOf(model.getShip().getDWT()));
-        txt_beam.setText(String.valueOf(model.getShip().getBeam()));
-        txt_eta.setText(String.valueOf(model.getShip().getETA()));
-        txt_etd.setText(String.valueOf(model.getShip().getETD()));
-        txt_dfwd.setText(String.valueOf(model.getShip().draft_fwdProperty()));
-        txt_daft.setText(String.valueOf(model.getShip().getDraft_aft()));
-        txt_berthingpost.setText(model.getShip().getBerth_post());
-        txt_filled.setText(model.getShip().getFilled());
-        txt_remarks.setText(model.getShip().getRemarks());
+        txt_voyage.setText("Voyage Number:" + model.getShip().getVoyage_num());
+        txt_nationality.setText("Nationality: " + model.getShip().getNationality());
+        txt_grt.setText(String.valueOf("GRT: " + model.getShip().getGRT()));
+        txt_loa.setText(String.valueOf("LOA: " + model.getShip().getLOA()));
+        txt_lp.setText("Last Port: " + model.getShip().getLast_port());
+        txt_np.setText("Next Port: " + model.getShip().getNext_port());
+        txt_berth.setText("Berth: " + model.getShip().getBerth_pref());
+        txt_bollard.setText("Bollard: " + model.getShip().getBollard());
+        txt_master.setText("Master: " + model.getShip().getMaster());
+        txt_nrt.setText("NRT: " + String.valueOf(model.getShip().getNRT()));
+        txt_dwt.setText("DWT: " + String.valueOf(model.getShip().getDWT()));
+        txt_beam.setText("Beam: " + String.valueOf(model.getShip().getBeam()));
+        txt_eta.setText("ETA: " + String.valueOf(model.getShip().getETA()));
+        txt_etd.setText("ETD: " + String.valueOf(model.getShip().getETD()));
+        txt_dfwd.setText("Dfwd: " + String.valueOf(model.getShip().draft_fwdProperty()));
+        txt_daft.setText("Daft: " + String.valueOf(model.getShip().getDraft_aft()));
+        txt_berthingpost.setText("Orientation: " + model.getShip().getBerth_post());
+        txt_filled.setText("Ship type: " + model.getShip().getFilled());
+        txt_remarks.setText("Remarks: " + model.getShip().getRemarks());
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Ship Info");
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(txt_voyage, txt_nationality, txt_grt, txt_loa, txt_lp, txt_np, txt_berth, txt_bollard, txt_master, txt_nrt,
+        layout.getChildren().addAll(txt_name,txt_voyage, txt_nationality, txt_grt, txt_loa, txt_lp, txt_np, txt_berth, txt_bollard, txt_master, txt_nrt,
                 txt_dwt, txt_beam, txt_eta, txt_etd, txt_dfwd, txt_daft, txt_berthingpost, txt_filled, txt_remarks);
         layout.setAlignment(Pos.CENTER);
 
