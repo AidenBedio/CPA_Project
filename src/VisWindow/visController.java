@@ -151,6 +151,13 @@ public class visController implements Initializable{
         to.setOpacity(0);
         datePicker.setOpacity(0);
 
+        hourFrom.setDisable(true);
+        hourTo.setDisable(true);
+        minuteFrom.setDisable(true);
+        minuteTo.setDisable(true);
+        queryButton.setDisable(true);
+        datePicker.setDisable(true);
+
         realTimeButton.setStyle("-fx-background-color: #001e25; ");
 
         hourFrom.getItems().removeAll(hourFrom.getItems());
@@ -189,6 +196,14 @@ public class visController implements Initializable{
         queryButton.setOpacity(1);
         to.setOpacity(1);
         datePicker.setOpacity(1);
+
+        hourFrom.setDisable(false);
+        hourTo.setDisable(false);
+        minuteFrom.setDisable(false);
+        minuteTo.setDisable(false);
+        queryButton.setDisable(false);
+        datePicker.setDisable(false );
+
         realTimeButton.setStyle("-fx-background-color: #37617b;");
         snapButton.setStyle("-fx-background-color: #001e25; ");
         timeline.stop();

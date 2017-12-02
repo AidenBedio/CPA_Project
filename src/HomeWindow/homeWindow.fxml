@@ -10,9 +10,49 @@
 
 <Pane id="homePane" fx:id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@homeWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeWindow.homeController">
    <children>
-      <Button id="appButton" fx:id="appButton" layoutX="-726.0" layoutY="-578.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
-      <Button id="dbButton" fx:id="dbButton" layoutX="-378.0" layoutY="-559.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
-      <Button id="visButton" fx:id="visButton" layoutX="-290.0" layoutY="-131.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
-      <Button id="repButton" fx:id="repButton" layoutX="182.0" layoutY="-640.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
+      <Button id="appButton" fx:id="appButton" layoutX="211.0" layoutY="322.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
+      <Button id="dbButton" fx:id="dbButton" layoutX="452.0" layoutY="325.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
+      <Button id="visButton" fx:id="visButton" layoutX="644.0" layoutY="378.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
+      <Button id="repButton" fx:id="repButton" layoutX="870.0" layoutY="316.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="75.0" prefWidth="75.0" stylesheets="@homeWindow.css" />
+      <ImageView fitHeight="230.0" fitWidth="234.0" layoutX="487.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../cpalogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="753.0" layoutY="155.0" text="Cebu">
+         <font>
+            <Font name="Lato Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="755.0" layoutY="202.0" text="Port">
+         <font>
+            <Font name="Lato Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="751.0" layoutY="250.0" text="Authority">
+         <font>
+            <Font name="Lato Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="295.0" layoutY="521.0" text="Application">
+         <font>
+            <Font name="Lato Regular" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="532.0" layoutY="519.0" text="Database">
+         <font>
+            <Font name="Lato Regular" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="762.0" layoutY="516.0" text="Visual">
+         <font>
+            <Font name="Lato Regular" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="952.0" layoutY="520.0" text="Report">
+         <font>
+            <Font name="Lato Regular" size="25.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

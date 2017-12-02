@@ -11,7 +11,7 @@
 
 <Pane id="bgPane" fx:id="visPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@visWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.visController">
    <children>
-      <TableView fx:id="tableShip" layoutX="979.0" layoutY="157.0" prefHeight="597.0" prefWidth="367.0">
+      <TableView fx:id="tableShip" layoutX="979.0" layoutY="191.0" prefHeight="563.0" prefWidth="367.0">
         <columns>
           <TableColumn id="Name" fx:id="Name" prefWidth="115.0" text="Vessel Name" />
             <TableColumn id="ETA" fx:id="ETA" prefWidth="129.0" text="ETA" />
@@ -133,7 +133,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button id="homeButton" fx:id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" onAction="#changeScreenButton" />
+      <Button id="homeButton" fx:id="homeButton" layoutX="-693.0" layoutY="-706.0" mnemonicParsing="false" onAction="#changeScreenButton" />
       <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Application" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
@@ -154,7 +154,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Label layoutX="35.0" layoutY="80.0" text="Angkla" textFill="WHITE">
+      <Label layoutX="41.0" layoutY="87.0" text="Home" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -164,19 +164,19 @@
             <Image url="@../bar.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="visualTimer" layoutX="979.0" layoutY="24.0" prefHeight="51.0" prefWidth="367.0" textFill="WHITE">
+      <Label fx:id="visualTimer" layoutX="977.0" layoutY="33.0" prefHeight="51.0" prefWidth="367.0" text="2017-12-25    00:00:00" textFill="WHITE">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
       <Button id="realTimeButton" fx:id="realTimeButton" layoutX="854.0" layoutY="128.0" mnemonicParsing="false" onAction="#RealTime" text="Real Time" textFill="WHITE" />
       <Button id="snapButton" fx:id="snapButton" layoutX="927.0" layoutY="128.0" mnemonicParsing="false" onAction="#SnapTime" text="Snap" textFill="WHITE" />
-      <DatePicker fx:id="datePicker" layoutX="1156.0" layoutY="129.0" prefHeight="25.0" prefWidth="190.0" />
-      <Button id="queryButton" fx:id="queryButton" layoutX="1304.0" layoutY="95.0" mnemonicParsing="false" onAction="#availability" text="Query" textFill="WHITE" />
-      <ComboBox id="hourFrom" fx:id="hourFrom" layoutX="979.0" layoutY="95.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
-      <ComboBox id="minuteFrom" fx:id="minuteFrom" layoutX="1062.0" layoutY="95.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
-      <Label fx:id="to" layoutX="1134.0" layoutY="99.0" text="To" textFill="WHITE" />
-      <ComboBox id="hourTo" fx:id="hourTo" layoutX="1151.0" layoutY="95.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
-      <ComboBox id="minuteTo" fx:id="minuteTo" layoutX="1233.0" layoutY="95.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
+      <DatePicker fx:id="datePicker" layoutX="1151.0" layoutY="158.0" prefHeight="25.0" prefWidth="200.0" />
+      <Button id="queryButton" fx:id="queryButton" layoutX="1304.0" layoutY="127.0" mnemonicParsing="false" onAction="#availability" text="Query" textFill="WHITE" />
+      <ComboBox id="hourFrom" fx:id="hourFrom" layoutX="979.0" layoutY="127.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
+      <ComboBox id="minuteFrom" fx:id="minuteFrom" layoutX="1062.0" layoutY="127.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
+      <Label fx:id="to" layoutX="1134.0" layoutY="131.0" text="To" />
+      <ComboBox id="hourTo" fx:id="hourTo" layoutX="1151.0" layoutY="127.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
+      <ComboBox id="minuteTo" fx:id="minuteTo" layoutX="1233.0" layoutY="127.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
    </children>
 </Pane>

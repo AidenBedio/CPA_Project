@@ -6,8 +6,8 @@
     -fx-opacity: 100;
     -fx-background-color: transparent;
     -fx-color-label-visible: black;
-    -fx-scale-x: 0.035 ;
-    -fx-scale-y: 0.035 ;
+    -fx-scale-x: 0.3 ;
+    -fx-scale-y: 0.3 ;
 }
 
 .button:hover .image-view{

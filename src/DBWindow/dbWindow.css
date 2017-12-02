@@ -1,9 +1,11 @@
 #bgPane {
-    -fx-background-image: url("../windowtry.png");
+    -fx-background-image: url("../raster.png");
 }
 
 #detailPane{
-    -fx-background-color: #003144;
+    /*-fx-background-color: #003144;*/
+    -fx-background-color: ghostwhite;
+    -fx-border-color: #003366;
 }
 
 .button{
@@ -46,9 +48,9 @@
 
 #homeButton {
 
-    -fx-graphic: url("../logoangkla.png");
-    -fx-scale-x: .3;
-    -fx-scale-y: .3;
+    -fx-graphic: url("../cpalogo.png");
+    -fx-scale-x: .05;
+    -fx-scale-y: .05;
 }
 
 #homeButton:hover .image-view {
@@ -75,6 +77,7 @@
 
 .table-view{
     -fx-background-color: transparent;
+    -fx-border-color: #003366;
 }
 
 .table-view:focused{
@@ -82,7 +85,7 @@
 }
 
 .table-view .column-header-background{
-    -fx-background-color: #4093b2;
+    -fx-background-color: #003144;
     /*#003144*/
 }
 
@@ -96,17 +99,17 @@
 }
 
 .table-view .table-cell{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #003144;
+    -fx-background-color: -fx-table-cell-border-color, #f8ffff;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #002032;
+    -fx-background-color: -fx-table-cell-border-color, #cbd3df;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
@@ -118,6 +121,13 @@
 }
 
 .text-field {
+    -fx-border-color: black;
+    -fx-border-width: 0 0 1 0; // top, right, bottom, left
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+}
+
+#searchField{
     -fx-border-color: white;
     -fx-border-width: 0 0 1 0; // top, right, bottom, left
     -fx-text-fill: white;
@@ -135,5 +145,6 @@
 */
 
 .scroll-bar{
-    -fx-background-color: #006381;
+    -fx-background-color: #003144;
 }
+

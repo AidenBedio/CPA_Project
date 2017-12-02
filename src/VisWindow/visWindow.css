@@ -1,5 +1,5 @@
 #bgPane {
-    -fx-background-image: url("../clean.jpg");
+    -fx-background-image: url("../raster.png");
 }
 
 .button{
@@ -7,9 +7,9 @@
 }
 
 #homeButton {
-    -fx-graphic: url("../logoangkla.png");
-    -fx-scale-x: .3;
-    -fx-scale-y: .3;
+    -fx-graphic: url("../cpalogo.png");
+    -fx-scale-x: .05;
+    -fx-scale-y: .05;
 }
 
 #homeButton:hover .image-view {
@@ -77,6 +77,7 @@
 .tab-pane
 {
     -fx-tab-min-width:90px;
+
 }
 
 .tab{
@@ -121,6 +122,7 @@
 
 .table-view{
     -fx-background-color: transparent;
+    -fx-border-color: #003366;
 }
 
 .table-view:focused{
@@ -128,7 +130,7 @@
 }
 
 .table-view .column-header-background{
-    -fx-background-color: #00a7c6;
+    -fx-background-color: #003144;
 }
 
 .table-view .column-header-background .label{
@@ -141,17 +143,17 @@
 }
 
 .table-view .table-cell{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #003b57;
+    -fx-background-color: -fx-table-cell-border-color, #f8ffff;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #005d7a;
+    -fx-background-color: -fx-table-cell-border-color, #cbd3df;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
