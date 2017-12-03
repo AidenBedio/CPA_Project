@@ -155,17 +155,27 @@ public class repController implements Initializable{
 
     @FXML
     public void loadFromDatabase(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = new Date();
-        Timestamp timestamp = Timestamp.valueOf(dateFormat.format(date));
+        String s = dateFormat.format(date);
+
+        //String s = datePicker.getValue().toString();
+
+        String timestamp = String.format("%s 00:00:00", s);
+        String time = String.format("%s 23:59:59", s);
+        System.out.println(timestamp);
+        System.out.println(time);
+
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         Connection connection = connect.getConnection();
         try {
             data = FXCollections.observableArrayList();
-            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA <= ? and ETD >= ?");
-            preparedStatement.setTimestamp(1, timestamp);
-            preparedStatement.setTimestamp(2, timestamp);
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
+            preparedStatement.setString(1, timestamp);
+            preparedStatement.setString(2, timestamp);
+            preparedStatement.setString(3, timestamp);
+            preparedStatement.setString(4, time);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -237,11 +247,9 @@ public class repController implements Initializable{
         Connection connection = connect.getConnection();
         try {
             search = FXCollections.observableArrayList();
-            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA >= ? and ETA <= ?");
             preparedStatement.setString(1, timestamp);
-            preparedStatement.setString(2, timestamp);
-            preparedStatement.setString(3, timestamp);
-            preparedStatement.setString(4, time);
+            preparedStatement.setString(2, time);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -254,7 +262,7 @@ public class repController implements Initializable{
         }catch (SQLException e){
             System.err.println("Error"+e);
         }
-        System.out.println();
+
         Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
         Bollard_No.setCellValueFactory(new PropertyValueFactory<>("bollard"));
         Name.setCellValueFactory(new PropertyValueFactory<>("vessel_name"));
@@ -318,11 +326,9 @@ public class repController implements Initializable{
 
         try {
             datab = FXCollections.observableArrayList();
-            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA >= ? and ETA <= ?");
             preparedStatement.setString(1, timestamp);
-            preparedStatement.setString(2, timestamp);
-            preparedStatement.setString(3, timestamp);
-            preparedStatement.setString(4, time);
+            preparedStatement.setString(2, time);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -420,7 +426,7 @@ public class repController implements Initializable{
 
             FileOutputStream fos = null;
 
-            fos = new FileOutputStream(new File("E:/Angkla/DailyReport/(" + s + ").xlsx"));
+            fos = new FileOutputStream(new File("E:/Angkla/DailyReport(" + s + ").xlsx"));
             workbook.write(fos);
             fos.close();
             fos.close();

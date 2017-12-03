@@ -46,6 +46,28 @@ public class dbController implements Initializable {
     @FXML
     private TextField txt_name;
     @FXML
+    private TextField txt_voyage;
+    @FXML
+    private TextField txt_nationality;
+    @FXML
+    private TextField txt_grt;
+    @FXML
+    private TextField txt_loa;
+    @FXML
+    private TextField txt_master;
+    @FXML
+    private TextField txt_nrt;
+    @FXML
+    private TextField txt_dwt;
+    @FXML
+    private TextField txt_beam;
+    @FXML
+    private TextField txt_dfwd;
+    @FXML
+    private TextField txt_daft;
+    @FXML
+    private TextField txt_bpost;
+    @FXML
     private TextField txt_berth;
     @FXML
     private TextField txt_bollard;
@@ -130,12 +152,23 @@ public class dbController implements Initializable {
         tableShip.setOnMouseClicked(event -> {
             Ship sp = tableShip.getItems().get(tableShip.getSelectionModel().getSelectedIndex());
             txt_name.setText(sp.getVessel_name());
+            txt_voyage.setText(sp.getVoyage_num());
+            txt_nationality.setText(sp.getNationality());
+            txt_grt.setText(String.valueOf(sp.getGRT()));
+            txt_loa.setText(String.valueOf(sp.getLOA()));
             txt_berth.setText(sp.getBerth_pref());
             txt_bollard.setText(sp.getBollard());
+            txt_master.setText(sp.getMaster());
+            txt_nrt.setText(String.valueOf(sp.getNRT()));
+            txt_dwt.setText(String.valueOf(sp.getDWT()));
+            txt_beam.setText(String.valueOf(sp.getBeam()));
+            txt_dfwd.setText(String.valueOf(sp.getDraft_fwd()));
+            txt_daft.setText(String.valueOf(sp.getDraft_aft()));
             txt_eta.setText(String.valueOf(sp.getETA()));
             txt_etd.setText(String.valueOf(sp.getETD()));
             txt_lp.setText(sp.getLast_port());
             txt_np.setText(sp.getNext_port());
+            //txt_bpost.setText(sp.getBerth_post());
             txt_remarks.setText(sp.getRemarks());
             txt_id.setText(String.valueOf(sp.getId()));
         });
@@ -310,6 +343,7 @@ public class dbController implements Initializable {
         String dlp = new String(txt_lp.getText());
         String dnp = new String(txt_np.getText());
         String dremarks = new String(txt_remarks.getText());
+
 
         if (dname == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

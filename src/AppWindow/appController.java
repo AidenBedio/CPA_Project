@@ -47,7 +47,9 @@ public class appController implements Initializable {
     @FXML
     private TextField txt_voyage;
     @FXML
-    private ComboBox<String> nation;
+    //private ComboBox<String> nation;
+
+    private TextField nation;
     @FXML
     private TextField txt_grt;
     @FXML
@@ -213,38 +215,13 @@ public class appController implements Initializable {
                 "51","52","53","54","55","56","57","58","59");
 
         berthPosition.getItems().removeAll(berthPosition.getItems());
-        berthPosition.getItems().addAll("portside","mediterranean","starboard");
+        berthPosition.getItems().addAll("portside","mediterranean","starboard", "tip", "corner");
 
         connect = new ConnectionConfiguration();
-        nation.getItems().removeAll(nation.getItems());
-        nation.getItems().addAll("N/A", "Afghan", "Albanian","Algerian", "American", "Andorran", "Angolan", "Antiguans",
-                "Argentinean", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi",
-                "Barbadian", "Barbudans", "Batswana", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian",
-                "Bosnian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian",
-                "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian",
-                "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djibouti", "Dominican",
-                "Dutch", "East Timorese", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian",
-                "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian",
-                "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran",
-                "Hungarian", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian",
-                "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz",
-                "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger",
-                "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian",
-                "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Moroccan", "Mosotho", "Motswana",
-                "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Ni-Vanuatu", "Nicaraguan", "Nigerien",
-                "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Panamanian", "Papua New Guinean",
-                "Paraguayan", "Paraguayan", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian",
-                "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois",
-                "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African",
-                "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian",
-                "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian",
-                "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Welsh", "Yemenite",
-                "Zambian", "Zimbabwean");
-        nation.setValue("Filipino");
         fill.getItems().removeAll(fill.getItems());
         fill.getItems().addAll("Passenger", "Cargo", "Tanker", "Unspecified");
         schedule.getItems().removeAll(schedule.getItems());
-        schedule.getItems().addAll("Everyday", "Weekdays", "MWFSat", "SunTFSat", "MTWThFS");
+        schedule.getItems().addAll("Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat");
     }
 
     @FXML
@@ -295,10 +272,10 @@ public class appController implements Initializable {
             dvoyage = new String(txt_voyage.getText());
         }
         String dnationality = null;
-        if (nation.getValue().equals(null) || nation.getValue().equals("")){
+        if (nation.getText().equals(null) || nation.getText().equals("")){
             nationalitytxt.setOpacity(1);
         }else{
-            dnationality = new String(nation.getValue());
+            dnationality = new String(nation.getText());
         }
         //check if float value
         Float dgrt = null;
@@ -482,28 +459,6 @@ public class appController implements Initializable {
 
 
 
-        /*
-        String dname = new String(txt_name.getText());
-        String dvoyage = new String(txt_voyage.getText());
-        String dnationality = new String(nation.getValue());
-        Float dgrt = Float.valueOf(new String(txt_grt.getText()));
-        Float dloa = Float.valueOf(new String(txt_loa.getText()));
-        String dlp = new String(txt_lp.getText());
-        String dnp = new String(txt_np.getText());
-        String dberth = new String(txt_berth.getText());
-        String dbollard = new String(txt_bollard.getText());
-        String dmaster = new String(txt_master.getText());
-        Float dnrt = Float.valueOf(new String(txt_nrt.getText()));
-        Float ddwt = Float.valueOf(new String(txt_dwt.getText()));
-        Float dbeam = Float.valueOf(new String(txt_beam.getText()));
-        Timestamp deta = Timestamp.valueOf(new String(txt_eta.getText()));
-        Timestamp detd = Timestamp.valueOf(new String(txt_etd.getText()));
-        Float ddfwd = Float.valueOf(new String(txt_dfwd.getText()));
-        Float ddaft = Float.valueOf(new String(txt_daft.getText()));
-        String dberthpost = new String(txt_berthingpost.getText());
-        String dremarks = new String(txt_remarks.getText());
-        String dfilled = new String(fill.getValue());
-        */
 
         Integer dvalidity = null;
 
@@ -568,7 +523,7 @@ public class appController implements Initializable {
                 // new AutoEmail("rizelleannbahin@gmail.com", "approval");
                 txt_name.clear();
                 txt_voyage.clear();
-                nation.setValue("Filipino");
+                nation.clear();
                 txt_grt.clear();
                 txt_loa.clear();
                 txt_lp.clear();
@@ -581,7 +536,6 @@ public class appController implements Initializable {
                 txt_berthingpost.clear();
                 txt_bollard.clear();
                 txt_remarks.clear();
-                fill.setValue("False");
                 validity.clear();
 
             }else{
