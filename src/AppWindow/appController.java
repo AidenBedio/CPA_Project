@@ -574,7 +574,7 @@ public class appController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY ETA ASC LIMIT 35");
 
             while (resultSet.next()){
 
