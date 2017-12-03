@@ -1,5 +1,6 @@
 package RepWindow;
 
+import AppWindow.appController;
 import DBWindow.ConnectionConfiguration;
 import DBWindow.Ship;
 import DBWindow.dbController;
@@ -95,9 +96,13 @@ public class repController implements Initializable{
         Parent newWindow = null;
 
         switch (nextScene) {
-            case "Application":
-                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+            case "Application": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../AppWindow/appWindow.fxml"));
+                newWindow = loader.load();
+                appController aController = loader.getController();
+                aController.loadDataFromDatabase();
                 break;
+            }
             case "Visual": {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../VisWindow/visWindow.fxml"));
                 newWindow = loader.load();

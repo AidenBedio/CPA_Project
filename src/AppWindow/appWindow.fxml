@@ -43,9 +43,9 @@
       </Label>
       <TableView id="recentLogs" fx:id="recentLogs" layoutX="983.0" layoutY="190.0" prefHeight="553.0" prefWidth="362.0">
         <columns>
-          <TableColumn prefWidth="122.666748046875" text="Vessel Name" />
-          <TableColumn prefWidth="118.333251953125" text="Next Port" />
-            <TableColumn prefWidth="120.0" text="Last Port" />
+          <TableColumn fx:id="Name" prefWidth="122.666748046875" text="Vessel Name" />
+          <TableColumn fx:id="ETA" prefWidth="118.333251953125" text="ETA" />
+            <TableColumn fx:id="ETD" prefWidth="120.0" text="ETD" />
         </columns>
       </TableView>
       <Label layoutX="983.0" layoutY="149.0" text="Recent Logs">

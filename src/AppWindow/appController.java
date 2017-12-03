@@ -5,6 +5,8 @@ import DBWindow.Ship;
 import DBWindow.dbController;
 import RepWindow.repController;
 import VisWindow.visController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -19,9 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -40,8 +41,6 @@ public class appController implements Initializable {
     @FXML
     private Button repButton;
 
-    @FXML
-    private TableView<Ship>  recentLogs;
     @FXML
     private TextField txt_name;
     @FXML
@@ -102,6 +101,15 @@ public class appController implements Initializable {
     private ComboBox<String> schedule;
     @FXML
     private TextField validity;
+
+    @FXML
+    private TableView<Ship>  recentLogs;
+    @FXML
+    private TableColumn<Ship, String> Name;
+    @FXML
+    private TableColumn<Ship, String> ETA;
+    @FXML
+    private TableColumn<Ship, String> ETD;
 
     @FXML
     private Text vesselNametxt;
@@ -166,6 +174,8 @@ public class appController implements Initializable {
 
     private String nextScene;
 
+    private ObservableList<Ship> data;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -222,6 +232,8 @@ public class appController implements Initializable {
         fill.getItems().addAll("Passenger", "Cargo", "Tanker", "Unspecified");
         schedule.getItems().removeAll(schedule.getItems());
         schedule.getItems().addAll("Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat");
+
+        setCellValueTextfield();
     }
 
     @FXML
@@ -553,8 +565,80 @@ public class appController implements Initializable {
     }
 
     //FIXME add an sql query that gets the recent 15 inputs and put it in the table
+    @FXML
+    public void loadDataFromDatabase(){
+
+        data = FXCollections.observableArrayList();
+        Connection connection = null;
+        ResultSet resultSet = null;
+        try {
+            connection = connect.getConnection();
+
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship");
+
+            while (resultSet.next()){
+
+                data.add(new Ship(resultSet.getInt(1),resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getFloat(5),
+                        resultSet.getFloat(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
+                        resultSet.getString(10), resultSet.getFloat(11), resultSet.getFloat(12), resultSet.getFloat(13),
+                        resultSet.getTimestamp(14), resultSet.getTimestamp(15), resultSet.getFloat(16), resultSet.getFloat(17),
+                        resultSet.getString(18), resultSet.getString(19), resultSet.getString(20), resultSet.getString(21)));
+            }
+        }catch (SQLException e){
+            System.err.println("Error"+e);
+        }
+
+        Name.setCellValueFactory(new PropertyValueFactory<>("vessel_name"));
+        ETA.setCellValueFactory(new PropertyValueFactory<>("ETA"));
+        ETD.setCellValueFactory(new PropertyValueFactory<>("ETD"));
+
+        recentLogs.setItems(data);
+
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     //FIXME add a function that when the table is click info are put on the field (easier job for the secretary)
+    private void setCellValueTextfield(){
+        System.out.println("I was called??");
+        recentLogs.setOnMouseClicked(event -> {
+            Ship sp = recentLogs.getItems().get(recentLogs.getSelectionModel().getSelectedIndex());
+            txt_name.setText(sp.getVessel_name());
+            txt_voyage.setText(sp.getVoyage_num());
+            nation.setText(sp.getNationality());
+            txt_grt.setText(String.valueOf(sp.getGRT()));
+            txt_loa.setText(String.valueOf(sp.getLOA()));
+            txt_berth.setText(sp.getBerth_pref());
+            txt_bollard.setText(sp.getBollard());
+            txt_master.setText(sp.getMaster());
+            txt_nrt.setText(String.valueOf(sp.getNRT()));
+            txt_dwt.setText(String.valueOf(sp.getDWT()));
+            txt_beam.setText(String.valueOf(sp.getBeam()));
+            txt_dfwd.setText(String.valueOf(sp.getDraft_fwd()));
+            txt_daft.setText(String.valueOf(sp.getDraft_aft()));
+            //txt_eta.setText(String.valueOf(sp.getETA()));
+            //txt_etd.setText(String.valueOf(sp.getETD()));
+            txt_lp.setText(sp.getLast_port());
+            txt_np.setText(sp.getNext_port());
+            //txt_berthingpost.setText(sp.getBerth_post());
+            berthPosition.setValue(sp.getBerth_post());
+            //txt_remarks.setText(sp.getRemarks());
+        });
+    }
+
 
     private void loadNextScreen() throws IOException {
 

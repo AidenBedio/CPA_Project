@@ -1,5 +1,6 @@
 package HomeWindow;
 
+import AppWindow.appController;
 import DBWindow.ConnectionConfiguration;
 import DBWindow.dbController;
 import RepWindow.repController;
@@ -59,9 +60,13 @@ public class homeController {
                 vController.setTime();
                 break;
             }
-            case "Application":
-                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+            case "Application": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../AppWindow/appWindow.fxml"));
+                newWindow = loader.load();
+                appController aController = loader.getController();
+                aController.loadDataFromDatabase();
                 break;
+            }
         }
 
 

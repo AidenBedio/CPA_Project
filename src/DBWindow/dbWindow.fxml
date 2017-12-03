@@ -112,7 +112,7 @@
             <TextField id="txt_etd" fx:id="txt_etd" layoutX="50.0" layoutY="406.0" prefHeight="26.0" prefWidth="262.0" />
             <TextField id="txt_lp" fx:id="txt_lp" editable="false" layoutX="67.0" layoutY="166.0" prefHeight="26.0" prefWidth="245.0" />
             <TextField id="txt_np" fx:id="txt_np" editable="false" layoutX="67.0" layoutY="196.0" prefHeight="26.0" prefWidth="245.0" />
-            <TextField id="txt_berth" fx:id="txt_berth" editable="false" layoutX="106.0" layoutY="226.0" prefHeight="25.0" prefWidth="206.0" />
+            <TextField id="txt_berth" fx:id="txt_berth" layoutX="106.0" layoutY="226.0" prefHeight="25.0" prefWidth="206.0" />
             <TextField fx:id="txt_loa" editable="false" layoutX="50.0" layoutY="136.0" prefHeight="26.0" prefWidth="262.0" />
             <TextField fx:id="txt_dfwd" layoutX="73.0" layoutY="436.0" prefHeight="26.0" prefWidth="239.0" />
             <TextField fx:id="txt_daft" layoutX="73.0" layoutY="466.0" prefHeight="26.0" prefWidth="239.0" />

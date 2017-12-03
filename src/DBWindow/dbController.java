@@ -1,5 +1,6 @@
 package DBWindow;
 
+import AppWindow.appController;
 import RepWindow.repController;
 import VisWindow.visController;
 import javafx.collections.FXCollections;
@@ -414,9 +415,13 @@ public class dbController implements Initializable {
         Parent newWindow = null;
 
         switch (nextScene) {
-            case "Application":
-                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+            case "Application": {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../AppWindow/appWindow.fxml"));
+                newWindow = loader.load();
+                appController aController = loader.getController();
+                aController.loadDataFromDatabase();
                 break;
+            }
             case "Report": {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
                 newWindow = loader.load();

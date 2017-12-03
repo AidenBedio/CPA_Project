@@ -1,5 +1,6 @@
 package VisWindow;
 
+import AppWindow.appController;
 import DBWindow.ConnectionConfiguration;
 import DBWindow.Ship;
 import DBWindow.dbController;
@@ -266,7 +267,11 @@ public class visController implements Initializable{
 
         try {
             connection = ConnectionConfiguration.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA <= ? and ETD >= ?");
+            if (dateType.equalsIgnoreCase("Real Time")){
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA <= ? and ETD >= ?");
+            }else{
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA >= ? and ETA <= ?");
+            }
             preparedStatement.setTimestamp(1, timestamp1);
             preparedStatement.setTimestamp(2, timestamp2);
             resultSet = preparedStatement.executeQuery();
@@ -778,9 +783,13 @@ public class visController implements Initializable{
         Parent newWindow = null;
 
         switch (nextScene) {
-            case "Application":
-                newWindow = FXMLLoader.load(getClass().getResource("../AppWindow/appWindow.fxml"));
+            case "Application":{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../AppWindow/appWindow.fxml"));
+                newWindow = loader.load();
+                appController aController = loader.getController();
+                aController.loadDataFromDatabase();
                 break;
+            }
             case "Report": {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../RepWindow/repWindow.fxml"));
                 newWindow = loader.load();
