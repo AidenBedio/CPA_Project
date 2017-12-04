@@ -409,6 +409,14 @@ public class visController implements Initializable{
             image = "cargo.png";
         }else if (s.getFilled().equalsIgnoreCase("Tanker")){
             image = "tanker.png";
+        }else if (s.getFilled().equalsIgnoreCase("Fast Craft")){
+            image = "fastcraft.png";
+        }else if (s.getFilled().equalsIgnoreCase("Tugs & Special")){
+            image = "special.png";
+        }else if (s.getFilled().equalsIgnoreCase("Fishing")){
+            image = "fishing.png";
+        }else if (s.getFilled().equalsIgnoreCase("Pleasure")){
+            image = "pleasure.png";
         }else{
             image = "unspecified.png";
         }
