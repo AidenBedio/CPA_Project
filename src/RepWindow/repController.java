@@ -33,6 +33,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -146,6 +147,19 @@ public class repController implements Initializable{
 
     }
 
+    public static int parseBerth(String berthString){
+        int berth = 0;
+        int berthLength = berthString.length();
+
+        for (int i = 0, ten = 1; i < berthLength; i++){
+            if (berthString.charAt(i) >= '0' && berthString.charAt(i) <= '9'){
+                berth *= ten;
+                berth += (berthString.charAt(i) - 48);
+                ten *= 10;
+            }
+        }
+        return berth;
+    }
 
     @FXML
     public void loadFromDatabase(){
@@ -172,6 +186,7 @@ public class repController implements Initializable{
         }catch (SQLException e){
             System.err.println("Error"+e);
         }
+
         System.out.println();
         Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
         Bollard_No.setCellValueFactory(new PropertyValueFactory<>("bollard"));
@@ -247,7 +262,23 @@ public class repController implements Initializable{
         }catch (SQLException e){
             System.err.println("Error"+e);
         }
-        System.out.println();
+
+        int numberOfBerth = 24;
+
+        ArrayList<Ship> tempShips = new ArrayList<>();
+
+        for (int i = 1; i <= numberOfBerth; i++){
+            for (Ship tempShip: search){
+                if (parseBerth(tempShip.getBerth_pref()) == i){
+                    tempShips.add(tempShip);
+                }
+            }
+        }
+
+        search.removeAll();
+        search.addAll(tempShips);
+
+
         Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
         Bollard_No.setCellValueFactory(new PropertyValueFactory<>("bollard"));
         Name.setCellValueFactory(new PropertyValueFactory<>("vessel_name"));
@@ -323,6 +354,8 @@ public class repController implements Initializable{
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
+
+
         System.out.println();
         Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
         Bollard_No.setCellValueFactory(new PropertyValueFactory<>("bollard"));

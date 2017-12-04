@@ -60,5 +60,10 @@
             <Font name="Lato Regular" size="46.0" />
          </font>
       </Label>
+      <Pane layoutX="166.0" layoutY="213.0" prefHeight="27.0" prefWidth="122.0">
+         <children>
+            <Button layoutX="-3.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" />
+         </children>
+      </Pane>
    </children>
 </Pane>
