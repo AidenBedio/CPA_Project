@@ -269,11 +269,17 @@ public class visController implements Initializable{
             connection = ConnectionConfiguration.getConnection();
             if (dateType.equalsIgnoreCase("Real Time")){
                 preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA <= ? and ETD >= ?");
+                preparedStatement.setTimestamp(1, timestamp1);
+                preparedStatement.setTimestamp(2, timestamp2);
             }else{
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA >= ? and ETA <= ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
+                preparedStatement.setTimestamp(1, timestamp1);
+                preparedStatement.setTimestamp(2, timestamp1);
+                preparedStatement.setTimestamp(3, timestamp1);
+                preparedStatement.setTimestamp(4, timestamp2);
+                //preparedStatement.setTimestamp(5, timestamp1);
+                //preparedStatement.setTimestamp(6, timestamp2);
             }
-            preparedStatement.setTimestamp(1, timestamp1);
-            preparedStatement.setTimestamp(2, timestamp2);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
