@@ -10,12 +10,12 @@
 
 <Pane id="bgPane" fx:id="repPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@repWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RepWindow.repController">
    <children>
-      <Label layoutX="35.0" layoutY="80.0" prefHeight="22.0" prefWidth="68.0" text="Angkla" textFill="WHITE">
+      <Label layoutX="41.0" layoutY="87.0" prefHeight="22.0" prefWidth="68.0" text="Home" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button id="homeButton" fx:id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="135.0" prefWidth="160.0" />
+      <Button id="homeButton" fx:id="homeButton" layoutX="-693.0" layoutY="-706.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="135.0" prefWidth="160.0" />
       <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="Lato Bold" size="35.0" />
@@ -53,11 +53,11 @@
             <TableColumn fx:id="Remarks" prefWidth="204.0" text="Remarks" />
         </columns>
       </TableView>
-      <Button fx:id="Save" layoutX="965.0" layoutY="64.0" mnemonicParsing="false" onAction="#saving" text="Save" />
-      <DatePicker fx:id="datePicker" layoutX="771.0" layoutY="64.0" onAction="#filter" />
-      <Label layoutX="491.0" layoutY="134.0" text="Daily Berthing Report" textFill="WHITE">
+      <Button fx:id="Save" layoutX="1275.0" layoutY="175.0" mnemonicParsing="false" onAction="#saving" text="Save" />
+      <DatePicker fx:id="datePicker" layoutX="1020.0" layoutY="175.0" onAction="#filter" prefHeight="25.0" prefWidth="235.0" />
+      <Label layoutX="35.0" layoutY="152.0" text="Daily Berthing Report">
          <font>
-            <Font name="Lato Regular" size="46.0" />
+            <Font name="Lato Regular" size="36.0" />
          </font>
       </Label>
       <Pane layoutX="166.0" layoutY="213.0" prefHeight="27.0" prefWidth="122.0">

@@ -1,5 +1,5 @@
 #bgPane {
-    -fx-background-image: url("../clean.jpg");
+    -fx-background-image: url("../raster.png");
 }
 
 .button{
@@ -36,9 +36,9 @@
 
 #homeButton {
 
-    -fx-graphic: url("../logoangkla.png");
-    -fx-scale-x: .3;
-    -fx-scale-y: .3;
+    -fx-graphic: url("../cpalogo.png");
+    -fx-scale-x: .05;
+    -fx-scale-y: .05;
 }
 
 #homeButton:hover .image-view {
@@ -61,4 +61,48 @@
 #repButton:hover {
     -fx-scale-x: .4 ;
     -fx-scale-y: .4 ;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+    -fx-border-color: #003366;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #003144;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #f8ffff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #cbd3df;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #00407e;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
 }

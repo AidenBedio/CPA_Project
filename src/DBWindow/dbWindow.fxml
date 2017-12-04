@@ -10,8 +10,8 @@
 
 <Pane id="bgPane" fx:id="dbPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@dbWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DBWindow.dbController">
    <children>
-      <Button id="homeButton" fx:id="homeButton" layoutX="-35.0" layoutY="-45.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="135.0" prefWidth="160.0" />
-      <Label layoutX="35.0" layoutY="80.0" prefHeight="22.0" prefWidth="68.0" text="Angkla" textFill="WHITE">
+      <Button id="homeButton" fx:id="homeButton" layoutX="-693.0" layoutY="-706.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="135.0" prefWidth="160.0" />
+      <Label layoutX="41.0" layoutY="87.0" prefHeight="22.0" prefWidth="68.0" text="Home" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -56,7 +56,7 @@
             <TableColumn fx:id="Draft_aft" prefWidth="75.0" text="Draft_aft" />
             <TableColumn fx:id="Berth_post" prefWidth="75.0" text="Berth_Post" />
             <TableColumn fx:id="Remarks" prefWidth="75.0" text="Remarks" />
-            <TableColumn fx:id="Filled" prefWidth="75.0" text="Filled" />
+            <TableColumn fx:id="Filled" prefWidth="75.0" text="Vessel Type" />
         </columns>
       </TableView>
       <ImageView id="appSelected" fitHeight="7.0" fitWidth="140.0" layoutX="152.0" layoutY="92.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -81,49 +81,49 @@
       </ImageView>
       <Pane id="detailPane" layoutX="1040.0" layoutY="122.0" prefHeight="633.0" prefWidth="321.0">
          <children>
-            <Label layoutX="10.0" layoutY="20.0" text="Vessel Name:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="50.0" text="Voyage Number:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="80.0" text="Nationality:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="110.0" text="GRT:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="140.0" text="LOA:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="170.0" text="Last Port:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="200.0" text="Next Port:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="230.0" text="Berth Preference:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="260.0" text="Master:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="290.0" text="NRT:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="320.0" text="DWT:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="350.0" text="Beam:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="380.0" text="ETA:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="410.0" text="ETD:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="440.0" text="Draft Fwd:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="470.0" text="Draft Aft:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="500.0" text="Bollard:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="530.0" text="Remarks:" textFill="WHITE" />
-            <Label layoutX="10.0" layoutY="560.0" text="Filled:" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="20.0" text="Vessel Name:" />
+            <Label layoutX="10.0" layoutY="50.0" text="Voyage Number:" />
+            <Label layoutX="10.0" layoutY="80.0" text="Nationality:" />
+            <Label layoutX="10.0" layoutY="110.0" text="GRT:" />
+            <Label layoutX="10.0" layoutY="140.0" text="LOA:" />
+            <Label layoutX="10.0" layoutY="170.0" text="Last Port:" />
+            <Label layoutX="10.0" layoutY="200.0" text="Next Port:" />
+            <Label layoutX="10.0" layoutY="230.0" text="Berth Preference:" />
+            <Label layoutX="10.0" layoutY="260.0" text="Master:" />
+            <Label layoutX="10.0" layoutY="290.0" text="NRT:" />
+            <Label layoutX="10.0" layoutY="320.0" text="DWT:" />
+            <Label layoutX="10.0" layoutY="350.0" text="Beam:" />
+            <Label layoutX="10.0" layoutY="380.0" text="ETA:" />
+            <Label layoutX="10.0" layoutY="410.0" text="ETD:" />
+            <Label layoutX="10.0" layoutY="440.0" text="Draft Fwd:" />
+            <Label layoutX="10.0" layoutY="470.0" text="Draft Aft:" />
+            <Label layoutX="10.0" layoutY="500.0" text="Bollard:" />
+            <Label layoutX="10.0" layoutY="530.0" text="Remarks:" />
+            <Label layoutX="10.0" layoutY="560.0" text="Vessel type:" />
             <TextField id="txt_name" fx:id="txt_name" editable="false" layoutX="83.0" layoutY="16.0" prefHeight="26.0" prefWidth="229.0" />
-            <TextField editable="false" layoutX="83.0" layoutY="76.0" prefHeight="26.0" prefWidth="229.0" />
-            <TextField editable="false" layoutX="106.0" layoutY="46.0" prefHeight="25.0" prefWidth="206.0" />
-            <TextField editable="false" layoutX="50.0" layoutY="106.0" prefHeight="26.0" prefWidth="262.0" />
-            <TextField editable="false" layoutX="57.0" layoutY="256.0" prefHeight="26.0" prefWidth="255.0" />
-            <TextField editable="false" layoutX="50.0" layoutY="286.0" prefHeight="26.0" prefWidth="262.0" />
-            <TextField editable="false" layoutX="50.0" layoutY="316.0" prefHeight="26.0" prefWidth="262.0" />
-            <TextField editable="false" layoutX="50.0" layoutY="346.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="txt_nationality" editable="false" layoutX="83.0" layoutY="76.0" prefHeight="26.0" prefWidth="229.0" />
+            <TextField fx:id="txt_voyage" editable="false" layoutX="106.0" layoutY="46.0" prefHeight="25.0" prefWidth="206.0" />
+            <TextField fx:id="txt_grt" editable="false" layoutX="50.0" layoutY="106.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="txt_master" editable="false" layoutX="57.0" layoutY="256.0" prefHeight="26.0" prefWidth="255.0" />
+            <TextField fx:id="txt_nrt" editable="false" layoutX="50.0" layoutY="286.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="txt_dwt" editable="false" layoutX="50.0" layoutY="316.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="txt_beam" editable="false" layoutX="50.0" layoutY="346.0" prefHeight="26.0" prefWidth="262.0" />
             <TextField id="txt_eta" fx:id="txt_eta" layoutX="50.0" layoutY="376.0" prefHeight="26.0" prefWidth="262.0" />
             <TextField id="txt_etd" fx:id="txt_etd" layoutX="50.0" layoutY="406.0" prefHeight="26.0" prefWidth="262.0" />
             <TextField id="txt_lp" fx:id="txt_lp" editable="false" layoutX="67.0" layoutY="166.0" prefHeight="26.0" prefWidth="245.0" />
             <TextField id="txt_np" fx:id="txt_np" editable="false" layoutX="67.0" layoutY="196.0" prefHeight="26.0" prefWidth="245.0" />
             <TextField id="txt_berth" fx:id="txt_berth" editable="false" layoutX="106.0" layoutY="226.0" prefHeight="25.0" prefWidth="206.0" />
-            <TextField editable="false" layoutX="50.0" layoutY="136.0" prefHeight="26.0" prefWidth="262.0" />
-            <TextField layoutX="73.0" layoutY="436.0" prefHeight="26.0" prefWidth="239.0" />
-            <TextField layoutX="73.0" layoutY="466.0" prefHeight="26.0" prefWidth="239.0" />
+            <TextField fx:id="txt_loa" editable="false" layoutX="50.0" layoutY="136.0" prefHeight="26.0" prefWidth="262.0" />
+            <TextField fx:id="txt_dfwd" layoutX="73.0" layoutY="436.0" prefHeight="26.0" prefWidth="239.0" />
+            <TextField fx:id="txt_daft" layoutX="73.0" layoutY="466.0" prefHeight="26.0" prefWidth="239.0" />
             <TextField id="txt_bollard" fx:id="txt_bollard" layoutX="57.0" layoutY="496.0" prefHeight="26.0" prefWidth="255.0" />
             <TextField id="txt_remarks" fx:id="txt_remarks" layoutX="67.0" layoutY="526.0" prefHeight="26.0" prefWidth="245.0" />
-            <TextField layoutX="57.0" layoutY="556.0" prefHeight="26.0" prefWidth="255.0" />
-            <Label layoutX="10.0" layoutY="590.0" text="ID:" textFill="WHITE" />
+            <TextField layoutX="83.0" layoutY="556.0" prefHeight="26.0" prefWidth="229.0" />
+            <Label layoutX="10.0" layoutY="590.0" text="ID:" />
             <TextField fx:id="txt_id" layoutX="37.0" layoutY="588.0" prefHeight="26.0" prefWidth="273.0" />
          </children>
       </Pane>
-      <TextField fx:id="searchField" layoutX="1040.0" layoutY="33.0" prefHeight="26.0" prefWidth="229.0" promptText="Search" />
+      <TextField id="searchField" fx:id="searchField" layoutX="1040.0" layoutY="33.0" prefHeight="26.0" prefWidth="229.0" promptText="Search" />
       <Button layoutX="1163.0" layoutY="-109.0" mnemonicParsing="false" />
       <ComboBox fx:id="comboBox" layoutX="1038.0" layoutY="80.0" prefHeight="25.0" prefWidth="229.0" promptText="-select-" />
       <Button layoutX="1289.0" layoutY="80.0" mnemonicParsing="false" onAction="#updateDataDatabase" text="Update" textFill="WHITE" />
