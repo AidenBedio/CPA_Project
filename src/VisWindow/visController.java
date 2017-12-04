@@ -592,7 +592,7 @@ public class visController implements Initializable{
         if (berthPos.equalsIgnoreCase("mediterranean")){
             offsetX = bollardInit - startingBollard;
             addBollardX = 0;
-            addBollardY = 1;
+            addBollardY = (newShip.getShip().getLOA() / 16) - 2;
 
             newShip.setScaleX(1 + addBollardX * .5);
             newShip.setScaleY(1 + addBollardY * .5);
@@ -603,7 +603,8 @@ public class visController implements Initializable{
         }else if (berthPos.equalsIgnoreCase("starboard")){
             newShip.setRotate(90);
             offsetX = bollardInit - startingBollard;
-            addBollardX = (bollardEnd - bollardInit - 2);
+            //addBollardX = (bollardEnd - bollardInit - 2);
+            addBollardX = (newShip.getShip().getLOA() / 16) - 2;
             addBollardY = 0;
 
             newShip.setScaleX(1 + addBollardY * .5);
@@ -616,7 +617,8 @@ public class visController implements Initializable{
 
             newShip.setRotate(270);
             offsetX = bollardInit - startingBollard;
-            addBollardX = (bollardEnd - bollardInit - 2);
+            //addBollardX = (bollardEnd - bollardInit - 2);
+            addBollardX = (newShip.getShip().getLOA()/16) - 2;
             addBollardY = 0;
 
             newShip.setScaleX(1 + addBollardY * .5);

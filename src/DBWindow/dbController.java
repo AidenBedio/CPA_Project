@@ -141,7 +141,7 @@ public class dbController implements Initializable {
         System.out.println("I came here");
         //dbPane.setOpacity(0);
         comboBox.getItems().removeAll(comboBox.getItems());
-        comboBox.getItems().addAll("Vessel Name", "Berth No","Bollard No", "ETA", "ETD", "Last Port", "Next Port");
+        comboBox.getItems().addAll("Vessel Name", "Berth No","Bollard No", "Last Port", "Next Port");
         comboBox.setValue("Select Here");
         connect = new ConnectionConfiguration();
         setCellValueTextfield();
@@ -255,10 +255,6 @@ public class dbController implements Initializable {
                 preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE berth_pref = ?");
             }else if (comboBox.getValue() == "Bollard No" ) {
                 preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE bollard = ?");
-            }else if (comboBox.getValue() == "ETA" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA = ?");
-            }else if (comboBox.getValue() == "ETD" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETD = ?");
             }else if (comboBox.getValue() == "Last Port" ) {
                 preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE last_port = ?");
             }else if (comboBox.getValue() == "Next Port" ) {

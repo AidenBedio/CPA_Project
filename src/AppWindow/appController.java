@@ -229,7 +229,7 @@ public class appController implements Initializable {
 
         connect = new ConnectionConfiguration();
         fill.getItems().removeAll(fill.getItems());
-        fill.getItems().addAll("Passenger", "Cargo", "Tanker", "Unspecified");
+        fill.getItems().addAll("Passenger", "Cargo", "Tanker", "Tugs and Special Craft", "High Speed Craft", "Fishing", "Pleasure Craft", "Navigation Aids", "Unspecified");
         schedule.getItems().removeAll(schedule.getItems());
         schedule.getItems().addAll("Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat");
 
@@ -473,9 +473,12 @@ public class appController implements Initializable {
 
 
         Integer dvalidity = null;
-
+        //"Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat"
         if (dfilled == "Passenger"){
             dvalidity = new Integer(validity.getText().toString());
+            if (schedule.getValue() == "Weekdays"){
+                //TO DO
+            }
         }else{
             dvalidity = 1;
         }
@@ -611,9 +614,7 @@ public class appController implements Initializable {
 
     }
 
-    //FIXME add a function that when the table is click info are put on the field (easier job for the secretary)
     private void setCellValueTextfield(){
-        System.out.println("I was called??");
         recentLogs.setOnMouseClicked(event -> {
             Ship sp = recentLogs.getItems().get(recentLogs.getSelectionModel().getSelectedIndex());
             txt_name.setText(sp.getVessel_name());
