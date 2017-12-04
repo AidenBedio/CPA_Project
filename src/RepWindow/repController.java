@@ -295,9 +295,8 @@ public class repController implements Initializable{
             }
         }
 
-        search.removeAll();
+        search.removeAll(search);
         search.addAll(tempShips);
-
 
 
         Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
