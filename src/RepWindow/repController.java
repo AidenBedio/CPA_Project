@@ -278,7 +278,7 @@ public class repController implements Initializable{
             System.err.println("Error"+e);
         }
 
-        int numberOfBerth = 24;
+        int numberOfBerth = 28;
 
         ArrayList<Ship> tempShips = new ArrayList<>();
 
@@ -329,7 +329,6 @@ public class repController implements Initializable{
             }
         }
     }
-
 
     @FXML
     private void saving(ActionEvent event) {
