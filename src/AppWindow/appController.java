@@ -160,6 +160,8 @@ public class appController implements Initializable {
     @FXML
     private Text bollardNumberErrortxt;
     @FXML
+    private Text bollardNumberErrortxt2;
+    @FXML
     private Text nrtErrortxt;
     @FXML
     private Text dwtErrortxt;
@@ -188,6 +190,7 @@ public class appController implements Initializable {
         nextPorttxt.setOpacity(0);
         berthNumbertxt.setOpacity(0);
         bollardNumbertxt.setOpacity(0);
+        bollardNumberErrortxt2.setOpacity(0);
         mastertxt.setOpacity(0);
         nrttxt.setOpacity(0);
         dwttxt.setOpacity(0);
@@ -244,6 +247,46 @@ public class appController implements Initializable {
         setCellValueTextfield();
     }
 
+
+    public static boolean isBollard(String bollardString){
+        int dash = 0;
+
+        for (int i = 0; i < bollardString.length(); i++){
+            if ((bollardString.charAt(i) >= '0' && bollardString.charAt(i) <= '9') || bollardString.charAt(i) == '-' || bollardString.charAt(i) == ' '){
+                if (bollardString.charAt(i) == '-'){
+                    dash++;
+                }
+            }else{
+                return false;
+            }
+            if(dash > 1){
+                return false;
+            }
+        }
+
+        if (dash <= 0){
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public static int parseBerth(String berthString){
+        int berth = 0;
+        int berthLength = berthString.length();
+
+        for (int i = 0, ten = 1; i < berthLength; i++){
+            if (berthString.charAt(i) >= '0' && berthString.charAt(i) <= '9'){
+                berth *= ten;
+                berth += (berthString.charAt(i) - 48);
+                ten *= 10;
+            }
+        }
+        return berth;
+    }
+
+
     @FXML
     private void add(ActionEvent event){
 
@@ -256,6 +299,7 @@ public class appController implements Initializable {
         nextPorttxt.setOpacity(0);
         berthNumbertxt.setOpacity(0);
         bollardNumbertxt.setOpacity(0);
+        bollardNumberErrortxt2.setOpacity(0);
         mastertxt.setOpacity(0);
         nrttxt.setOpacity(0);
         dwttxt.setOpacity(0);
@@ -352,7 +396,13 @@ public class appController implements Initializable {
         if (txt_berth.getText().equals(null) || txt_berth.getText().equals("")){
             berthNumbertxt.setOpacity(1);
         }else{
-            dberth = new String(txt_berth.getText());
+            if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26){
+                if (isBollard(txt_bollard.getText())){
+                    bollardNumberErrortxt2.setOpacity(1);
+                }
+            }else{
+                dberth = new String(txt_berth.getText());
+            }
         }
 
         String dbollard = null;
@@ -360,8 +410,16 @@ public class appController implements Initializable {
             bollardNumbertxt.setOpacity(1);
             bollardNumberErrortxt.setOpacity(1);
         }else{
-            dbollard = new String(txt_bollard.getText());
-            //bollardNumberErrortxt.setOpacity(1);
+            if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26) {
+                //create parse for north chorvaness
+            }else{
+                if (isBollard(txt_bollard.getText())){
+                    dbollard = new String(txt_bollard.getText());
+                }else{
+                    bollardNumbertxt.setOpacity(1);
+                    bollardNumberErrortxt.setOpacity(1);
+                }
+            }
         }
 
         String dmaster = null;
