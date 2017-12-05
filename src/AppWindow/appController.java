@@ -712,33 +712,33 @@ public class appController implements Initializable {
         Integer dvalidity = 1;
         int list[] = null;
         int index = 0;
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(deta);
-        int temp = calendar.get(Calendar.DAY_OF_WEEK);
-        System.out.println(temp);
-
-        String currentdate = null;
-        if(temp == 2){
-            currentdate = "Monday";
-        }else if (temp == 3){
-            currentdate = "Tuesday";
-        }else if (temp == 4){
-            currentdate = "Wednesday";
-        }else if (temp == 5){
-            currentdate = "Thursday";
-        }else if (temp == 6){
-            currentdate = "Friday";
-        }else if (temp == 7){
-            currentdate = "Saturday";
-        }else if (temp == 1){
-            currentdate = "Sunday";
-        }else {
-            //error
-        }
-
+        int temp = 1;
 
         if (fill.getValue().equals("Passenger")){
             System.out.println("passenger");
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(deta);
+            temp = calendar.get(Calendar.DAY_OF_WEEK);
+
+            String currentdate = null;
+            if(temp == 2){
+                currentdate = "Monday";
+            }else if (temp == 3){
+                currentdate = "Tuesday";
+            }else if (temp == 4){
+                currentdate = "Wednesday";
+            }else if (temp == 5){
+                currentdate = "Thursday";
+            }else if (temp == 6){
+                currentdate = "Friday";
+            }else if (temp == 7){
+                currentdate = "Saturday";
+            }else if (temp == 1){
+                currentdate = "Sunday";
+            }else {
+                //error
+            }
+
             dvalidity = new Integer(validity.getText().toString());
             if (schedule.getValue() == "Weekdays"){
                 list = new int []{1, 1, 1, 1, 3};
@@ -837,6 +837,7 @@ public class appController implements Initializable {
                 preparedStatement.setString(20, dfilled);
 
                 flag = preparedStatement.execute();
+
                 int value = 1;
                 if(fill.getValue().equals("Passenger")){
                     if (schedule.getValue() == "Everyday"){
@@ -864,8 +865,6 @@ public class appController implements Initializable {
                 System.out.println("Added");
                 index++;
             }
-
-
 
             if (flag == false){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -897,6 +896,7 @@ public class appController implements Initializable {
                 etaMinute.setValue("00");
                 etdHour.setValue("00");
                 etdMinute.setValue("00");
+                loadDataFromDatabase();
                 canSave = true;
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -909,6 +909,21 @@ public class appController implements Initializable {
 
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

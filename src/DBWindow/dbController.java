@@ -522,77 +522,84 @@ public class dbController implements Initializable {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        try {
-            connection = ConnectionConfiguration.getConnection();
+        if(canUpdate) {
+            try {
+                connection = ConnectionConfiguration.getConnection();
+                preparedStatement = connection.prepareStatement("UPDATE ship SET " +
+                        "berth_pref = ?, bollard = ?, berth_post = ?, ETA = ?, ETD = ?, last_port = ?, next_port = ?, remarks = ? WHERE id = ?");
+                preparedStatement.setInt(9, did);
+                preparedStatement.setString(1, dberth);
+                preparedStatement.setString(2, dbollard);
+                preparedStatement.setString(3, dberthpost);
+                preparedStatement.setTimestamp(4, deta);
+                preparedStatement.setTimestamp(5, detd);
+                preparedStatement.setString(6, dlp);
+                preparedStatement.setString(7, dnp);
+                preparedStatement.setString(8, dremarks);
 
-            preparedStatement = connection.prepareStatement("UPDATE ship SET " +
-                    "berth_pref = ?, bollard = ?, berth_post = ?, ETA = ?, ETD = ?, last_port = ?, next_port = ?, remarks = ? WHERE id = ?");
-            preparedStatement.setInt(9, did);
-            preparedStatement.setString(1, dberth);
-            preparedStatement.setString(2, dbollard);
-            preparedStatement.setString(3, dberthpost);
-            preparedStatement.setTimestamp(4, deta);
-            preparedStatement.setTimestamp(5, detd);
-            preparedStatement.setString(6, dlp);
-            preparedStatement.setString(7, dnp);
-            preparedStatement.setString(8, dremarks);
 
+                int i = preparedStatement.executeUpdate();
+                if (i == 1) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Update successful!");
+                    alert.showAndWait();
+                    loadDataFromDatabase();
+                    txt_name.clear();
+                    txt_voyage.clear();
+                    txt_nationality.clear();
+                    txt_grt.clear();
+                    txt_loa.clear();
+                    txt_lp.clear();
+                    txt_np.clear();
+                    txt_berth.clear();
+                    txt_master.clear();
+                    txt_nrt.clear();
+                    txt_dwt.clear();
+                    txt_beam.clear();
+                    txt_bollard.clear();
+                    txt_remarks.clear();
+                    txt_bollard.clear();
+                    txt_dfwd.clear();
+                    txt_daft.clear();
+                    txt_vesselType.clear();
+                    txt_eta.clear();
+                    txt_etd.clear();
+                    txt_id.clear();
+                    txt_bpost.clear();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Update NOT successful!");
+                    alert.showAndWait();
+                }
 
-            int i = preparedStatement.executeUpdate();
-            if (i == 1){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("Update successful!");
-                alert.showAndWait();
-                loadDataFromDatabase();
-                txt_name.clear();
-                txt_voyage.clear();
-                txt_nationality.clear();
-                txt_grt.clear();
-                txt_loa.clear();
-                txt_lp.clear();
-                txt_np.clear();
-                txt_berth.clear();
-                txt_master.clear();
-                txt_nrt.clear();
-                txt_dwt.clear();
-                txt_beam.clear();
-                txt_bollard.clear();
-                txt_remarks.clear();
-                txt_bollard.clear();
-                txt_dfwd.clear();
-                txt_daft.clear();
-                txt_vesselType.clear();
-                txt_eta.clear();
-                txt_etd.clear();
-                txt_id.clear();
-                txt_bpost.clear();
-            }else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("Update NOT successful!");
-                alert.showAndWait();
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            if (preparedStatement != null){
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (preparedStatement != null) {
+                    try {
+                        preparedStatement.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-            if (connection != null){
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Update NOT successful! Fill necessary fields");
+            alert.showAndWait();
         }
 
         idTxt.setOpacity(0);

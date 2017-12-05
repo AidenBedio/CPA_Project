@@ -476,7 +476,6 @@ public class repController implements Initializable{
                     row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
                     row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
                     row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
-                    System.out.println("isabela cruz");
 
                 }else{
                     row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
@@ -517,7 +516,7 @@ public class repController implements Initializable{
 
             FileOutputStream fos = null;
 
-            fos = new FileOutputStream(new File("E:/Angkla/DailyReport/(" + s + ").xlsx"));
+            fos = new FileOutputStream(new File("E:/Angkla/DailyReport(" + s + ").xlsx"));
             workbook.write(fos);
             fos.close();
             fos.close();
