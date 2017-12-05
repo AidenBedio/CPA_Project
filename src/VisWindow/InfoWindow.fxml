@@ -5,132 +5,108 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="bgPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="500.0" stylesheets="@InfoWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.InfoWindow">
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.InfoWindow">
    <children>
-      <Label layoutX="310.0" layoutY="54.0" text="Application for Berth">
+      <Label fx:id="lblName" alignment="CENTER" prefHeight="66.0" prefWidth="500.0" style="-fx-background-color: #31697F;" text="vessel name" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Arial" size="48.0" />
+            <Font name="Lato Regular" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="346.0" text="Filled:" textFill="WHITE">
+      <Label fx:id="lblVoyage" layoutX="53.0" layoutY="76.0" prefHeight="25.0" prefWidth="77.0" text="Voyage No.:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="730.0" layoutY="249.0" text="Draft: Aft" textFill="WHITE">
+      <Label fx:id="lblNationality" layoutX="53.0" layoutY="110.0" prefHeight="17.0" prefWidth="77.0" text="Nationality:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="730.0" layoutY="202.0" text="Draft: Fwd" textFill="WHITE">
+      <Label fx:id="lblGRT" layoutX="53.0" layoutY="140.0" prefHeight="17.0" prefWidth="67.0" text="GRT:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="730.0" layoutY="103.0" text="DWT:" textFill="WHITE">
+      <Label fx:id="lblLOA" layoutX="53.0" layoutY="168.0" prefHeight="17.0" prefWidth="67.0" text="LOA:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="295.0" text="Berthing Position:" textFill="WHITE">
+      <Label fx:id="lblLastPort" layoutX="53.0" layoutY="199.0" prefHeight="16.0" prefWidth="67.0" text="Last Port:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="151.0" text="Beam:" textFill="WHITE">
+      <Label fx:id="lblNextPort" layoutX="53.0" layoutY="230.0" prefHeight="16.0" prefWidth="67.0" text="Next Port:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="105.0" text="NRT:" textFill="WHITE">
+      <Label fx:id="lblBerthNo" layoutX="53.0" layoutY="262.0" prefHeight="16.0" prefWidth="67.0" text="Berth No.:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="54.0" text="Master:" textFill="WHITE">
+      <Label fx:id="lblBollard" layoutX="53.0" layoutY="292.0" prefHeight="16.0" prefWidth="77.0" text="Bollard No.:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="198.0" layoutY="147.0" text="LOA:" textFill="WHITE">
+      <Label fx:id="lblMaster" layoutX="53.0" layoutY="325.0" prefHeight="16.0" prefWidth="67.0" text="Master:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="198.0" layoutY="103.0" text="GRT:" textFill="WHITE">
+      <Label fx:id="lblNRT" layoutX="53.0" layoutY="357.0" prefHeight="16.0" prefWidth="67.0" text="NRT:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-112.0" layoutY="147.0" text="Nationality:" textFill="WHITE">
+      <Label fx:id="lblDWT" layoutX="53.0" layoutY="390.0" prefHeight="16.0" prefWidth="67.0" text="DWT:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-113.0" layoutY="101.0" text="Voyage No.:" textFill="WHITE">
+      <Label fx:id="lblBeam" layoutX="53.0" layoutY="425.0" prefHeight="16.0" prefWidth="67.0" text="Beam:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-102.0" layoutY="506.0" text="Remarks:" textFill="WHITE">
+      <Label fx:id="lblETA" layoutX="53.0" layoutY="456.0" prefHeight="16.0" prefWidth="67.0" text="ETA:">
          <font>
-            <Font size="18.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-112.0" layoutY="247.0" text="Next Port:" textFill="WHITE">
+      <Label fx:id="lblETD" layoutX="53.0" layoutY="488.0" prefHeight="16.0" prefWidth="67.0" text="ETD:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-112.0" layoutY="197.0" text="Last Port:" textFill="WHITE">
+      <Label fx:id="lblDraftFwd" layoutX="53.0" layoutY="520.0" prefHeight="16.0" prefWidth="67.0" text="Draft_fwd:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="247.0" text="ETD:" textFill="WHITE">
+      <Label fx:id="lblDraftAft" layoutX="53.0" layoutY="554.0" prefHeight="17.0" prefWidth="67.0" text="Draft_aft:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="440.0" layoutY="199.0" text="ETA:" textFill="WHITE">
+      <Label fx:id="lblBerthPost" layoutX="53.0" layoutY="587.0" prefHeight="16.0" prefWidth="67.0" text="Berth Post:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-111.0" layoutY="344.0" text="Bollard Number:" textFill="WHITE">
+      <Label fx:id="lblRemarks" layoutX="53.0" layoutY="618.0" prefHeight="16.0" prefWidth="67.0" text="Remarks:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-110.0" layoutY="296.0" text="Berth Number:" textFill="WHITE">
+      <Label fx:id="lblType" layoutX="53.0" layoutY="651.0" prefHeight="16.0" prefWidth="77.0" text="Vessel Type:">
          <font>
-            <Font size="14.0" />
+            <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="-115.0" layoutY="54.0" text="Vessel Name:" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txt_remarks" layoutX="-19.0" layoutY="507.0" prefHeight="25.0" prefWidth="806.0" />
-      <TextField fx:id="txt_filled" layoutX="505.0" layoutY="340.0" prefHeight="25.0" prefWidth="438.0" />
-      <TextField fx:id="txt_berthingpost" layoutX="559.0" layoutY="292.0" prefHeight="25.0" prefWidth="384.0" />
-      <TextField fx:id="txt_daft" layoutX="804.0" layoutY="244.0" prefHeight="25.0" prefWidth="143.0" />
-      <TextField fx:id="txt_dfwd" layoutX="803.0" layoutY="196.0" prefHeight="25.0" prefWidth="143.0" />
-      <TextField fx:id="txt_etd" layoutX="504.0" layoutY="244.0" prefHeight="25.0" prefWidth="215.0" />
-      <TextField fx:id="txt_eta" layoutX="505.0" layoutY="196.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField fx:id="txt_beam" layoutX="505.0" layoutY="149.0" prefHeight="25.0" prefWidth="440.0" />
-      <TextField fx:id="txt_dwt" layoutX="776.0" layoutY="100.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="txt_nrt" layoutX="506.0" layoutY="100.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField fx:id="txt_master" layoutX="504.0" layoutY="51.0" prefHeight="25.0" prefWidth="442.0" />
-      <TextField fx:id="txt_bollard" layoutX="-7.0" layoutY="340.0" prefHeight="25.0" prefWidth="413.0" />
-      <TextField fx:id="txt_berth" layoutX="-7.0" layoutY="292.0" prefHeight="25.0" prefWidth="414.0" />
-      <TextField fx:id="txt_np" layoutX="-6.0" layoutY="243.0" prefHeight="25.0" prefWidth="413.0" />
-      <TextField fx:id="txt_lp" layoutX="-6.0" layoutY="194.0" prefHeight="25.0" prefWidth="413.0" />
-      <TextField fx:id="txt_loa" layoutX="247.0" layoutY="146.0" prefHeight="25.0" prefWidth="159.0" />
-      <TextField fx:id="txt_grt" layoutX="247.0" layoutY="99.0" prefHeight="25.0" prefWidth="159.0" />
-      <TextField fx:id="txt_nationality" layoutX="-7.0" layoutY="145.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="txt_voyage" layoutX="-8.0" layoutY="99.0" prefHeight="25.0" prefWidth="182.0" />
-      <TextField fx:id="txt_name" layoutX="-8.0" layoutY="51.0" prefHeight="25.0" prefWidth="417.0" />
    </children>
 </Pane>
