@@ -30,6 +30,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas1" height="625.0" width="950.0" />
+                        <Button id="legend1" fx:id="legend1" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
@@ -44,6 +45,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas2" height="625.0" width="950.0" />
+                        <Button id="legend2" fx:id="legend2" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content></Tab>
@@ -57,6 +59,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas3" height="625.0" width="950.0" />
+                        <Button id="legend3" fx:id="legend3" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
@@ -71,6 +74,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas4" height="625.0" width="950.0" />
+                        <Button id="legend4" fx:id="legend4" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
@@ -85,6 +89,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas5" height="625.0" width="950.0" />
+                        <Button id="legend5" fx:id="legend5" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
@@ -99,6 +104,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas6" height="625.0" width="950.0" />
+                        <Button id="legend6" fx:id="legend6" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
@@ -113,6 +119,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas7" height="625.0" width="950.0" />
+                        <Button id="legend7" fx:id="legend7" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
@@ -127,6 +134,7 @@
                            </image>
                         </ImageView>
                         <Canvas id="canvas" fx:id="canvas8" height="625.0" width="950.0" />
+                        <Button id="legend7" fx:id="legend7" layoutX="870.0" layoutY="15.0" mnemonicParsing="false" onAction="#showLegend" text="Legend" />
                      </children>
                   </Pane>
                </content>
