@@ -181,11 +181,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="771.0" layoutY="441.0" mnemonicParsing="false" onAction="#add" text="Add">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
             <Text fx:id="vesselNametxt" fill="#ee0000" layoutX="112.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
                <font>
                   <Font size="24.0" />
@@ -359,6 +354,20 @@
             <Label layoutX="34.0" layoutY="440.0" text="Remarks:">
                <font>
                   <Font size="18.0" />
+               </font>
+            </Label>
+            <Button alignment="BOTTOM_CENTER" layoutX="783.0" layoutY="442.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="47.0">
+               <graphic>
+                  <ImageView id="imgAdd" fitHeight="56.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="lblSave" layoutX="794.0" layoutY="477.0" text="Add">
+               <font>
+                  <Font name="Lato Regular" size="13.0" />
                </font>
             </Label>
          </children>
