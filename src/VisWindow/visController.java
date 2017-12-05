@@ -216,7 +216,7 @@ public class visController implements Initializable{
     public void setTime(){
         timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
-                 ae -> perSecondChecking()));
+                ae -> perSecondChecking()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
