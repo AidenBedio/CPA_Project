@@ -231,7 +231,7 @@ public class appController implements Initializable {
                 "51","52","53","54","55","56","57","58","59");
 
         berthPosition.getItems().removeAll(berthPosition.getItems());
-        berthPosition.getItems().addAll("portside","mediterranean","starboard", "tip", "corner");
+        berthPosition.getItems().addAll("portside","mediterranean","starboard");
 
         connect = new ConnectionConfiguration();
         fill.getItems().removeAll(fill.getItems());
@@ -293,6 +293,7 @@ public class appController implements Initializable {
         System.out.println(part);
         if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner")){
             //it ok
+            System.out.println("IS Bollsarddfjskjngldmfsgkd");
         }else{
             return false;
         }

@@ -458,6 +458,7 @@ public class visController implements Initializable{
                     1, (double) 8.9 / 35, 162, (double) 164, (double) 165, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-20N Tip")){
+            System.out.println("B-20N hereeeeeeeeeeeeeeeeee");
             Allocation(newShip, canvas6, image, 32, "mediterranean",
                     1, (double) 6.6 / 35, 162, (double) 164, (double) 165, 0.1);
 
