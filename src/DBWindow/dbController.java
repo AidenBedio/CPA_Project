@@ -85,6 +85,8 @@ public class dbController implements Initializable {
     @FXML
     private TextField txt_id;
     @FXML
+    private TextField txt_vesselType;
+    @FXML
     private TableView<Ship> tableShip;
     @FXML
     private TableColumn<Ship, String> Name;
@@ -169,9 +171,10 @@ public class dbController implements Initializable {
             txt_etd.setText(String.valueOf(sp.getETD()));
             txt_lp.setText(sp.getLast_port());
             txt_np.setText(sp.getNext_port());
-            //txt_bpost.setText(sp.getBerth_post());
+            txt_bpost.setText(sp.getBerth_post());
             txt_remarks.setText(sp.getRemarks());
             txt_id.setText(String.valueOf(sp.getId()));
+            txt_vesselType.setText(sp.getFilled());
         });
     }
 
@@ -184,7 +187,7 @@ public class dbController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY vessel_name DESC");
 
             while (resultSet.next()){
 
@@ -217,7 +220,7 @@ public class dbController implements Initializable {
         Draft_aft.setCellValueFactory(new PropertyValueFactory<>("draft_aft"));
         Berth_post.setCellValueFactory(new PropertyValueFactory<>("berth_post"));
         Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
-        Filled.setCellValueFactory(new PropertyValueFactory<>("liner"));
+        Filled.setCellValueFactory(new PropertyValueFactory<>("filled"));
 
         tableShip.setItems(data);
 
@@ -301,7 +304,7 @@ public class dbController implements Initializable {
         Draft_aft.setCellValueFactory(new PropertyValueFactory<>("draft_aft"));
         Berth_post.setCellValueFactory(new PropertyValueFactory<>("berth_post"));
         Remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
-        Filled.setCellValueFactory(new PropertyValueFactory<>("liner"));
+        Filled.setCellValueFactory(new PropertyValueFactory<>("filled"));
 
         tableShip.setItems(null);
         tableShip.setItems(search);
@@ -332,7 +335,7 @@ public class dbController implements Initializable {
     @FXML
     private void updateDataDatabase(ActionEvent event){
         Integer did = new Integer(txt_id.getText());
-        String dname = new String(txt_name.getText());
+        String dberthpost = new String(txt_bpost.getText());
         String dberth = new String(txt_berth.getText());
         String dbollard = new String(txt_bollard.getText());
         Timestamp deta = Timestamp.valueOf(new String(txt_eta.getText()));
@@ -341,26 +344,17 @@ public class dbController implements Initializable {
         String dnp = new String(txt_np.getText());
         String dremarks = new String(txt_remarks.getText());
 
-
-        if (dname == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText("Update NOT successful");
-            alert.setContentText("Select row and input data to update");
-            alert.showAndWait();
-        }
-
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = ConnectionConfiguration.getConnection();
 
             preparedStatement = connection.prepareStatement("UPDATE ship SET " +
-                    "berth_pref = ?, bollard = ?, vessel_name = ?, ETA = ?, ETD = ?, last_port = ?, next_port = ?, remarks = ? WHERE id = ?");
+                    "berth_pref = ?, bollard = ?, berth_post = ?, ETA = ?, ETD = ?, last_port = ?, next_port = ?, remarks = ? WHERE id = ?");
             preparedStatement.setInt(9, did);
             preparedStatement.setString(1, dberth);
             preparedStatement.setString(2, dbollard);
-            preparedStatement.setString(3, dname);
+            preparedStatement.setString(3, dberthpost);
             preparedStatement.setTimestamp(4, deta);
             preparedStatement.setTimestamp(5, detd);
             preparedStatement.setString(6, dlp);

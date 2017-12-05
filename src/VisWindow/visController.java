@@ -216,7 +216,7 @@ public class visController implements Initializable{
     public void setTime(){
         timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
-                 ae -> perSecondChecking()));
+                ae -> perSecondChecking()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -319,6 +319,28 @@ public class visController implements Initializable{
 
         }catch (SQLException e){
             System.err.println("Error"+e);
+        }finally{
+            if (preparedStatement != null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (resultSet != null){
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         //FIXME Pane should be checked to where it should be drawn (remove this later)
