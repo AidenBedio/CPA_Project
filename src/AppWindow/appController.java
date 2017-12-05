@@ -612,20 +612,22 @@ public class appController implements Initializable {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(deta);
         int temp = calendar.get(Calendar.DAY_OF_WEEK);
+        System.out.println(temp);
+
         String currentdate = null;
-        if(temp == 1){
+        if(temp == 2){
             currentdate = "Monday";
-        }else if (temp == 2){
-            currentdate = "Tuesday";
         }else if (temp == 3){
-            currentdate = "Wednesday";
+            currentdate = "Tuesday";
         }else if (temp == 4){
-            currentdate = "Thursday";
+            currentdate = "Wednesday";
         }else if (temp == 5){
-            currentdate = "Friday";
+            currentdate = "Thursday";
         }else if (temp == 6){
-            currentdate = "Saturday";
+            currentdate = "Friday";
         }else if (temp == 7){
+            currentdate = "Saturday";
+        }else if (temp == 1){
             currentdate = "Sunday";
         }else {
             //error

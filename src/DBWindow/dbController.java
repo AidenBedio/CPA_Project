@@ -188,7 +188,7 @@ public class dbController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY vessel_name DESC");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY ETA DESC");
 
             while (resultSet.next()){
 
@@ -254,15 +254,15 @@ public class dbController implements Initializable {
             search = FXCollections.observableArrayList();
             connection = ConnectionConfiguration.getConnection();
             if (comboBox.getValue() == "Vessel Name" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE vessel_name = ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE lower(vessel_name) = ? OR vessel_name = ?");
             }else if (comboBox.getValue() == "Berth No" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE berth_pref = ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE lower(berth_pref) = ? OR berth_pref = ?");
             }else if (comboBox.getValue() == "Bollard No" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE bollard = ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE lower(bollard) = ? OR bollard = ?");
             }else if (comboBox.getValue() == "Last Port" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE last_port = ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE lower(last_port) = ? OR last_port = ?");
             }else if (comboBox.getValue() == "Next Port" ) {
-                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE next_port = ?");
+                preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE lower(next_port) = ? OR next_port = ?");
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
@@ -272,6 +272,7 @@ public class dbController implements Initializable {
                 alert.showAndWait();
             }
             preparedStatement.setString(1, input);
+            preparedStatement.setString(2, input);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
