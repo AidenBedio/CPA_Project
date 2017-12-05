@@ -36,7 +36,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <TableView id="tableShip" fx:id="tableShip" layoutX="20.0" layoutY="122.0" prefHeight="633.0" prefWidth="1013.0">
+      <TableView id="tableShip" fx:id="tableShip" layoutX="20.0" layoutY="118.0" prefHeight="619.0" prefWidth="1013.0">
         <columns>
             <TableColumn fx:id="Name" prefWidth="144.0" text="Vessel Name" />
             <TableColumn fx:id="Voyage" prefWidth="72.0" text="Voyage No" />
@@ -80,7 +80,7 @@
             <Image url="@../bar.jpg" />
          </image>
       </ImageView>
-      <Pane id="detailPane" layoutX="1040.0" layoutY="122.0" prefHeight="633.0" prefWidth="321.0">
+      <Pane id="detailPane" layoutX="1040.0" layoutY="118.0" prefHeight="619.0" prefWidth="321.0">
          <children>
             <Label layoutX="10.0" layoutY="7.0" text="Vessel Name:" />
             <Label layoutX="10.0" layoutY="91.0" text="Last Port:" />

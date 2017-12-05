@@ -41,24 +41,24 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView id="recentLogs" fx:id="recentLogs" layoutX="983.0" layoutY="190.0" prefHeight="553.0" prefWidth="362.0">
+      <TableView id="recentLogs" fx:id="recentLogs" layoutX="983.0" layoutY="167.0" prefHeight="542.0" prefWidth="362.0">
         <columns>
           <TableColumn fx:id="Name" prefWidth="122.666748046875" text="Vessel Name" />
           <TableColumn fx:id="ETA" prefWidth="118.333251953125" text="ETA" />
             <TableColumn fx:id="ETD" prefWidth="120.0" text="ETD" />
         </columns>
       </TableView>
-      <Label layoutX="983.0" layoutY="149.0" text="Recent Logs">
+      <Label layoutX="983.0" layoutY="124.0" text="Recent Logs">
          <font>
             <Font name="Lato Regular" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="134.0" text="Application for Berth">
+      <Label layoutX="36.0" layoutY="120.0" text="Application for Berth">
          <font>
             <Font name="Lato Regular" size="36.0" />
          </font>
       </Label>
-      <Pane id="appPane" layoutX="34.0" layoutY="188.0" prefHeight="555.0" prefWidth="928.0">
+      <Pane id="appPane" layoutX="34.0" layoutY="168.0" prefHeight="542.0" prefWidth="928.0">
          <children>
             <TextField fx:id="txt_name" layoutX="139.0" layoutY="28.0" prefHeight="25.0" prefWidth="320.0" />
             <TextField fx:id="txt_voyage" layoutX="141.0" layoutY="75.0" prefHeight="25.0" prefWidth="130.0" />

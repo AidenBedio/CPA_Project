@@ -41,7 +41,7 @@
             <Image url="@../bar.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tableShip" layoutX="34.0" layoutY="214.0" prefHeight="527.0" prefWidth="1282.0">
+      <TableView fx:id="tableShip" layoutX="34.0" layoutY="214.0" prefHeight="500.0" prefWidth="1282.0">
         <columns>
           <TableColumn fx:id="Berth_No" prefWidth="132.0" text="Berth Number" />
           <TableColumn fx:id="Bollard_No" prefWidth="121.0" text="Bollard Number" />
