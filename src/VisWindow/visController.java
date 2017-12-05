@@ -458,6 +458,7 @@ public class visController implements Initializable{
                     1, (double) 8.9 / 35, 162, (double) 164, (double) 165, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-20N Tip")){
+            System.out.println("B-20N hereeeeeeeeeeeeeeeeee");
             Allocation(newShip, canvas6, image, 32, "mediterranean",
                     1, (double) 6.6 / 35, 162, (double) 164, (double) 165, 0.1);
 
@@ -953,9 +954,13 @@ public class visController implements Initializable{
         window.setFullScreenExitHint("");
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.initStyle(StageStyle.TRANSPARENT);
-        window.initStyle(StageStyle.UNDECORATED);
-        //window.setFullScreen(true);
+        try{
+
+        }catch(Exception e){
+            window.initStyle(StageStyle.TRANSPARENT);
+            window.initStyle(StageStyle.UNDECORATED);
+            //window.setFullScreen(true);
+        }
         window.show();
     }
 
