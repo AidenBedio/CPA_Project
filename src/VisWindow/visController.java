@@ -947,6 +947,21 @@ public class visController implements Initializable{
 
     }
 
+    public void showLegend(javafx.event.ActionEvent event){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Legend.fxml"));
+            Parent root1 = (Parent) loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("");
+            stage.setScene(new Scene(root1));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(homeButton.getScene().getWindow());
+            stage.showAndWait();
+        }   catch (Exception e){
+
+        }
+    }
 }
 
 

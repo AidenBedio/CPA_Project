@@ -58,6 +58,39 @@
     -fx-scale-y: .4 ;
 }
 
+#legend1{
+    -fx-background-color: white;
+}
+
+#legend2{
+    -fx-background-color: white;
+}
+
+#legend3{
+    -fx-background-color: white;
+}
+
+#legend4{
+    -fx-background-color: white;
+}
+
+#legend5{
+    -fx-background-color: white;
+}
+
+#legend6{
+    -fx-background-color: white;
+}
+
+#legend7{
+    -fx-background-color: white;
+}
+
+#legend8{
+    -fx-background-color: white;
+}
+
+
 #realTimeButton{
     -fx-background-color: #37617b;
 }
