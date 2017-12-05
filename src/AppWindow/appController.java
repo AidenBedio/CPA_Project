@@ -277,15 +277,6 @@ public class appController implements Initializable {
         draftFwdErrortxt.setOpacity(0);
         draftAftErrortxt.setOpacity(0);
 
-
-        etaHour.setValue("00");
-        etaMinute.setValue("00");
-
-        etdHour.setValue("00");
-        etdMinute.setValue("00");
-
-        berthPosition.setValue("portside");
-
         //FIXME (try to add labels under each field that are set to opacity 0, pops out every time 'add' is clicked and a field has an invalid input
 
         String dname = null;
@@ -662,6 +653,10 @@ public class appController implements Initializable {
                 txt_bollard.clear();
                 txt_dfwd.clear();
                 txt_daft.clear();
+                etaHour.setValue("00");
+                etaMinute.setValue("00");
+                etdHour.setValue("00");
+                etdMinute.setValue("00");
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
