@@ -18,15 +18,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFHeader;
-import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Header;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.*;
-import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
+//import org.apache.poi.hssf.usermodel.HSSFFont;
+//import org.apache.poi.hssf.usermodel.HSSFHeader;
+//import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
+//import org.apache.poi.ss.usermodel.Cell;
+//import org.apache.poi.ss.usermodel.CellStyle;
+//import org.apache.poi.ss.usermodel.Header;
+//import org.apache.poi.ss.usermodel.Sheet;
+//import org.apache.poi.xssf.usermodel.*;
+//import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -178,6 +178,8 @@ public class repController implements Initializable{
         java.util.Date date = new Date();
         String s = dateFormat.format(date);
 
+        //String s = datePicker.getValue().toString();
+
         String timestamp = String.format("%s 00:00:00", s);
         String time = String.format("%s 23:59:59", s);
         System.out.println(timestamp);
@@ -188,9 +190,11 @@ public class repController implements Initializable{
         Connection connection = connect.getConnection();
         try {
             data = FXCollections.observableArrayList();
-            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA >= ? and ETA <= ?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
             preparedStatement.setString(1, timestamp);
-            preparedStatement.setString(2, time);
+            preparedStatement.setString(2, timestamp);
+            preparedStatement.setString(3, timestamp);
+            preparedStatement.setString(4, time);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -329,7 +333,7 @@ public class repController implements Initializable{
             }
         }
     }
-
+/*
     @FXML
     private void saving(ActionEvent event) {
         try {
@@ -437,7 +441,7 @@ public class repController implements Initializable{
                     row.createCell(2).setCellValue(tableShip.getItems().get(i).getRemarks());
 
                 }*/
-
+/*
                 row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
                 row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
                 row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
@@ -447,6 +451,8 @@ public class repController implements Initializable{
                 row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
                 row.createCell(7).setCellValue(tableShip.getItems().get(i).getRemarks());
 
+                //System.out.println(row.getCell(3).toString());
+                //System.out.println(tableShip.getItems().get(i).getETD());
 
             }
             for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
@@ -498,6 +504,6 @@ public class repController implements Initializable{
             }
         }
     }
-
+    */
 
 }

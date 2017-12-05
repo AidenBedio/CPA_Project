@@ -11,6 +11,11 @@
     -fx-background-color: transparent;
 }
 
+#add{
+    -fx-background-image: url("../add.png");
+
+}
+
 #appButton{
     -fx-graphic: url("../App.png");
     -fx-scale-x: .35;
