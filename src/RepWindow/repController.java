@@ -18,15 +18,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-//import org.apache.poi.hssf.usermodel.HSSFFont;
-//import org.apache.poi.hssf.usermodel.HSSFHeader;
-//import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
-//import org.apache.poi.ss.usermodel.Cell;
-//import org.apache.poi.ss.usermodel.CellStyle;
-//import org.apache.poi.ss.usermodel.Header;
-//import org.apache.poi.ss.usermodel.Sheet;
-//import org.apache.poi.xssf.usermodel.*;
-//import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
+import javafx.stage.StageStyle;
+import org.apache.poi.hssf.usermodel.HSSFHeader;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Header;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,8 +32,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -129,7 +125,9 @@ public class repController implements Initializable{
         window.setFullScreenExitHint("");
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.setFullScreen(true);
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initStyle(StageStyle.UNDECORATED);
+        //window.setFullScreen(true);
         window.show();
     }
 
@@ -333,7 +331,6 @@ public class repController implements Initializable{
             }
         }
     }
-/*
     @FXML
     private void saving(ActionEvent event) {
         try {
@@ -430,31 +427,64 @@ public class repController implements Initializable{
             row.createCell(4).setCellValue("ETD");
             row.createCell(5).setCellValue("Last Port");
             row.createCell(6).setCellValue("Next Port");
-            row.createCell(7).setCellValue("Remarks");
+            //row.createCell(7).setCellValue("Remarks");
 
 
-            for (int i = 0; i < tableShip.getItems().size(); i++) {
-                row = sheet.createRow(i + 1);
+            for (int i = 0, y = 0 ; i < tableShip.getItems().size(); i++, y++){
+                row = sheet.createRow(y + 1);
 
-                /*if (tableShip.getItems().get(i).getRemarks() != null){
-                    row = sheet.createRow(i + 1);
+//                System.out.println(tableShip.getItems().get(i).getRemarks());
+
+                if (tableShip.getItems().get(i).getRemarks().equalsIgnoreCase(" ") ){
+                    row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
+                    row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
+                    row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
+                    row.createCell(3).setCellValue(tableShip.getItems().get(i).getETA().toString());
+                    row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
+                    row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
+                    row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
+                    System.out.println("isabela cruz");
+
+                }else{
+                    row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
+                    row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
+                    row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
+                    row.createCell(3).setCellValue(tableShip.getItems().get(i).getETA().toString());
+                    row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
+                    row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
+                    row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
+
+                    y++;
+                    row = sheet.createRow(y + 1);
                     row.createCell(2).setCellValue(tableShip.getItems().get(i).getRemarks());
 
-                }*/
-/*
-                row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
-                row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
-                row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
-                row.createCell(3).setCellValue(tableShip.getItems().get(i).getETA().toString());
-                row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
-                row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
-                row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
-                row.createCell(7).setCellValue(tableShip.getItems().get(i).getRemarks());
+                    sheet.addMergedRegion(new CellRangeAddress(
+                            y+1,
+                            y+1,
+                            2,
+                            6
+                    ));
+
+
+                    System.out.println("mary mm");
+                }
+
+//                row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
+//                row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
+//                row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
+//                row.createCell(3).setCellValue(tableShip.getItems().get(i).getETA().toString());
+//                row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
+//                row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
+//                row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
+                //row.createCell(7).setCellValue(tableShip.getItems().get(i).getRemarks());
 
                 //System.out.println(row.getCell(3).toString());
-                //System.out.println(tableShip.getItems().get(i).getETD());
+                //System.out.println(tableShip.getItems().get(i).getETD());*/
 
             }
+
+           //for (Ship ship : tableShip.getItems())
+
             for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
                 row = sheet.getRow(i);
                 for (Iterator it = row.cellIterator(); it.hasNext();){
@@ -463,13 +493,13 @@ public class repController implements Initializable{
                 }
             }
 
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 7; i++) {
                 sheet.autoSizeColumn(i);
             }
 
             FileOutputStream fos = null;
 
-            fos = new FileOutputStream(new File("E:/Angkla/DailyReport(" + s + ").xlsx"));
+            fos = new FileOutputStream(new File("E:/Angkla/DailyReport/(" + s + ").xlsx"));
             workbook.write(fos);
             fos.close();
             fos.close();
@@ -504,6 +534,5 @@ public class repController implements Initializable{
             }
         }
     }
-    */
 
 }
