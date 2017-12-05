@@ -60,7 +60,7 @@ public class InfoWindow {
             private Label lblNationality;
 
             @FXML
-            private Pane pane;
+            private Pane bgpane;
 
             @FXML
             private Label lblNextPort;
@@ -82,7 +82,7 @@ public class InfoWindow {
 
     public void Info(ShipModel model){
 
-        lblName.setText("Vessel Name:       " + model.getShip().getVessel_name());
+        lblName.setText(model.getShip().getVessel_name());
         //System.out.println(txt_name.getText() + " BACOOOOOOOOOOOOOOOOOOOOOOOOOOOONNSSS!!");
         lblVoyage.setText("Voyage Number:            " + model.getShip().getVoyage_num());
         lblNationality.setText("Nationality:                       " + model.getShip().getNationality());

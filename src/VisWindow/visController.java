@@ -756,10 +756,12 @@ public class visController implements Initializable{
             System.out.println("pressed");
             System.out.println(ship.getShip().getVessel_name());
 
-//            InfoWindow.Display(ship);
+           //InfoWindow.Info(ship);
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoWindow.fxml"));
                 Parent root1 = (Parent) loader.load();
+
+                System.out.println("skdfjoreiuoiruvndorh");
 
                 InfoWindow infoController = loader.getController();
 

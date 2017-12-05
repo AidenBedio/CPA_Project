@@ -5,6 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.InfoWindow">
    <children>
       <Label fx:id="lblName" alignment="CENTER" prefHeight="66.0" prefWidth="500.0" style="-fx-background-color: #31697F;" text="vessel name" textAlignment="CENTER" textFill="WHITE">
@@ -12,97 +13,97 @@
             <Font name="Lato Regular" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblVoyage" layoutX="50.0" layoutY="75.0" prefHeight="35.0" prefWidth="377.0" text="Voyage No.:">
+      <Label fx:id="lblVoyage" layoutX="53.0" layoutY="76.0" prefHeight="25.0" prefWidth="77.0" text="Voyage No.:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblNationality" layoutX="50.0" layoutY="135.0" prefHeight="35.0" prefWidth="377.0" text="Nationality:">
+      <Label fx:id="lblNationality" layoutX="53.0" layoutY="110.0" prefHeight="17.0" prefWidth="77.0" text="Nationality:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblGRT" layoutX="50.0" layoutY="435.0" prefHeight="35.0" prefWidth="377.0" text="GRT:">
+      <Label fx:id="lblGRT" layoutX="53.0" layoutY="140.0" prefHeight="17.0" prefWidth="67.0" text="GRT:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblLOA" layoutX="50.0" layoutY="495.0" prefHeight="35.0" prefWidth="395.0" text="LOA:">
+      <Label fx:id="lblLOA" layoutX="53.0" layoutY="168.0" prefHeight="17.0" prefWidth="67.0" text="LOA:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblLastPort" layoutX="50.0" layoutY="255.0" prefHeight="35.0" prefWidth="377.0" text="Last Port:">
+      <Label fx:id="lblLastPort" layoutX="53.0" layoutY="199.0" prefHeight="16.0" prefWidth="67.0" text="Last Port:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblNextPort" layoutX="50.0" layoutY="225.0" prefHeight="35.0" prefWidth="377.0" text="Next Port:">
+      <Label fx:id="lblNextPort" layoutX="53.0" layoutY="230.0" prefHeight="16.0" prefWidth="67.0" text="Next Port:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblBerthNo" layoutX="50.0" layoutY="285.0" prefHeight="35.0" prefWidth="377.0" text="Berth No.:">
+      <Label fx:id="lblBerthNo" layoutX="53.0" layoutY="262.0" prefHeight="16.0" prefWidth="67.0" text="Berth No.:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblBollard" layoutX="50.0" layoutY="315.0" prefHeight="35.0" prefWidth="377.0" text="Bollard No.:">
+      <Label fx:id="lblBollard" layoutX="53.0" layoutY="292.0" prefHeight="16.0" prefWidth="77.0" text="Bollard No.:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblMaster" layoutX="50.0" layoutY="375.0" prefHeight="35.0" prefWidth="377.0" text="Master:">
+      <Label fx:id="lblMaster" layoutX="53.0" layoutY="325.0" prefHeight="16.0" prefWidth="67.0" text="Master:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblNRT" layoutX="50.0" layoutY="465.0" prefHeight="35.0" prefWidth="377.0" text="NRT:">
+      <Label fx:id="lblNRT" layoutX="53.0" layoutY="357.0" prefHeight="16.0" prefWidth="67.0" text="NRT:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblDWT" layoutX="50.0" layoutY="405.0" prefHeight="35.0" prefWidth="377.0" text="DWT:">
+      <Label fx:id="lblDWT" layoutX="53.0" layoutY="390.0" prefHeight="16.0" prefWidth="67.0" text="DWT:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblBeam" layoutX="50.0" layoutY="525.0" prefHeight="35.0" prefWidth="395.0" text="Beam:">
+      <Label fx:id="lblBeam" layoutX="53.0" layoutY="425.0" prefHeight="16.0" prefWidth="67.0" text="Beam:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblETA" layoutX="50.0" layoutY="165.0" prefHeight="35.0" prefWidth="395.0" text="ETA:">
+      <Label fx:id="lblETA" layoutX="53.0" layoutY="456.0" prefHeight="16.0" prefWidth="67.0" text="ETA:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblETD" layoutX="50.0" layoutY="195.0" prefHeight="35.0" prefWidth="395.0" text="ETD:">
+      <Label fx:id="lblETD" layoutX="53.0" layoutY="488.0" prefHeight="16.0" prefWidth="67.0" text="ETD:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblDraftFwd" layoutX="50.0" layoutY="555.0" prefHeight="35.0" prefWidth="395.0" text="Draft_fwd:">
+      <Label fx:id="lblDraftFwd" layoutX="53.0" layoutY="520.0" prefHeight="16.0" prefWidth="67.0" text="Draft_fwd:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblDraftAft" layoutX="50.0" layoutY="585.0" prefHeight="35.0" prefWidth="395.0" text="Draft_aft:">
+      <Label fx:id="lblDraftAft" layoutX="53.0" layoutY="554.0" prefHeight="17.0" prefWidth="67.0" text="Draft_aft:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblBerthPost" layoutX="50.0" layoutY="345.0" prefHeight="35.0" prefWidth="395.0" text="Berth Post:">
+      <Label fx:id="lblBerthPost" layoutX="53.0" layoutY="587.0" prefHeight="16.0" prefWidth="67.0" text="Berth Post:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblRemarks" layoutX="50.0" layoutY="625.0" prefHeight="35.0" prefWidth="395.0" text="Remarks:">
+      <Label fx:id="lblRemarks" layoutX="53.0" layoutY="618.0" prefHeight="16.0" prefWidth="67.0" text="Remarks:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblType" layoutX="50.0" layoutY="105.0" prefHeight="35.0" prefWidth="395.0" text="Vessel Type:">
+      <Label fx:id="lblType" layoutX="53.0" layoutY="651.0" prefHeight="16.0" prefWidth="77.0" text="Vessel Type:">
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font>
