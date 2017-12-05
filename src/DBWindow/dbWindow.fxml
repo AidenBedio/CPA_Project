@@ -130,22 +130,8 @@
       <TextField id="searchField" fx:id="searchField" layoutX="1040.0" layoutY="33.0" prefHeight="26.0" prefWidth="229.0" promptText="Search" />
       <Button layoutX="1163.0" layoutY="-109.0" mnemonicParsing="false" />
       <ComboBox fx:id="comboBox" layoutX="1038.0" layoutY="80.0" prefHeight="25.0" prefWidth="229.0" promptText="-select-" />
-      <Button layoutX="1275.0" layoutY="79.0" mnemonicParsing="false" onAction="#updateDataDatabase" prefHeight="25.0" prefWidth="29.0" textFill="WHITE">
-         <graphic>
-            <ImageView id="imgUpdate" fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../updateW.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button layoutX="1275.0" layoutY="33.0" mnemonicParsing="false" onAction="#searchFilter" prefHeight="25.0" prefWidth="29.0" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../searchW.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
+      <Button id="updateBtn" layoutX="1275.0" layoutY="79.0" mnemonicParsing="false" onAction="#updateDataDatabase" prefHeight="25.0" prefWidth="29.0" textFill="WHITE" />
+      <Button id="searchBtn" layoutX="1275.0" layoutY="33.0" mnemonicParsing="false" onAction="#searchFilter" prefHeight="25.0" prefWidth="29.0" textFill="WHITE" />
       <Label layoutX="1283.0" layoutY="56.0" text="Search" textFill="WHITE">
          <font>
             <Font name="Lato Regular" size="10.0" />

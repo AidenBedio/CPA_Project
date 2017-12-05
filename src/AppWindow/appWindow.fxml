@@ -356,15 +356,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button alignment="BOTTOM_CENTER" layoutX="783.0" layoutY="442.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="47.0">
-               <graphic>
-                  <ImageView id="imgAdd" fitHeight="56.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <Button id="add" alignment="BOTTOM_CENTER" layoutX="783.0" layoutY="442.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="47.0" />
             <Label fx:id="lblSave" layoutX="794.0" layoutY="477.0" text="Add">
                <font>
                   <Font name="Lato Regular" size="13.0" />

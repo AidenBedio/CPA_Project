@@ -6,6 +6,15 @@
     -fx-background-color: transparent;
 }
 
+#save{
+    -fx-graphic: url("../save.png");
+}
+
+#save:hover .image-view{
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
 #appButton{
     -fx-graphic: url("../App.png");
     -fx-scale-x: .35;

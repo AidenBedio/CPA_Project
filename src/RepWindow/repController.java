@@ -527,7 +527,7 @@ public class repController implements Initializable{
 
             FileOutputStream fos = null;
 
-            fos = new FileOutputStream(new File("E:/Angkla/DailyReport/(" + s + ").xlsx"));
+            fos = new FileOutputStream(new File("E:/Angkla/DailyReport(" + s + ").xlsx"));
             workbook.write(fos);
             fos.close();
             fos.close();

@@ -12,8 +12,12 @@
 }
 
 #add{
-    -fx-background-image: url("../add.png");
+    -fx-graphic: url("../icon.png");
+}
 
+#add:hover .image-view{
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }
 
 #appButton{

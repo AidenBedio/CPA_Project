@@ -53,7 +53,7 @@
             <TableColumn fx:id="Remarks" prefWidth="204.0" text="Remarks" />
         </columns>
       </TableView>
-      <Button fx:id="Save" layoutX="1276.0" layoutY="173.0" mnemonicParsing="false" onAction="#saving" prefHeight="25.0" prefWidth="29.0" />
+      <Button id="save" fx:id="Save" layoutX="1265.0" layoutY="162.0" mnemonicParsing="false" onAction="#saving" prefHeight="25.0" prefWidth="29.0" />
       <DatePicker fx:id="datePicker" layoutX="1020.0" layoutY="175.0" onAction="#filter" prefHeight="25.0" prefWidth="235.0" />
       <Label layoutX="35.0" layoutY="152.0" text="Daily Berthing Report">
          <font>
@@ -70,10 +70,5 @@
             <Font name="Lato Regular" size="11.0" />
          </font>
       </Label>
-      <ImageView id="imgSave" fitHeight="25.0" fitWidth="29.0" layoutX="1276.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../save.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>
