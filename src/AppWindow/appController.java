@@ -231,7 +231,7 @@ public class appController implements Initializable {
         fill.getItems().removeAll(fill.getItems());
         fill.getItems().addAll("Passenger", "Cargo", "Tanker", "Tugs and Special Craft", "High Speed Craft", "Fishing", "Pleasure Craft", "Navigation Aids", "Unspecified");
         schedule.getItems().removeAll(schedule.getItems());
-        schedule.getItems().addAll("Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat");
+        schedule.getItems().addAll("Everyday", "Weekdays", "Monday/Wednesday/Friday/Saturday", "Tuesday/Friday/Saturday/Sunday", "Monday/Tuesday/Wednesday/Thursday/Friday/Saturday");
 
         etaHour.setValue("00");
         etaMinute.setValue("00");
@@ -480,12 +480,95 @@ public class appController implements Initializable {
         String dremarks = new String(txt_remarks.getText());
 
 
-        Integer dvalidity = null;
-        //"Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat"
-        if (dfilled == "Passenger"){
+        Integer dvalidity = 1;
+        int list[] = null;
+        int index = 0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(deta);
+        int temp = calendar.get(Calendar.DAY_OF_WEEK);
+        String currentdate = null;
+        if(temp == 1){
+            currentdate = "Monday";
+        }else if (temp == 2){
+            currentdate = "Tuesday";
+        }else if (temp == 3){
+            currentdate = "Wednesday";
+        }else if (temp == 4){
+            currentdate = "Thursday";
+        }else if (temp == 5){
+            currentdate = "Friday";
+        }else if (temp == 6){
+            currentdate = "Saturday";
+        }else if (temp == 7){
+            currentdate = "Sunday";
+        }else {
+            //error
+        }
+
+
+        if (fill.getValue().equals("Passenger")){
+            System.out.println("passenger");
             dvalidity = new Integer(validity.getText().toString());
             if (schedule.getValue() == "Weekdays"){
-                //TO DO
+                list = new int []{1, 1, 1, 1, 3};
+                if(currentdate == "Monday"){
+                    index = 0;
+                }else if (currentdate == "Tuesday"){
+                    index = 1;
+                }else if (currentdate == "Wednesday"){
+                    index = 2;
+                }else if (currentdate == "Thursday"){
+                    index = 3;
+                }else if (currentdate == "Friday"){
+                    index = 4;
+                }else {
+                    //error
+                }
+            }else if (schedule.getValue() == "Monday/Wednesday/Friday/Saturday"){
+                list = new int []{2, 2, 1, 2};
+                if(currentdate == "Monday"){
+                    index = 0;
+                }else if (currentdate == "Wednesday"){
+                    index = 1;
+                }else if (currentdate == "Friday"){
+                    index = 2;
+                }else if (currentdate == "Saturday"){
+                    index = 3;
+                }else {
+                    //error
+                }
+            }else if (schedule.getValue() == "Tuesday/Friday/Saturday/Sunday"){
+                list = new int []{2, 2, 1, 3};
+                if (currentdate == "Tuesday"){
+                    index = 0;
+                }else if (currentdate == "Friday"){
+                    index = 1;
+                }else if (currentdate == "Saturday"){
+                    index = 2;
+                }else if (currentdate == "Sunday"){
+                    index = 3;
+                }else {
+                    //error
+                }
+            }else if (schedule.getValue() == "Monday/Tuesday/Wednesday/Thursday/Friday/Saturday"){
+                list = new int []{1, 1, 1, 1, 1, 2};
+                if(currentdate == "Monday"){
+                    index = 0;
+                }else if (currentdate == "Tuesday"){
+                    index = 1;
+                }else if (currentdate == "Wednesday"){
+                    index = 2;
+                }else if (currentdate == "Thursday"){
+                    index = 3;
+                }else if (currentdate == "Friday"){
+                    index = 4;
+                }else if (currentdate == "Saturday"){
+                    index = 5;
+                }else {
+                    //error
+                }
+            }else{
+                list = new int []{1, 1, 1, 1, 1, 1, 1};
             }
         }else{
             dvalidity = 1;
@@ -523,17 +606,34 @@ public class appController implements Initializable {
                 preparedStatement.setString(20, dfilled);
 
                 flag = preparedStatement.execute();
+                int value = 1;
+                if(fill.getValue().equals("Passenger")){
+                    if (schedule.getValue() == "Everyday"){
+                        System.out.println("Everyday");
+                        value = 1;
+                    }else {
+                        if (index-list.length == 0){
+                            index = 0;
+                        }
+                        value = list[index];
+                        System.out.println("not everyday");
+                    }
+                }
 
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(deta);
-                cal.add(Calendar.DATE, 1);
-                deta.setTime(cal.getTime().getTime());
+                Calendar cal1 = Calendar.getInstance();
+                cal1.setTime(deta);
+                cal1.add(Calendar.DATE, value);
+                deta.setTime(cal1.getTime().getTime());
 
                 Calendar cal2 = Calendar.getInstance();
                 cal2.setTime(detd);
-                cal2.add(Calendar.DATE, 1);
-                detd.setTime(cal.getTime().getTime());
+                cal2.add(Calendar.DATE, value);
+                detd.setTime(cal2.getTime().getTime());
+
+                System.out.println("Added");
+                index++;
             }
+
 
 
             if (flag == false){
@@ -556,11 +656,12 @@ public class appController implements Initializable {
                 txt_nrt.clear();
                 txt_dwt.clear();
                 txt_beam.clear();
-                txt_berthingpost.clear();
                 txt_bollard.clear();
                 txt_remarks.clear();
                 validity.clear();
-
+                txt_bollard.clear();
+                txt_dfwd.clear();
+                txt_daft.clear();
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
@@ -638,13 +739,10 @@ public class appController implements Initializable {
             txt_beam.setText(String.valueOf(sp.getBeam()));
             txt_dfwd.setText(String.valueOf(sp.getDraft_fwd()));
             txt_daft.setText(String.valueOf(sp.getDraft_aft()));
-            //txt_eta.setText(String.valueOf(sp.getETA()));
-            //txt_etd.setText(String.valueOf(sp.getETD()));
             txt_lp.setText(sp.getLast_port());
             txt_np.setText(sp.getNext_port());
-            //txt_berthingpost.setText(sp.getBerth_post());
             berthPosition.setValue(sp.getBerth_post());
-            //txt_remarks.setText(sp.getRemarks());
+            fill.setValue(sp.getFilled());
         });
     }
 

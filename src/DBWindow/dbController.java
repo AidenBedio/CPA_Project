@@ -184,7 +184,7 @@ public class dbController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY vessel_name DESC");
 
             while (resultSet.next()){
 
