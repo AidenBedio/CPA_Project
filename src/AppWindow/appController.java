@@ -277,7 +277,7 @@ public class appController implements Initializable {
     public static boolean isBollardSpecial(String berthString){
         String part;
 
-        if (berthString.length() < 3){
+        if (berthString.length() < 5){
             return false;
         }
 
