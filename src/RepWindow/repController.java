@@ -188,11 +188,9 @@ public class repController implements Initializable{
         Connection connection = connect.getConnection();
         try {
             data = FXCollections.observableArrayList();
-            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ((ETA <= ? and ETD >= ?) OR (ETA >= ? and ETA <= ?))");
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA >= ? and ETA <= ?");
             preparedStatement.setString(1, timestamp);
-            preparedStatement.setString(2, timestamp);
-            preparedStatement.setString(3, timestamp);
-            preparedStatement.setString(4, time);
+            preparedStatement.setString(2, time);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -205,6 +203,21 @@ public class repController implements Initializable{
         }catch (SQLException e){
             System.err.println("Error"+e);
         }
+
+        int numberOfBerth = 28;
+
+        ArrayList<Ship> tempShips = new ArrayList<>();
+
+        for (int i = 1; i <= numberOfBerth; i++){
+            for (Ship tempShip: data){
+                if (parseBerth(tempShip.getBerth_pref()) == i){
+                    tempShips.add(tempShip);
+                }
+            }
+        }
+
+        data.removeAll(data);
+        data.addAll(tempShips);
 
         System.out.println();
         Berth_No.setCellValueFactory(new PropertyValueFactory<>("berth_pref"));
@@ -373,6 +386,21 @@ public class repController implements Initializable{
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
+
+        int numberOfBerth = 28;
+
+        ArrayList<Ship> tempShips = new ArrayList<>();
+
+        for (int i = 1; i <= numberOfBerth; i++){
+            for (Ship tempShip: datab){
+                if (parseBerth(tempShip.getBerth_pref()) == i){
+                    tempShips.add(tempShip);
+                }
+            }
+        }
+
+        datab.removeAll(datab);
+        datab.addAll(tempShips);
 
 
         System.out.println();
