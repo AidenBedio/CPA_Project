@@ -67,5 +67,6 @@
     <orderEntry type="library" name="commons-io-2" level="project" />
     <orderEntry type="library" name="commons-io-21" level="project" />
     <orderEntry type="library" name="xmlbeans-2.6.01" level="project" />
+    <orderEntry type="library" name="poi-3.17" level="project" />
   </component>
 </module>
