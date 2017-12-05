@@ -32,6 +32,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -733,7 +734,24 @@ public class visController implements Initializable{
             System.out.println("pressed");
             System.out.println(ship.getShip().getVessel_name());
 
-            InfoWindow.Display(ship);
+//            InfoWindow.Display(ship);
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("InfoWindow.fxml"));
+                Parent root1 = (Parent) loader.load();
+
+                InfoWindow infoController = loader.getController();
+
+                infoController.Info(ship);
+
+                Stage stage = new Stage();
+                stage.setTitle("Ship Info");
+                stage.setScene(new Scene(root1));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(ship.getScene().getWindow());
+                stage.showAndWait();
+            }   catch (Exception e){
+
+            }
 
         };
 
