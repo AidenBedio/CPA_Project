@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -437,8 +438,12 @@ public class dbController implements Initializable {
         Stage window = (Stage) dbPane.getScene().getWindow();
         window.setFullScreenExitHint("");
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        window.setFullScreen(false);
         window.setScene(newScene);
-        window.setFullScreen(true);
+        window.sizeToScene();
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initStyle(StageStyle.UNDECORATED);
+        //window.setFullScreen(true);
         window.show();
     }
 

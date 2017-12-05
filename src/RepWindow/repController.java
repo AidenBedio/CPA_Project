@@ -124,7 +124,9 @@ public class repController implements Initializable{
         window.setFullScreenExitHint("");
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.setFullScreen(true);
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initStyle(StageStyle.UNDECORATED);
+        //window.setFullScreen(true);
         window.show();
     }
 
@@ -426,7 +428,7 @@ public class repController implements Initializable{
             row.createCell(6).setCellValue("Next Port");
             //row.createCell(7).setCellValue("Remarks");
 
-            
+
             for (int i = 0, y = 0 ; i < tableShip.getItems().size(); i++, y++){
                 row = sheet.createRow(y + 1);
 
@@ -481,7 +483,7 @@ public class repController implements Initializable{
             }
 
            //for (Ship ship : tableShip.getItems())
-            
+
             for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
                 row = sheet.getRow(i);
                 for (Iterator it = row.cellIterator(); it.hasNext();){

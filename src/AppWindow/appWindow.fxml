@@ -296,7 +296,7 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <Text fx:id="bollardNumberErrortxt" fill="RED" layoutX="141.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="format: B(number from) - (number to)">
+            <Text fx:id="bollardNumberErrortxt" fill="RED" layoutX="141.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="format: (number from) - (number to)">
                <font>
                   <Font size="10.0" />
                </font>
@@ -361,6 +361,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Text fx:id="bollardNumberErrortxt2" fill="RED" layoutX="141.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bollard not needed">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>
