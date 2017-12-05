@@ -188,7 +188,7 @@ public class dbController implements Initializable {
         try {
             connection = connect.getConnection();
 
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY ETA DESC");
+            resultSet = connection.createStatement().executeQuery("SELECT * FROM ship ORDER BY ETD DESC");
 
             while (resultSet.next()){
 
@@ -372,6 +372,28 @@ public class dbController implements Initializable {
                 alert.setContentText("Update successful!");
                 alert.showAndWait();
                 loadDataFromDatabase();
+                txt_name.clear();
+                txt_voyage.clear();
+                txt_nationality.clear();
+                txt_grt.clear();
+                txt_loa.clear();
+                txt_lp.clear();
+                txt_np.clear();
+                txt_berth.clear();
+                txt_master.clear();
+                txt_nrt.clear();
+                txt_dwt.clear();
+                txt_beam.clear();
+                txt_bollard.clear();
+                txt_remarks.clear();
+                txt_bollard.clear();
+                txt_dfwd.clear();
+                txt_daft.clear();
+                txt_vesselType.clear();
+                txt_eta.clear();
+                txt_etd.clear();
+                txt_id.clear();
+                txt_bpost.clear();
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
