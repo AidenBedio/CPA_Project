@@ -81,7 +81,7 @@
             <ComboBox fx:id="etdMinute" layoutX="833.0" layoutY="219.0" prefHeight="25.0" prefWidth="57.0" />
             <ComboBox fx:id="berthPosition" layoutX="614.0" layoutY="269.0" prefHeight="25.0" prefWidth="97.0" />
             <TextField fx:id="txt_dfwd" layoutX="778.0" layoutY="268.0" prefHeight="25.0" prefWidth="110.0" />
-            <ComboBox fx:id="fill" layoutX="570.0" layoutY="320.0" prefHeight="25.0" prefWidth="141.0" />
+            <ComboBox fx:id="fill" layoutX="575.0" layoutY="320.0" prefHeight="25.0" prefWidth="130.0" />
             <TextField fx:id="txt_daft" layoutX="778.0" layoutY="320.0" prefHeight="25.0" prefWidth="110.0" />
             <ComboBox fx:id="schedule" layoutX="569.0" layoutY="369.0" prefHeight="25.0" prefWidth="141.0" />
             <TextField fx:id="validity" layoutX="779.0" layoutY="369.0" prefHeight="25.0" prefWidth="109.0" />
@@ -276,7 +276,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fx:id="filledtxt" fill="#ee0000" layoutX="533.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+            <Text fx:id="filledtxt" fill="#ee0000" layoutX="564.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
                <font>
                   <Font size="24.0" />
                </font>

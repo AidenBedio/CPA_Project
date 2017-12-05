@@ -233,6 +233,14 @@ public class appController implements Initializable {
         schedule.getItems().removeAll(schedule.getItems());
         schedule.getItems().addAll("Everyday", "Weekdays", "MonWedFriSat", "SunTueFriSat", "MonTueWedThuFriSat");
 
+        etaHour.setValue("00");
+        etaMinute.setValue("00");
+
+        etdHour.setValue("00");
+        etdMinute.setValue("00");
+
+        berthPosition.setValue("portside");
+
         setCellValueTextfield();
     }
 
@@ -268,6 +276,15 @@ public class appController implements Initializable {
         beamErrortxt.setOpacity(0);
         draftFwdErrortxt.setOpacity(0);
         draftAftErrortxt.setOpacity(0);
+
+
+        etaHour.setValue("00");
+        etaMinute.setValue("00");
+
+        etdHour.setValue("00");
+        etdMinute.setValue("00");
+
+        berthPosition.setValue("portside");
 
         //FIXME (try to add labels under each field that are set to opacity 0, pops out every time 'add' is clicked and a field has an invalid input
 
@@ -396,7 +413,10 @@ public class appController implements Initializable {
 
         Timestamp deta = null;
 
-        if (etaDate.getValue().equals(null) || etaDate.getValue().equals("") || etaHour.getValue().equals(null) || etaHour.getValue().equals("")){
+        Timestamp detd = null;
+
+
+        if (etaDate.getValue() == null || etaHour.getValue().equals(null) || etaMinute.getValue().equals(null)){
             etatxt.setOpacity(1);
         }else{
             String etaTemp = String.format(etaDate.getValue()+" "+etaHour.getValue()+":"+etaMinute.getValue()+":00");
@@ -405,9 +425,7 @@ public class appController implements Initializable {
         }
 
 
-        Timestamp detd = null;
-
-        if (etdDate.getValue().equals(null) || etdDate.getValue().equals("") || etdHour.getValue().equals(null) || etdHour.getValue().equals("")){
+        if (etdDate.getValue() == null || etdHour.getValue().equals(null) || etdMinute.getValue().equals(null)){
             etdtxt.setOpacity(1);
         }else{
             String etdTemp = String.format(etdDate.getValue()+" "+etdHour.getValue()+":"+etdMinute.getValue()+":00");
@@ -415,22 +433,7 @@ public class appController implements Initializable {
             detd = Timestamp.valueOf(new String(etdTemp));
         }
 
-        /*
-        Timestamp deta = null;
-        if (txt_eta.getText().equals(null) || txt_eta.getText().equals("")){
-            etatxt.setOpacity(1);
-        }else{
-            deta = Timestamp.valueOf(new String(txt_eta.getText()));
-        }
 
-        Timestamp detd = null;
-
-        if (txt_etd.getText().equals(null) || txt_etd.getText().equals("")){
-            etdtxt.setOpacity(1);
-        }else{
-            detd = Timestamp.valueOf(new String(txt_etd.getText()));
-        }
-        */
 
         Float ddfwd = null;
 
@@ -460,16 +463,21 @@ public class appController implements Initializable {
         }
 
         String dberthpost = null;
-        if (berthPosition.getValue().equals(null) || berthPosition.getValue().equals("")){
+        if (berthPosition.getValue() == null|| berthPosition.getValue().equals("")){
             berthNumbertxt.setOpacity(1);
         }else{
             dberthpost = new String(berthPosition.getValue());
         }
 
+        String dfilled = null;
+
+        if (fill.getValue() == null){
+            filledtxt.setOpacity(1);
+        }else{
+            dfilled = new String(fill.getValue());
+        }
+
         String dremarks = new String(txt_remarks.getText());
-        String dfilled = new String(fill.getValue());
-
-
 
 
         Integer dvalidity = null;
