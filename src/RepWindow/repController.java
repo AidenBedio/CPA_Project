@@ -436,6 +436,12 @@ public class repController implements Initializable{
             for (int i = 0; i < tableShip.getItems().size(); i++) {
                 row = sheet.createRow(i + 1);
 
+                /*if (tableShip.getItems().get(i).getRemarks() != null){
+                    row = sheet.createRow(i + 1);
+                    row.createCell(2).setCellValue(tableShip.getItems().get(i).getRemarks());
+
+                }*/
+
                 row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
                 row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
                 row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
