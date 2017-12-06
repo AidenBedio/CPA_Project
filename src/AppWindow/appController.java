@@ -393,6 +393,7 @@ public class appController implements Initializable {
     @FXML
     private void add(ActionEvent event){
 
+        boolean canSave = true;
         vesselNametxt.setOpacity(0);
         voyageNumbertxt.setOpacity(0);
         nationalitytxt.setOpacity(0);
@@ -434,17 +435,20 @@ public class appController implements Initializable {
         String dname = null;
         if (txt_name.getText().equals(null) || txt_name.getText().equals("")){
             vesselNametxt.setOpacity(1);
+            canSave = false;
         }else{
             dname = new String(txt_name.getText());
         }
         String dvoyage = null;
         if (txt_voyage.getText().equals(null) || txt_voyage.getText().equals("")){
+            canSave = false;
             voyageNumbertxt.setOpacity(1);
         }else{
             dvoyage = new String(txt_voyage.getText());
         }
         String dnationality = null;
         if (nation.getText().equals(null) || nation.getText().equals("")){
+            canSave = false;
             nationalitytxt.setOpacity(1);
         }else{
             dnationality = new String(nation.getText());
@@ -452,12 +456,14 @@ public class appController implements Initializable {
         //check if float value
         Float dgrt = null;
         if (txt_grt.getText().equals(null) || txt_grt.getText().equals("")){
+            canSave = false;
             grttxt.setOpacity(1);
             grtErrortxt.setOpacity(1);
         }else{
             try{
                 dgrt = Float.valueOf(new String(txt_grt.getText()));
             }catch(Exception e){
+                canSave = false;
                 grttxt.setOpacity(1);
                 grtErrortxt.setOpacity(1);
             }
@@ -467,11 +473,13 @@ public class appController implements Initializable {
 
         if (txt_loa.getText().equals(null) || txt_loa.getText().equals("")){
             loatxt.setOpacity(1);
+            canSave = false;
             loaErrortxt.setOpacity(1);
         }else{
             try{
                 dloa = Float.valueOf(new String(txt_loa.getText()));
             }catch(Exception e){
+                canSave = false;
                 loatxt.setOpacity(1);
                 loaErrortxt.setOpacity(1);
             }
@@ -481,18 +489,21 @@ public class appController implements Initializable {
 
         if (txt_lp.getText().equals(null) || txt_lp.getText().equals("")){
             lastPorttxt.setOpacity(1);
+            canSave = false;
         }else{
             dlp = new String(txt_lp.getText());
         }
         String dnp = null;
         if (txt_np.getText().equals(null) || txt_np.getText().equals("")){
             nextPorttxt.setOpacity(1);
+            canSave = false;
         }else{
             dnp = new String(txt_np.getText());
         }
 
         String dberth = null;
         if (txt_berth.getText().equals(null) || txt_berth.getText().equals("")){
+            canSave = false;
             berthNumbertxt.setOpacity(1);
         }else{
             if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26){
@@ -501,6 +512,7 @@ public class appController implements Initializable {
                     dberth = new String(txt_berth.getText());
                 }else{
                     //wrong
+                    canSave = false;
                     berthNumbertxt.setOpacity(1);
                 }
             }else{
@@ -509,6 +521,7 @@ public class appController implements Initializable {
                     dberth = new String(txt_berth.getText());
                 }else{
                     //wrong
+                    canSave = false;
                     berthNumbertxt.setOpacity(1);
                 }
             }
@@ -520,12 +533,14 @@ public class appController implements Initializable {
             if (isBollardSpecial(txt_berth.getText())){
                 //nothing
             }else{
+                canSave = false;
                 bollardNumbertxt.setOpacity(1);
                 bollardNumberErrortxt.setOpacity(1);
             }
         }else{
             if (isBollardSpecial(txt_berth.getText())){
                 //no need for bollard
+                canSave = false;
                 bollardNumberErrortxt2.setOpacity(1);
                 bollardNumberErrortxt.setOpacity(0);
                 txt_bollard.clear();
@@ -533,6 +548,7 @@ public class appController implements Initializable {
                 if (isBollard(txt_bollard.getText()) && parseBollard(true, txt_bollard.getText()) >= 1 && parseBollard(false, txt_bollard.getText()) <= 272 && parseBollard(true,txt_bollard.getText()) < parseBollard(false,txt_bollard.getText())){
                     dbollard = new String(txt_bollard.getText());
                 }else {
+                    canSave = false;
                     bollardNumberErrortxt2.setOpacity(0);
                     bollardNumbertxt.setOpacity(1);
                     bollardNumberErrortxt.setOpacity(1);
@@ -543,6 +559,7 @@ public class appController implements Initializable {
         String dmaster = null;
         if (txt_master.getText().equals(null) || txt_master.getText().equals("")){
             mastertxt.setOpacity(1);
+            canSave = false;
         }else{
             dmaster = new String(txt_master.getText());
         }
@@ -550,12 +567,14 @@ public class appController implements Initializable {
 
         Float dnrt = null;
         if (txt_nrt.getText().equals(null) || txt_nrt.getText().equals("")){
+            canSave = false;
             nrttxt.setOpacity(1);
             nrtErrortxt.setOpacity(1);
         }else{
             try{
                 dnrt = Float.valueOf(new String(txt_nrt.getText()));
             }catch(Exception e){
+                canSave = false;
                 nrttxt.setOpacity(1);
                 nrtErrortxt.setOpacity(1);
             }
@@ -563,12 +582,14 @@ public class appController implements Initializable {
 
         Float ddwt = null;
         if (txt_dwt.getText().equals(null) || txt_dwt.getText().equals("")){
+            canSave = false;
             dwttxt.setOpacity(1);
             dwtErrortxt.setOpacity(1);
         }else{
             try{
                 ddwt = Float.valueOf(new String(txt_dwt.getText()));
             }catch(Exception e){
+                canSave = false;
                 dwttxt.setOpacity(1);
                 dwtErrortxt.setOpacity(1);
             }
@@ -576,12 +597,14 @@ public class appController implements Initializable {
 
         Float dbeam = null;
         if (txt_beam.getText().equals(null) || txt_beam.getText().equals("")){
+            canSave = false;
             beamtxt.setOpacity(1);
             beamErrortxt.setOpacity(1);
         }else{
             try{
                 dbeam = Float.valueOf(new String(txt_beam.getText()));
             }catch(Exception e){
+                canSave = false;
                 beamtxt.setOpacity(1);
                 beamErrortxt.setOpacity(1);
             }
@@ -594,6 +617,7 @@ public class appController implements Initializable {
 
         if (etaDate.getValue() == null || etaHour.getValue().equals(null) || etaMinute.getValue().equals(null)){
             etatxt.setOpacity(1);
+            canSave = false;
         }else{
             String etaTemp = String.format(etaDate.getValue()+" "+etaHour.getValue()+":"+etaMinute.getValue()+":00");
             System.out.println(etaTemp);
@@ -603,6 +627,7 @@ public class appController implements Initializable {
 
         if (etdDate.getValue() == null || etdHour.getValue().equals(null) || etdMinute.getValue().equals(null)){
             etdtxt.setOpacity(1);
+            canSave = false;
         }else{
             String etdTemp = String.format(etdDate.getValue()+" "+etdHour.getValue()+":"+etdMinute.getValue()+":00");
             System.out.println(etdTemp);
@@ -614,12 +639,14 @@ public class appController implements Initializable {
         Float ddfwd = null;
 
         if (txt_dfwd.getText().equals(null) || txt_dfwd.getText().equals("")){
+            canSave = false;
             draftFwdtxt.setOpacity(1);
             draftFwdErrortxt.setOpacity(1);
         }else{
             try{
                 ddfwd = Float.valueOf(new String(txt_dfwd.getText()));
             }catch(Exception e){
+                canSave = false;
                 draftFwdtxt.setOpacity(1);
                 draftFwdErrortxt.setOpacity(1);
             }
@@ -627,12 +654,14 @@ public class appController implements Initializable {
 
         Float ddaft = null;
         if (txt_daft.getText().equals(null) || txt_daft.getText().equals("")){
+            canSave = false;
             draftAfttxt.setOpacity(1);
             draftAftErrortxt.setOpacity(1);
         }else{
             try{
                 ddaft = Float.valueOf(new String(txt_daft.getText()));
             }catch(Exception e){
+                canSave = false;
                 draftAfttxt.setOpacity(1);
                 draftAftErrortxt.setOpacity(1);
             }
@@ -640,6 +669,7 @@ public class appController implements Initializable {
 
         String dberthpost = null;
         if (berthPosition.getValue() == null|| berthPosition.getValue().equals("")){
+            canSave = false;
             berthNumbertxt.setOpacity(1);
         }else{
             dberthpost = new String(berthPosition.getValue());
@@ -648,6 +678,7 @@ public class appController implements Initializable {
         String dfilled = null;
 
         if (fill.getValue() == null){
+            canSave = false;
             filledtxt.setOpacity(1);
         }else{
             dfilled = new String(fill.getValue());
@@ -658,11 +689,13 @@ public class appController implements Initializable {
 
         if (fill.getValue().equalsIgnoreCase("Passenger")){
             if (schedule.getValue() == null || schedule.getValue().toString().equalsIgnoreCase("")){
+                canSave = false;
                 scheduletxt.setOpacity(1);
                 scheduleErrortxt.setOpacity(1);
             }
 
             if (validity.getText().equals(null) || validity.getText() == null){
+                canSave = false;
                 validitytxt.setOpacity(1);
                 validityErrortxt.setOpacity(1);
             }
@@ -670,6 +703,7 @@ public class appController implements Initializable {
             try{
                 Integer.parseInt(validity.getText());
             }catch (Exception e){
+                canSave = false;
                 validitytxt.setOpacity(1);
                 validityErrortxt.setOpacity(1);
             }
@@ -863,6 +897,7 @@ public class appController implements Initializable {
                 etaMinute.setValue("00");
                 etdHour.setValue("00");
                 etdMinute.setValue("00");
+                canSave = true;
             }else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
