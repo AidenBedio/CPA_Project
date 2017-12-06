@@ -154,6 +154,10 @@ public class appController implements Initializable {
     private Text draftFwdtxt;
     @FXML
     private Text draftAfttxt;
+    @FXML
+    private Text scheduletxt;
+    @FXML
+    private Text validitytxt;
 
     //error messages
     @FXML
@@ -174,6 +178,10 @@ public class appController implements Initializable {
     private Text draftFwdErrortxt;
     @FXML
     private Text draftAftErrortxt;
+    @FXML
+    private Text scheduleErrortxt;
+    @FXML
+    private Text validityErrortxt;
 
     private ConnectionConfiguration connect;
 
@@ -205,6 +213,8 @@ public class appController implements Initializable {
         etdtxt.setOpacity(0);
         draftFwdtxt.setOpacity(0);
         draftAfttxt.setOpacity(0);
+        scheduletxt.setOpacity(0);
+        validitytxt.setOpacity(0);
 
         //error messages
         grtErrortxt.setOpacity(0);
@@ -215,6 +225,9 @@ public class appController implements Initializable {
         beamErrortxt.setOpacity(0);
         draftFwdErrortxt.setOpacity(0);
         draftAftErrortxt.setOpacity(0);
+        scheduleErrortxt.setOpacity(0);
+        validityErrortxt.setOpacity(0);
+
 
         etaHour.getItems().removeAll(etaHour.getItems());
         etaHour.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23");
@@ -291,7 +304,7 @@ public class appController implements Initializable {
         }
         part = berthString.substring(4);
         System.out.println(part);
-        if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner")){
+        if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner") || part.equalsIgnoreCase(" tip")){
             //it ok
             System.out.println("IS Bollsarddfjskjngldmfsgkd");
         }else{
@@ -401,6 +414,9 @@ public class appController implements Initializable {
         etdtxt.setOpacity(0);
         draftFwdtxt.setOpacity(0);
         draftAfttxt.setOpacity(0);
+        scheduletxt.setOpacity(0);
+        validitytxt.setOpacity(0);
+
         //error messages
         grtErrortxt.setOpacity(0);
         loaErrortxt.setOpacity(0);
@@ -410,6 +426,8 @@ public class appController implements Initializable {
         beamErrortxt.setOpacity(0);
         draftFwdErrortxt.setOpacity(0);
         draftAftErrortxt.setOpacity(0);
+        scheduleErrortxt.setOpacity(0);
+        validityErrortxt.setOpacity(0);
 
         //FIXME (try to add labels under each field that are set to opacity 0, pops out every time 'add' is clicked and a field has an invalid input
 
@@ -640,6 +658,25 @@ public class appController implements Initializable {
 
         String dremarks = new String(txt_remarks.getText());
 
+
+        if (berthPosition.getValue().equalsIgnoreCase("Passenger") || berthPosition.getValue().equals("Passenger")){
+            if (schedule.getValue() == null || schedule.getValue().toString().equalsIgnoreCase("")){
+                scheduletxt.setOpacity(1);
+                scheduleErrortxt.setOpacity(1);
+            }
+
+            if (validity.getText().equals(null) || validity.getText() == null){
+                validitytxt.setOpacity(1);
+                validityErrortxt.setOpacity(1);
+            }
+
+            try{
+                Integer.parseInt(validity.getText());
+            }catch (Exception e){
+                validitytxt.setOpacity(1);
+                validityErrortxt.setOpacity(1);
+            }
+        }
 
         Integer dvalidity = 1;
         int list[] = null;

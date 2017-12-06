@@ -367,6 +367,26 @@
                   <Font size="10.0" />
                </font>
             </Text>
+            <Text fx:id="scheduleErrortxt" fill="RED" layoutX="570.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="must choose a schedule">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="validityErrortxt" fill="RED" layoutX="769.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="must enter a numerical input">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="scheduletxt" fill="#ee0000" layoutX="554.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="validitytxt" fill="#ee0000" layoutX="767.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>
