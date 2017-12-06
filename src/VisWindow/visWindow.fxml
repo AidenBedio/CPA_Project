@@ -11,14 +11,14 @@
 
 <Pane id="bgPane" fx:id="visPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@visWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisWindow.visController">
    <children>
-      <TableView fx:id="tableShip" layoutX="979.0" layoutY="191.0" prefHeight="563.0" prefWidth="367.0">
+      <TableView fx:id="tableShip" layoutX="979.0" layoutY="175.0" prefHeight="555.0" prefWidth="367.0">
         <columns>
           <TableColumn id="Name" fx:id="Name" prefWidth="115.0" text="Vessel Name" />
             <TableColumn id="ETA" fx:id="ETA" prefWidth="129.0" text="ETA" />
           <TableColumn id="ETD" fx:id="ETD" prefWidth="122.0" text="ETD" />
         </columns>
       </TableView>
-      <TabPane layoutX="20.0" layoutY="129.0" prefHeight="625.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="20.0" layoutY="118.0" prefHeight="613.0" prefWidth="950.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Area 1">
                <content>
@@ -177,14 +177,14 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Button id="realTimeButton" fx:id="realTimeButton" layoutX="854.0" layoutY="128.0" mnemonicParsing="false" onAction="#RealTime" text="Real Time" textFill="WHITE" />
-      <Button id="snapButton" fx:id="snapButton" layoutX="927.0" layoutY="128.0" mnemonicParsing="false" onAction="#SnapTime" text="Snap" textFill="WHITE" />
-      <DatePicker fx:id="datePicker" layoutX="1151.0" layoutY="158.0" prefHeight="25.0" prefWidth="200.0" />
-      <Button id="queryButton" fx:id="queryButton" layoutX="1304.0" layoutY="127.0" mnemonicParsing="false" onAction="#availability" text="Query" textFill="WHITE" />
-      <ComboBox id="hourFrom" fx:id="hourFrom" layoutX="979.0" layoutY="127.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
-      <ComboBox id="minuteFrom" fx:id="minuteFrom" layoutX="1062.0" layoutY="127.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
-      <Label fx:id="to" layoutX="1134.0" layoutY="131.0" text="To" />
-      <ComboBox id="hourTo" fx:id="hourTo" layoutX="1151.0" layoutY="127.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
-      <ComboBox id="minuteTo" fx:id="minuteTo" layoutX="1233.0" layoutY="127.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
+      <Button id="realTimeButton" fx:id="realTimeButton" layoutX="854.0" layoutY="118.0" mnemonicParsing="false" onAction="#RealTime" text="Real Time" textFill="WHITE" />
+      <Button id="snapButton" fx:id="snapButton" layoutX="927.0" layoutY="118.0" mnemonicParsing="false" onAction="#SnapTime" text="Snap" textFill="WHITE" />
+      <DatePicker fx:id="datePicker" layoutX="1151.0" layoutY="147.0" prefHeight="25.0" prefWidth="200.0" />
+      <Button id="queryButton" fx:id="queryButton" layoutX="1304.0" layoutY="118.0" mnemonicParsing="false" onAction="#availability" text="Query" textFill="WHITE" />
+      <ComboBox id="hourFrom" fx:id="hourFrom" layoutX="979.0" layoutY="118.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
+      <ComboBox id="minuteFrom" fx:id="minuteFrom" layoutX="1064.0" layoutY="118.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
+      <Label fx:id="to" layoutX="1135.0" layoutY="120.0" text="To" />
+      <ComboBox id="hourTo" fx:id="hourTo" layoutX="1151.0" layoutY="118.0" prefHeight="25.0" prefWidth="81.0" promptText="Hour" />
+      <ComboBox id="minuteTo" fx:id="minuteTo" layoutX="1233.0" layoutY="118.0" prefHeight="25.0" prefWidth="68.0" promptText="Min" />
    </children>
 </Pane>

@@ -465,9 +465,10 @@ public class repController implements Initializable{
             for (int i = 0, y = 0 ; i < tableShip.getItems().size(); i++, y++){
                 row = sheet.createRow(y + 1);
 
-//                System.out.println(tableShip.getItems().get(i).getRemarks());
-
-                if (tableShip.getItems().get(i).getRemarks().equalsIgnoreCase(" ") ){
+                if (tableShip.getItems().get(i).getRemarks().equalsIgnoreCase("") ||
+                        tableShip.getItems().get(i).getRemarks().equalsIgnoreCase(" ") ||
+                        tableShip.getItems().get(i).getRemarks().isEmpty() ||
+                        tableShip.getItems().get(i).getRemarks().equals(null)){
                     row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
                     row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
                     row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
@@ -500,22 +501,7 @@ public class repController implements Initializable{
 
                     System.out.println("mary mm");
                 }
-
-//                row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
-//                row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
-//                row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
-//                row.createCell(3).setCellValue(tableShip.getItems().get(i).getETA().toString());
-//                row.createCell(4).setCellValue(tableShip.getItems().get(i).getETD().toString());
-//                row.createCell(5).setCellValue(tableShip.getItems().get(i).getLast_port());
-//                row.createCell(6).setCellValue(tableShip.getItems().get(i).getNext_port());
-                //row.createCell(7).setCellValue(tableShip.getItems().get(i).getRemarks());
-
-                //System.out.println(row.getCell(3).toString());
-                //System.out.println(tableShip.getItems().get(i).getETD());*/
-
             }
-
-           //for (Ship ship : tableShip.getItems())
 
             for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
                 row = sheet.getRow(i);
@@ -531,7 +517,7 @@ public class repController implements Initializable{
 
             FileOutputStream fos = null;
 
-            fos = new FileOutputStream(new File("E:/Angkla/DailyReport(" + s + ").xlsx"));
+            fos = new FileOutputStream(new File("E:/Angkla/DailyReport/(" + s + ").xlsx"));
             workbook.write(fos);
             fos.close();
             fos.close();
