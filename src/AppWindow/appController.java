@@ -659,7 +659,7 @@ public class appController implements Initializable {
         String dremarks = new String(txt_remarks.getText());
 
 
-        if (berthPosition.getValue().equalsIgnoreCase("Passenger") || berthPosition.getValue().equals("Passenger")){
+        if (fill.getValue().equalsIgnoreCase("Passenger") || fill.getValue().equals("Passenger")){
             if (schedule.getValue() == null || schedule.getValue().toString().equalsIgnoreCase("")){
                 scheduletxt.setOpacity(1);
                 scheduleErrortxt.setOpacity(1);

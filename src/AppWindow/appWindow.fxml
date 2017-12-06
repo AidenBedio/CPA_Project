@@ -372,7 +372,7 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <Text fx:id="validityErrortxt" fill="RED" layoutX="769.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="must enter a numerical input">
+            <Text fx:id="validityErrortxt" fill="RED" layoutX="769.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="must enter a whole number">
                <font>
                   <Font size="10.0" />
                </font>
