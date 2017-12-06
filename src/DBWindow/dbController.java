@@ -378,7 +378,7 @@ public class dbController implements Initializable {
     private void updateDataDatabase(ActionEvent event){
 
         boolean canUpdate = true;
-
+/*
         idTxt.setOpacity(0);
         berthPositiontxt.setOpacity(0);
         berthtxt.setOpacity(0);
@@ -389,13 +389,14 @@ public class dbController implements Initializable {
         etdtxt.setOpacity(0);
         lastPorttxt.setOpacity(0);
         nextPorttxt.setOpacity(0);
-
+*/
 
 
         //ID
         Integer did = null;
         try{
             did = new Integer(txt_id.getText());
+            idTxt.setOpacity(0);
         }catch(Exception e){
             idTxt.setOpacity(1);
             canUpdate = false;
@@ -409,6 +410,7 @@ public class dbController implements Initializable {
             canUpdate = false;
         } else if (txt_bpost.getText().equalsIgnoreCase("portside") || txt_bpost.getText().equalsIgnoreCase("mediterranean") || txt_bpost.getText().equalsIgnoreCase("starboard")){
             dberthpost = new String(txt_bpost.getText());
+            berthPositiontxt.setOpacity(0);
         }else{
             berthPositiontxt.setOpacity(1);
             canUpdate = false;
@@ -423,6 +425,7 @@ public class dbController implements Initializable {
             if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26){
                 if (isBollardSpecial(txt_berth.getText())){
                     //correct
+                    berthtxt.setOpacity(0);
                     dberth = new String(txt_berth.getText());
                 }else{
                     //wrong
@@ -432,6 +435,7 @@ public class dbController implements Initializable {
             }else{
                 if (isBerth(txt_berth.getText()) && parseBerth(txt_berth.getText()) >= 2 && parseBerth(txt_berth.getText()) <= 28){
                     //correct
+                    berthtxt.setOpacity(0);
                     dberth = new String(txt_berth.getText());
                 }else{
                     //wrong
@@ -449,6 +453,9 @@ public class dbController implements Initializable {
         if (txt_bollard.getText() == null || txt_bollard.getText().equals("")){
             if (isBollardSpecial(txt_berth.getText())){
                 //nothing
+                bollardNumberErrortxt.setOpacity(0);
+                bollardNumberErrortxt2.setOpacity(0);
+                bollardNumbertxt.setOpacity(0);
             }else{
                 canUpdate = false;
                 bollardNumbertxt.setOpacity(1);
@@ -464,6 +471,9 @@ public class dbController implements Initializable {
             }else{
                 if (isBollard(txt_bollard.getText()) && parseBollard(true, txt_bollard.getText()) >= 1 && parseBollard(false, txt_bollard.getText()) <= 272 && parseBollard(true,txt_bollard.getText()) < parseBollard(false,txt_bollard.getText())){
                     dbollard = new String(txt_bollard.getText());
+                    bollardNumberErrortxt.setOpacity(0);
+                    bollardNumberErrortxt2.setOpacity(0);
+                    bollardNumbertxt.setOpacity(0);
                 }else {
                     canUpdate = false;
                     bollardNumberErrortxt2.setOpacity(0);
@@ -481,6 +491,7 @@ public class dbController implements Initializable {
         }else{
             if (isCorrectFormat(txt_eta.getText())){
                 deta = Timestamp.valueOf(new String(txt_eta.getText()));
+                etatxt.setOpacity(0);
             }else{
                 etatxt.setOpacity(1);
                 canUpdate = false;
@@ -495,6 +506,7 @@ public class dbController implements Initializable {
         }else{
             if (isCorrectFormat(txt_etd.getText())){
                 detd = Timestamp.valueOf(new String(txt_etd.getText()));
+                etdtxt.setOpacity(0);
             }else{
                 etdtxt.setOpacity(1);
                 canUpdate = false;
@@ -508,6 +520,7 @@ public class dbController implements Initializable {
             lastPorttxt.setOpacity(1);
             canUpdate = false;
         }else{
+            lastPorttxt.setOpacity(0);
             dlp = new String(txt_lp.getText());
         }
         String dnp = null;
@@ -515,6 +528,7 @@ public class dbController implements Initializable {
             nextPorttxt.setOpacity(1);
             canUpdate = false;
         }else{
+            nextPorttxt.setOpacity(0);
             dnp = new String(txt_np.getText());
         }
 
@@ -568,6 +582,7 @@ public class dbController implements Initializable {
                     txt_etd.clear();
                     txt_id.clear();
                     txt_bpost.clear();
+
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
@@ -594,6 +609,18 @@ public class dbController implements Initializable {
                     }
                 }
             }
+
+            idTxt.setOpacity(0);
+            berthPositiontxt.setOpacity(0);
+            berthtxt.setOpacity(0);
+            bollardNumbertxt.setOpacity(0);
+            bollardNumberErrortxt.setOpacity(0);
+            bollardNumberErrortxt2.setOpacity(0);
+            etatxt.setOpacity(0);
+            etdtxt.setOpacity(0);
+            lastPorttxt.setOpacity(0);
+            nextPorttxt.setOpacity(0);
+
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -601,7 +628,7 @@ public class dbController implements Initializable {
             alert.setContentText("Update NOT successful! Fill necessary fields");
             alert.showAndWait();
         }
-
+/*
         idTxt.setOpacity(0);
         berthPositiontxt.setOpacity(0);
         berthtxt.setOpacity(0);
@@ -613,7 +640,7 @@ public class dbController implements Initializable {
         lastPorttxt.setOpacity(0);
         nextPorttxt.setOpacity(0);
         canUpdate = true;
-
+*/
     }
 
     private void loadNextScreen() throws IOException {
