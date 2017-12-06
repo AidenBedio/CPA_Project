@@ -19,6 +19,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -110,6 +111,7 @@ public class appController implements Initializable {
     private TableColumn<Ship, String> ETA;
     @FXML
     private TableColumn<Ship, String> ETD;
+
 
     @FXML
     private Text vesselNametxt;
@@ -244,6 +246,7 @@ public class appController implements Initializable {
 
         berthPosition.setValue("portside");
 
+
         setCellValueTextfield();
     }
 
@@ -271,12 +274,63 @@ public class appController implements Initializable {
         return true;
     }
 
+    public static boolean isBollardSpecial(String berthString){
+        String part;
+
+        if (berthString.length() < 3){
+            return false;
+        }
+
+        if (berthString.charAt(0) != 'B' && berthString.charAt(0) != 'b'){
+            return false;
+        }
+
+        if (berthString.charAt(1) != '-'){
+            return false;
+        }
+        part = berthString.substring(4);
+        System.out.println(part);
+        if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner")){
+            //it ok
+        }else{
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+    public static boolean isBerth(String berthString){
+
+        if (berthString.length() < 3){
+            return false;
+        }
+
+        if (berthString.charAt(0) != 'B' && berthString.charAt(0) != 'b'){
+            return false;
+        }
+
+        if (berthString.charAt(1) != '-'){
+            return false;
+        }
+        for (int i = 2; i < berthString.length(); i++){
+            if (berthString.charAt(i) >= '0' && berthString.charAt(i) <= '9'){
+                //number
+            } else{
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     public static int parseBerth(String berthString){
         int berth = 0;
         int berthLength = berthString.length();
 
-        for (int i = 0, ten = 1; i < berthLength; i++){
+        for (int i = 2, ten = 1; i < berthLength; i++){
             if (berthString.charAt(i) >= '0' && berthString.charAt(i) <= '9'){
                 berth *= ten;
                 berth += (berthString.charAt(i) - 48);
@@ -384,29 +438,51 @@ public class appController implements Initializable {
         }
 
         String dberth = null;
+        boolean berthFlag = true;
         if (txt_berth.getText().equals(null) || txt_berth.getText().equals("")){
             berthNumbertxt.setOpacity(1);
+            berthFlag = false;
         }else{
             if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26){
-                if (isBollard(txt_bollard.getText())){
-                    bollardNumberErrortxt2.setOpacity(1);
+                if (isBollardSpecial(txt_berth.getText())){
+                    //correct
+                    dberth = new String(txt_berth.getText());
+                    berthFlag = true;
+                }else{
+                    //wrong
+                    berthNumbertxt.setOpacity(1);
                 }
             }else{
-                dberth = new String(txt_berth.getText());
+                if (isBerth(txt_berth.getText())){
+                    //correct
+                    dberth = new String(txt_berth.getText());
+                }else{
+                    //wrong
+                    berthNumbertxt.setOpacity(1);
+                }
             }
+
         }
 
         String dbollard = null;
         if (txt_bollard.getText().equals(null) || txt_bollard.getText().equals("")){
-            bollardNumbertxt.setOpacity(1);
-            bollardNumberErrortxt.setOpacity(1);
+            if (isBollardSpecial(txt_berth.getText())){
+                //nothing
+            }else{
+                bollardNumbertxt.setOpacity(1);
+                bollardNumberErrortxt.setOpacity(1);
+            }
         }else{
-            if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26) {
-                //create parse for north chorvaness
+            if (isBollardSpecial(txt_berth.getText())){
+                //no need for bollard
+                bollardNumberErrortxt2.setOpacity(1);
+                bollardNumberErrortxt.setOpacity(0);
+                txt_bollard.clear();
             }else{
                 if (isBollard(txt_bollard.getText())){
                     dbollard = new String(txt_bollard.getText());
-                }else{
+                }else {
+                    bollardNumberErrortxt2.setOpacity(0);
                     bollardNumbertxt.setOpacity(1);
                     bollardNumberErrortxt.setOpacity(1);
                 }
@@ -837,10 +913,13 @@ public class appController implements Initializable {
 
         Scene newScene = new Scene(newWindow);
         Stage window = (Stage) appPane.getScene().getWindow();
-        window.setFullScreenExitHint("");
-        window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        //window.setFullScreenExitHint("");
+        //window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.setFullScreen(true);
+        window.sizeToScene();
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initStyle(StageStyle.UNDECORATED);
+        //window.setFullScreen(true);
         window.show();
     }
 

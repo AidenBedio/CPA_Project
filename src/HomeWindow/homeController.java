@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -69,14 +70,15 @@ public class homeController {
             }
         }
 
-
-
         Scene newScene = new Scene(newWindow);
         Stage window = (Stage) homePane.getScene().getWindow();
-        window.setFullScreenExitHint("");
-        window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        //window.setFullScreenExitHint("");
+        //window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.setFullScreen(true);
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initStyle(StageStyle.UNDECORATED);
+        //window.setFullScreen(true);
+
         window.show();
     }
 
@@ -91,9 +93,7 @@ public class homeController {
         } else if (event.getSource() == repButton){
             nextScene = "Report";
         }
-
         loadNextScreen();
-
     }
 }
 

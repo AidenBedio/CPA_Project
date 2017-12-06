@@ -18,13 +18,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFHeader;
-import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Header;
-import org.apache.poi.ss.usermodel.Sheet;
+//import org.apache.poi.hssf.usermodel.HSSFFont;
+//import org.apache.poi.hssf.usermodel.HSSFHeader;
+//import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
+//import org.apache.poi.ss.usermodel.Cell;
+//import org.apache.poi.ss.usermodel.CellStyle;
+//import org.apache.poi.ss.usermodel.Header;
+//import org.apache.poi.ss.usermodel.Sheet;
+import javafx.stage.StageStyle;
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
 
@@ -129,7 +130,9 @@ public class repController implements Initializable{
         window.setFullScreenExitHint("");
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.setFullScreen(true);
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initStyle(StageStyle.UNDECORATED);
+        //window.setFullScreen(true);
         window.show();
     }
 
@@ -329,7 +332,7 @@ public class repController implements Initializable{
             }
         }
     }
-
+ /*
     @FXML
     private void saving(ActionEvent event) {
         try {
@@ -438,7 +441,7 @@ public class repController implements Initializable{
 
                 }*/
 
-                row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
+ /*               row.createCell(0).setCellValue(tableShip.getItems().get(i).getBerth_pref());
                 row.createCell(1).setCellValue(tableShip.getItems().get(i).getBollard());
                 row.createCell(2).setCellValue(tableShip.getItems().get(i).getVessel_name());
                 row.createCell(3).setCellValue(tableShip.getItems().get(i).getETA().toString());
@@ -498,6 +501,5 @@ public class repController implements Initializable{
             }
         }
     }
-
-
+*/
 }
