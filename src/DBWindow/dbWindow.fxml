@@ -17,7 +17,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <Button id="appButton" fx:id="appButton" layoutX="29.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Encode" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font></Button>
@@ -26,7 +26,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" fx:id="visButton" layoutX="280.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Visual" textFill="WHITE">
+      <Button id="visButton" fx:id="visButton" layoutX="252.0" mnemonicParsing="false" onAction="#changeScreenButton" text="View Map" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>

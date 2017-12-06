@@ -34,7 +34,7 @@
             <Font name="Lato Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="295.0" layoutY="521.0" text="Application">
+      <Label layoutX="316.0" layoutY="521.0" text="Encode">
          <font>
             <Font name="Lato Regular" size="25.0" />
          </font>
@@ -44,7 +44,7 @@
             <Font name="Lato Regular" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="762.0" layoutY="516.0" text="Visual">
+      <Label layoutX="744.0" layoutY="516.0" text="View Map">
          <font>
             <Font name="Lato Regular" size="25.0" />
          </font>

@@ -16,7 +16,7 @@
          </font>
       </Label>
       <Button id="homeButton" fx:id="homeButton" layoutX="-693.0" layoutY="-706.0" mnemonicParsing="false" onAction="#changeScreenButton" prefHeight="135.0" prefWidth="160.0" />
-      <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <Button id="appButton" fx:id="appButton" layoutX="34.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Encode" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
@@ -26,7 +26,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" fx:id="visButton" layoutX="280.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Visual" textFill="WHITE">
+      <Button id="visButton" fx:id="visButton" layoutX="247.0" mnemonicParsing="false" onAction="#changeScreenButton" text="View Map" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
@@ -41,7 +41,7 @@
             <Image url="@../bar.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tableShip" layoutX="34.0" layoutY="214.0" prefHeight="500.0" prefWidth="1282.0">
+      <TableView fx:id="tableShip" layoutX="34.0" layoutY="214.0" prefHeight="527.0" prefWidth="1282.0">
         <columns>
           <TableColumn fx:id="Berth_No" prefWidth="132.0" text="Berth Number" />
           <TableColumn fx:id="Bollard_No" prefWidth="121.0" text="Bollard Number" />

@@ -142,7 +142,7 @@
         </tabs>
       </TabPane>
       <Button id="homeButton" fx:id="homeButton" layoutX="-693.0" layoutY="-706.0" mnemonicParsing="false" onAction="#changeScreenButton" />
-      <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Application" textFill="WHITE">
+      <Button id="appButton" fx:id="appButton" layoutX="33.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Encode" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
@@ -152,7 +152,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" fx:id="visButton" layoutX="280.0" mnemonicParsing="false" text="Visual" textFill="WHITE">
+      <Button id="visButton" fx:id="visButton" layoutX="250.0" mnemonicParsing="false" text="View Map" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>

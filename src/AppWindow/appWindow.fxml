@@ -20,7 +20,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="visButton" fx:id="visButton" layoutX="280.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Visual" textFill="WHITE">
+      <Button id="visButton" fx:id="visButton" layoutX="251.0" mnemonicParsing="false" onAction="#changeScreenButton" text="View Map" textFill="WHITE">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
@@ -30,7 +30,7 @@
             <Font name="Lato Bold" size="35.0" />
          </font>
       </Button>
-      <Button id="appButton" fx:id="appButton" layoutX="5.0" mnemonicParsing="false" text="Application" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+      <Button id="appButton" fx:id="appButton" layoutX="38.0" mnemonicParsing="false" text="Encode" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="Lato Bold" size="35.0" />
          </font>
@@ -48,11 +48,6 @@
             <TableColumn fx:id="ETD" prefWidth="120.0" text="ETD" />
         </columns>
       </TableView>
-      <Label layoutX="983.0" layoutY="124.0" text="Recent Logs">
-         <font>
-            <Font name="Lato Regular" size="24.0" />
-         </font>
-      </Label>
       <Label layoutX="36.0" layoutY="120.0" text="Application for Berth">
          <font>
             <Font name="Lato Regular" size="36.0" />
@@ -389,5 +384,7 @@
             </Text>
          </children>
       </Pane>
+      <TextField layoutX="983.0" layoutY="131.0" prefHeight="25.0" prefWidth="296.0" />
+      <Button id="search" fx:id="search" layoutX="1286.0" layoutY="124.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="38.0" />
    </children>
 </Pane>
