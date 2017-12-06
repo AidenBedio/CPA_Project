@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -138,9 +139,42 @@ public class dbController implements Initializable {
     private ConnectionConfiguration connect;
     private ArrayList<String> suggestion;
 
+    @FXML
+    private Text idTxt;
+    @FXML
+    private Text berthPositiontxt;
+    @FXML
+    private Text berthtxt;
+    @FXML
+    private Text bollardNumbertxt;
+    @FXML
+    private Text bollardNumberErrortxt;
+    @FXML
+    private Text bollardNumberErrortxt2;
+    @FXML
+    private Text etatxt;
+    @FXML
+    private Text etdtxt;
+    @FXML
+    private Text lastPorttxt;
+    @FXML
+    private Text nextPorttxt;
+
     //FIXME
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        idTxt.setOpacity(0);
+        berthPositiontxt.setOpacity(0);
+        berthtxt.setOpacity(0);
+
+        bollardNumbertxt.setOpacity(0);
+        bollardNumberErrortxt.setOpacity(0);
+        bollardNumberErrortxt2.setOpacity(0);
+        etatxt.setOpacity(0);
+        etdtxt.setOpacity(0);
+        lastPorttxt.setOpacity(0);
+        nextPorttxt.setOpacity(0);
+
         System.out.println("I came here");
         //dbPane.setOpacity(0);
         comboBox.getItems().removeAll(comboBox.getItems());
@@ -149,7 +183,13 @@ public class dbController implements Initializable {
         connect = new ConnectionConfiguration();
         setCellValueTextfield();
         //makeFadeInTransition();
+
+
+
     }
+
+
+
 
     private void setCellValueTextfield(){
         System.out.println("I was called??");
@@ -336,14 +376,148 @@ public class dbController implements Initializable {
 
     @FXML
     private void updateDataDatabase(ActionEvent event){
-        Integer did = new Integer(txt_id.getText());
-        String dberthpost = new String(txt_bpost.getText());
-        String dberth = new String(txt_berth.getText());
-        String dbollard = new String(txt_bollard.getText());
-        Timestamp deta = Timestamp.valueOf(new String(txt_eta.getText()));
-        Timestamp detd = Timestamp.valueOf(new String(txt_etd.getText()));
-        String dlp = new String(txt_lp.getText());
-        String dnp = new String(txt_np.getText());
+
+        boolean canUpdate = true;
+
+        idTxt.setOpacity(0);
+        berthPositiontxt.setOpacity(0);
+        berthtxt.setOpacity(0);
+        bollardNumbertxt.setOpacity(0);
+        bollardNumberErrortxt.setOpacity(0);
+        bollardNumberErrortxt2.setOpacity(0);
+        etatxt.setOpacity(0);
+        etdtxt.setOpacity(0);
+        lastPorttxt.setOpacity(0);
+        nextPorttxt.setOpacity(0);
+
+
+
+        //ID
+        Integer did = null;
+        try{
+            did = new Integer(txt_id.getText());
+        }catch(Exception e){
+            idTxt.setOpacity(1);
+            canUpdate = false;
+        }
+
+        //Berth
+        String dberthpost = null;
+        //String dberthpost = new String(txt_bpost.getText());
+        if (txt_bpost.getText().equals(null) || txt_bpost.getText().equals("")){
+            berthPositiontxt.setOpacity(1);
+            canUpdate = false;
+        } else if (txt_bpost.getText().equalsIgnoreCase("portside") || txt_bpost.getText().equalsIgnoreCase("mediterranean") || txt_bpost.getText().equalsIgnoreCase("starboard")){
+            dberthpost = new String(txt_bpost.getText());
+        }else{
+            berthPositiontxt.setOpacity(1);
+            canUpdate = false;
+        }
+
+        String dberth = null;
+        //String dberth = new String(txt_berth.getText());
+        if (txt_berth.getText().equals(null) || txt_berth.getText().equals("")){
+            berthtxt.setOpacity(1);
+            canUpdate = false;
+        }else{
+            if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26){
+                if (isBollardSpecial(txt_berth.getText())){
+                    //correct
+                    dberth = new String(txt_berth.getText());
+                }else{
+                    //wrong
+                    canUpdate = false;
+                    berthtxt.setOpacity(1);
+                }
+            }else{
+                if (isBerth(txt_berth.getText()) && parseBerth(txt_berth.getText()) >= 2 && parseBerth(txt_berth.getText()) <= 28){
+                    //correct
+                    dberth = new String(txt_berth.getText());
+                }else{
+                    //wrong
+                    canUpdate = false;
+                    berthtxt.setOpacity(1);
+                }
+            }
+
+        }
+
+
+        //String dbollard = new String(txt_bollard.getText());
+
+        String dbollard = null;
+        if (txt_bollard.getText() == null || txt_bollard.getText().equals("")){
+            if (isBollardSpecial(txt_berth.getText())){
+                //nothing
+            }else{
+                canUpdate = false;
+                bollardNumbertxt.setOpacity(1);
+                bollardNumberErrortxt.setOpacity(1);
+            }
+        }else{
+            if (isBollardSpecial(txt_berth.getText())){
+                //no need for bollard
+                canUpdate = false;
+                bollardNumberErrortxt2.setOpacity(1);
+                bollardNumberErrortxt.setOpacity(0);
+                txt_bollard.clear();
+            }else{
+                if (isBollard(txt_bollard.getText()) && parseBollard(true, txt_bollard.getText()) >= 1 && parseBollard(false, txt_bollard.getText()) <= 272 && parseBollard(true,txt_bollard.getText()) < parseBollard(false,txt_bollard.getText())){
+                    dbollard = new String(txt_bollard.getText());
+                }else {
+                    canUpdate = false;
+                    bollardNumberErrortxt2.setOpacity(0);
+                    bollardNumbertxt.setOpacity(1);
+                    bollardNumberErrortxt.setOpacity(1);
+                }
+            }
+        }
+
+        Timestamp deta = null;
+
+        if (txt_eta.getText() == null || txt_eta.getText().equals("")){
+            etatxt.setOpacity(1);
+            canUpdate = false;
+        }else{
+            if (isCorrectFormat(txt_eta.getText())){
+                deta = Timestamp.valueOf(new String(txt_eta.getText()));
+            }else{
+                etatxt.setOpacity(1);
+                canUpdate = false;
+            }
+        }
+
+        Timestamp detd = null;
+
+        if (txt_etd.getText() == null || txt_etd.getText().equals("")){
+            etdtxt.setOpacity(1);
+            canUpdate = false;
+        }else{
+            if (isCorrectFormat(txt_etd.getText())){
+                detd = Timestamp.valueOf(new String(txt_etd.getText()));
+            }else{
+                etdtxt.setOpacity(1);
+                canUpdate = false;
+            }
+        }
+
+
+        String dlp = null;
+
+        if (txt_lp.getText().equals(null) || txt_lp.getText().equals("")){
+            lastPorttxt.setOpacity(1);
+            canUpdate = false;
+        }else{
+            dlp = new String(txt_lp.getText());
+        }
+        String dnp = null;
+        if (txt_np.getText().equals(null) || txt_np.getText().equals("")){
+            nextPorttxt.setOpacity(1);
+            canUpdate = false;
+        }else{
+            dnp = new String(txt_np.getText());
+        }
+
         String dremarks = new String(txt_remarks.getText());
 
         Connection connection = null;
@@ -420,6 +594,19 @@ public class dbController implements Initializable {
                 }
             }
         }
+
+        idTxt.setOpacity(0);
+        berthPositiontxt.setOpacity(0);
+        berthtxt.setOpacity(0);
+        bollardNumbertxt.setOpacity(0);
+        bollardNumberErrortxt.setOpacity(0);
+        bollardNumberErrortxt2.setOpacity(0);
+        etatxt.setOpacity(0);
+        etdtxt.setOpacity(0);
+        lastPorttxt.setOpacity(0);
+        nextPorttxt.setOpacity(0);
+        canUpdate = true;
+
     }
 
     private void loadNextScreen() throws IOException {
@@ -489,6 +676,249 @@ public class dbController implements Initializable {
         loadNextScreen();
 
     }
+
+
+    public static boolean isBollard(String bollardString){
+        int dash = 0;
+
+        for (int i = 0; i < bollardString.length(); i++){
+            if ((bollardString.charAt(i) >= '0' && bollardString.charAt(i) <= '9') || bollardString.charAt(i) == '-' || bollardString.charAt(i) == ' '){
+                if (bollardString.charAt(i) == '-'){
+                    dash++;
+                }
+            }else{
+                return false;
+            }
+            if(dash > 1){
+                return false;
+            }
+        }
+
+        if (dash <= 0){
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean isBollardSpecial(String berthString){
+        String part;
+
+        if (berthString.length() < 5){
+            return false;
+        }
+
+        if (berthString.charAt(0) != 'B' && berthString.charAt(0) != 'b'){
+            return false;
+        }
+
+        if (berthString.charAt(1) != '-'){
+            return false;
+        }
+        part = berthString.substring(4);
+        System.out.println(part);
+        if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner") || part.equalsIgnoreCase(" tip")){
+            //it ok
+            System.out.println("IS Bollsarddfjskjngldmfsgkd");
+        }else{
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+    public static boolean isBerth(String berthString){
+
+        if (berthString.length() < 3){
+            return false;
+        }
+
+        if (berthString.charAt(0) != 'B' && berthString.charAt(0) != 'b'){
+            return false;
+        }
+
+        if (berthString.charAt(1) != '-'){
+            return false;
+        }
+        for (int i = 2; i < berthString.length(); i++){
+            if (berthString.charAt(i) >= '0' && berthString.charAt(i) <= '9'){
+                //number
+            } else{
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    public static int parseBerth(String berthString){
+        int berth = 0;
+        int berthLength = berthString.length();
+
+        for (int i = 2, ten = 1; i < berthLength; i++){
+            if (berthString.charAt(i) >= '0' && berthString.charAt(i) <= '9'){
+                berth *= ten;
+                berth += (berthString.charAt(i) - 48);
+                ten *= 10;
+            }
+        }
+        return berth;
+    }
+
+
+    public static int parseBollard(boolean first, String bollardString){
+        int bollardNumber = 0;
+
+        if (first){
+            for (int i = 0, ten = 1; i < bollardString.length(); i++){
+                if (bollardString.charAt(i) == '-'){
+                    break;
+                }
+                bollardNumber *= ten;
+                bollardNumber += Integer.parseInt(""+bollardString.charAt(i));
+                ten = 10;
+            }
+        }else{
+            int j;
+
+            for (j = 0; j < bollardString.length(); j++){
+                if (bollardString.charAt(j) == '-'){
+                    j++;
+                    break;
+                }
+            }
+
+            for (int ten = 1; j < bollardString.length();j++){
+                bollardNumber *= ten;
+                bollardNumber += Integer.parseInt(""+bollardString.charAt(j));
+                ten = 10;
+            }
+        }
+
+        return bollardNumber;
+    }
+
+
+    public static boolean isCorrectFormat(String date){
+        int year = 0;
+        int month = 0;
+        int day = 0;
+
+        int hour = 0;
+        int minute = 0;
+
+        if (date.length() < 21){
+            return false;
+        }
+
+        for (int i = 0, ten = 1; i < 4; i++){
+            year *= ten;
+            try{
+                year += Integer.parseInt(""+date.charAt(i));
+            }catch (Exception e){
+                return false;
+            }
+
+            ten = 10;
+        }
+        System.out.println("Year == " +year);
+
+        if (date.charAt(4) != '-' || date.charAt(7) != '-' || date.charAt(10) != ' ' || date.charAt(13) != ':' || date.charAt(16) != ':' || date.charAt(19) != '.'){
+            return false;
+        }
+
+        if ((date.charAt(5) >= '0' && date.charAt(5) <= '9') && (date.charAt(6) >= '0' && date.charAt(6) <= '9')){
+            //correct
+            for (int i = 5, ten = 1; i < 7; i++){
+                month *= ten;
+                try{
+                    month += Integer.parseInt(""+date.charAt(i));
+                }catch (Exception e){
+                }
+                ten = 10;
+            }
+
+        }else{
+            return false;
+        }
+
+
+        System.out.println("Month: "+month);
+
+        if (month < 1 || month > 12 ){
+            return false;
+        }
+
+        if ((date.charAt(8) >= '0' && date.charAt(8) <= '9') && (date.charAt(9) >= '0' && date.charAt(9) <= '9')){
+            //correct
+            for (int i = 8, ten = 1; i < 10; i++){
+                day *= ten;
+                try{
+                    day += Integer.parseInt(""+date.charAt(i));
+                }catch (Exception e){
+                }
+                ten = 10;
+            }
+
+        }else{
+            return false;
+        }
+
+        System.out.println("day == "+day);
+
+        if (day < 1 || day > 31){
+            return false;
+        }
+
+        if ((date.charAt(11) >= '0' && date.charAt(11) <= '9') && (date.charAt(12) >= '0' && date.charAt(12) <= '9')){
+            //correct
+            for (int i = 11, ten = 1; i < 13; i++){
+                hour *= ten;
+                try{
+                    hour += Integer.parseInt(""+date.charAt(i));
+                }catch (Exception e){
+                }
+                ten = 10;
+            }
+
+        }else{
+            return false;
+        }
+
+        System.out.println("Hour == "+hour);
+
+        if (hour < 0 || hour > 23){
+            return false;
+        }
+
+        if ((date.charAt(14) >= '0' && date.charAt(14) <= '9') && (date.charAt(15) >= '0' && date.charAt(15) <= '9')){
+            //correct
+            for (int i = 14, ten = 1; i < 16; i++){
+                minute *= ten;
+                try{
+                    minute += Integer.parseInt(""+date.charAt(i));
+                }catch (Exception e){
+                }
+                ten = 10;
+            }
+
+        }else{
+            return false;
+        }
+
+        System.out.println("minute == "+minute);
+
+        if ((date.charAt(17) >= '0' && date.charAt(17) <= '9') && (date.charAt(18) >= '0' && date.charAt(18) <= '9') && (date.charAt(20) >= '0' && date.charAt(20) <= '9')) {
+            //correct
+        }else{
+            return false;
+        }
+        return true;
+    }
+
 
 
 }

@@ -492,16 +492,13 @@ public class appController implements Initializable {
         }
 
         String dberth = null;
-        boolean berthFlag = true;
         if (txt_berth.getText().equals(null) || txt_berth.getText().equals("")){
             berthNumbertxt.setOpacity(1);
-            berthFlag = false;
         }else{
             if (parseBerth(txt_berth.getText()) == 20 || parseBerth(txt_berth.getText()) == 23 || parseBerth(txt_berth.getText()) == 26){
                 if (isBollardSpecial(txt_berth.getText())){
                     //correct
                     dberth = new String(txt_berth.getText());
-                    berthFlag = true;
                 }else{
                     //wrong
                     berthNumbertxt.setOpacity(1);
@@ -659,7 +656,7 @@ public class appController implements Initializable {
         String dremarks = new String(txt_remarks.getText());
 
 
-        if (fill.getValue().equalsIgnoreCase("Passenger") || fill.getValue().equals("Passenger")){
+        if (fill.getValue().equalsIgnoreCase("Passenger")){
             if (schedule.getValue() == null || schedule.getValue().toString().equalsIgnoreCase("")){
                 scheduletxt.setOpacity(1);
                 scheduleErrortxt.setOpacity(1);
