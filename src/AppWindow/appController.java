@@ -343,6 +343,40 @@ public class appController implements Initializable {
     }
 
 
+    public static int parseBollard(boolean first, String bollardString){
+        int bollardNumber = 0;
+
+        if (first){
+            for (int i = 0, ten = 1; i < bollardString.length(); i++){
+                if (bollardString.charAt(i) == '-'){
+                    break;
+                }
+                bollardNumber *= ten;
+                bollardNumber += Integer.parseInt(""+bollardString.charAt(i));
+                ten = 10;
+            }
+        }else{
+            int j;
+
+            for (j = 0; j < bollardString.length(); j++){
+                if (bollardString.charAt(j) == '-'){
+                    j++;
+                    break;
+                }
+            }
+
+            for (int ten = 1; j < bollardString.length();j++){
+                bollardNumber *= ten;
+                bollardNumber += Integer.parseInt(""+bollardString.charAt(j));
+                ten = 10;
+            }
+        }
+
+        return bollardNumber;
+    }
+
+
+
     @FXML
     private void add(ActionEvent event){
 
@@ -455,7 +489,7 @@ public class appController implements Initializable {
                     berthNumbertxt.setOpacity(1);
                 }
             }else{
-                if (isBerth(txt_berth.getText())){
+                if (isBerth(txt_berth.getText()) && parseBerth(txt_berth.getText()) >= 2 && parseBerth(txt_berth.getText()) <= 28){
                     //correct
                     dberth = new String(txt_berth.getText());
                 }else{
@@ -481,7 +515,7 @@ public class appController implements Initializable {
                 bollardNumberErrortxt.setOpacity(0);
                 txt_bollard.clear();
             }else{
-                if (isBollard(txt_bollard.getText())){
+                if (isBollard(txt_bollard.getText()) && parseBollard(true, txt_bollard.getText()) >= 1 && parseBollard(false, txt_bollard.getText()) <= 272 && parseBollard(true,txt_bollard.getText()) < parseBollard(false,txt_bollard.getText())){
                     dbollard = new String(txt_bollard.getText());
                 }else {
                     bollardNumberErrortxt2.setOpacity(0);
@@ -921,9 +955,13 @@ public class appController implements Initializable {
         //window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
         window.sizeToScene();
-        window.initStyle(StageStyle.TRANSPARENT);
-        window.initStyle(StageStyle.UNDECORATED);
-        //window.setFullScreen(true);
+        try{
+
+        }catch(Exception e){
+            window.initStyle(StageStyle.TRANSPARENT);
+            window.initStyle(StageStyle.UNDECORATED);
+            //window.setFullScreen(true);
+        }
         window.show();
     }
 

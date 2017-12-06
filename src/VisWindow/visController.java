@@ -954,9 +954,13 @@ public class visController implements Initializable{
         window.setFullScreenExitHint("");
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setScene(newScene);
-        window.initStyle(StageStyle.TRANSPARENT);
-        window.initStyle(StageStyle.UNDECORATED);
-        //window.setFullScreen(true);
+        try{
+
+        }catch(Exception e){
+            window.initStyle(StageStyle.TRANSPARENT);
+            window.initStyle(StageStyle.UNDECORATED);
+            //window.setFullScreen(true);
+        }
         window.show();
     }
 
