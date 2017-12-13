@@ -425,7 +425,6 @@ public class visController implements Initializable{
         ShipModel newShip = new ShipModel(s);
         onScreenShip.add(newShip);
         String image;
-        ArrayList bollard = parseBollard(s.getBollard());
 
         if (s.getFilled().equalsIgnoreCase("Liner")) {
             image = "liner.png";
@@ -445,36 +444,40 @@ public class visController implements Initializable{
             image = "unspecified.png";
         }
 
-        if(s.getBerth_pref().equalsIgnoreCase("B-20N") || s.getBerth_pref().equalsIgnoreCase("B-20 Tip")) {
+        if(s.getBerth_pref().equalsIgnoreCase("B-20 Tip")) {
             Allocation(newShip, canvas6, image, 32, s.getBerth_post(),
-                    1, (double) 4.6 / 35, 162, (double) 165, (double) 167, 0.1);
+                    1, (double) 2.3 / 35, 162, (double) 165, (double) 167, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-20N Corner")){
             Allocation(newShip, canvas6, image, 32, "mediterranean",
                     1, (double) 11 / 35, 162, (double) 164, (double) 165, 0.1);
 
-        } else if(s.getBerth_pref().contentEquals("B-20N Mid")){
+        } else if(s.getBerth_pref().contentEquals("B-20N1")){
             Allocation(newShip, canvas6, image, 32, "mediterranean",
-                    1, (double) 8.9 / 35, 162, (double) 164, (double) 165, 0.1);
+                    1, (double) 8.8 / 35, 162, (double) 164, (double) 165, 0.1);
+
+        }  else if(s.getBerth_pref().contentEquals("B-20N2")){
+            Allocation(newShip, canvas6, image, 32, "mediterranean",
+                    1, (double) 6.6 / 35, 162, (double) 164, (double) 165, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-20N Tip")){
             System.out.println("B-20N hereeeeeeeeeeeeeeeeee");
             Allocation(newShip, canvas6, image, 32, "mediterranean",
-                    1, (double) 6.6 / 35, 162, (double) 164, (double) 165, 0.1);
+                    1, (double) 4.5 / 35, 162, (double) 164, (double) 165, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-20S Corner")){
             Allocation(newShip, canvas6, image, 32, "mediterranean",
-                    1, (double) 11 / 35, 162, (double) 167, (double) 168, 0.1);
+                    1, (double) 9 / 35, 162, (double) 167, (double) 168, 1.0);
 
-        } else if(s.getBerth_pref().equalsIgnoreCase("B-20S Mid")) {
+        /*} *//*else if(s.getBerth_pref().equalsIgnoreCase("B-20S Mid")) {
             Allocation(newShip, canvas6, image, 32,"mediterranean",
                     1, (double) 8.8 / 35, 162, (double) 167, (double) 168, 0.1);
 
-        }else if(s.getBerth_pref().equalsIgnoreCase("B-20S Tip")){
+        */}else if(s.getBerth_pref().equalsIgnoreCase("B-20S Tip")){
             Allocation(newShip, canvas6, image, 32, "mediterranean",
-                    1, (double) 6.6 / 35, 162, (double) 167, (double) 168, 0.1);
+                    1, (double) 5.5 / 35, 162, (double) 167, (double) 168, 1.0);
 
-        } else if(s.getBerth_pref().equalsIgnoreCase("B-23N") || s.getBerth_pref().equalsIgnoreCase("B-23 Tip")) {
+        } else if(s.getBerth_pref().equalsIgnoreCase("B-23 Tip")) {
             Allocation(newShip, canvas6, image, 32, s.getBerth_post(),
                     1, (double) 6.7 / 35, 175, (double) 196, (double) 198,0.1);
 
@@ -494,35 +497,40 @@ public class visController implements Initializable{
             Allocation(newShip, canvas6, image, 32,"mediterranean",
                     1, (double) 8.9/ 35, 175, (double) 198, (double) 199, 0.1);
 
-        } else if(s.getBerth_pref().equalsIgnoreCase("B-26N") || s.getBerth_pref().equalsIgnoreCase("B-26 Tip")) {
+        } else if(s.getBerth_pref().equalsIgnoreCase("B-26 Tip")) {
             Allocation(newShip, canvas7, image, 32, s.getBerth_post(),
-                    1, (double)  2.4 / 35, 218, (double) 229, (double) 231, 0.1);
+                    1, (double)  4.5 / 35, 218, (double) 229, (double) 231, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-26N Corner")) {
             Allocation(newShip, canvas7, image, 32, "mediterranean",
                     1, (double) 11 / 35, 218, (double) 228, (double) 229, 0.1);
 
-        } else if(s.getBerth_pref().equalsIgnoreCase("B-26N1")){
+        } else if(s.getBerth_pref().equalsIgnoreCase("B-26N Mid")){
             Allocation(newShip, canvas7, image, 32, "mediterranean",
-                    1, (double) 8.9 / 35, 218, (double) 228, (double) 229, 0.1);
+                    1, (double) 8.8 / 35, 218, (double) 228, (double) 229, 0.1);
 
-        } else if(s.getBerth_pref().equalsIgnoreCase("B-26N2")){
+      /*  } else if(s.getBerth_pref().equalsIgnoreCase("B-26N2")){
             Allocation(newShip, canvas7, image, 32, "mediterranean",
                     1, (double) 6.6 / 35, 218, (double) 228, (double) 229, 0.1);
 
-        } else if(s.getBerth_pref().equalsIgnoreCase("B-26N Tip")) {
+       */ } else if(s.getBerth_pref().equalsIgnoreCase("B-26N Tip")) {
             Allocation(newShip, canvas7, image, 32, "mediterranean",
-                    1, (double) 4.5 / 35, 218, (double) 228, (double) 229, 0.1);
+                    1, (double) 6.6 / 35, 218, (double) 228, (double) 229, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-26S Corner")) {
             Allocation(newShip, canvas7, image, 32, "mediterranean",
-                    1, (double) 9 / 35, 218, (double) 231, (double) 232, 1.0);
+                    1, (double) 11 / 35, 218, (double) 231, (double) 232, 0.1);
 
+        } else if(s.getBerth_pref().equalsIgnoreCase("B-26S Mid")) {
+            Allocation(newShip, canvas7, image, 32, "mediterranean",
+                    1, (double) 8.8 / 35, 218, (double) 231, (double) 232, 0.1);
 
         } else if(s.getBerth_pref().equalsIgnoreCase("B-26S Tip")){
             Allocation(newShip, canvas7, image, 32, "mediterranean",
-                    1, (double) 5.5 / 35, 218, (double) 231, (double) 232, 1.0);
+                    1, (double) 6.6 / 35, 218, (double) 231, (double) 232, 0.1);
         } else {
+            ArrayList bollard = parseBollard(s.getBollard());
+
             if (bollard.size() == 2) {
 
                 if ((double) bollard.get(0) >= 1 && (double) bollard.get(1) <= 33) {
@@ -715,7 +723,7 @@ public class visController implements Initializable{
             offsetX = bollardInit - startingBollard;
             //addBollardX = (bollardEnd - bollardInit - 2);
 //            addBollardX = addBollard;
-            addBollardX = (newShip.getShip().getLOA() / 16) - 3;
+            addBollardX = addBollard;//(newShip.getShip().getLOA() / 16) - 3;
             addBollardY = 0;
 
             newShip.setScaleX(1 + addBollardY * .5);
@@ -729,7 +737,7 @@ public class visController implements Initializable{
             newShip.setRotate(270);
             offsetX = bollardInit - startingBollard;
             //addBollardX = (bollardEnd - bollardInit - 2);
-            addBollardX = (newShip.getShip().getLOA()/16) - 3;
+            addBollardX = addBollard;//(newShip.getShip().getLOA()/16) - 3;
             addBollardY = 0;
 
             newShip.setScaleX(1 + addBollardY * .5);
@@ -739,7 +747,17 @@ public class visController implements Initializable{
             newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
 
         }else if (berthPos.equalsIgnoreCase("shipside")){
+            newShip.setRotate(270);
+            offsetX = bollardInit - startingBollard;
+            //addBollardX = (bollardEnd - bollardInit - 2);
+            addBollardX = addBollard;//(newShip.getShip().getLOA()/16) - 3;
+            addBollardY = 0;
 
+            newShip.setScaleX(1 + addBollardY * .5);
+            newShip.setScaleY(1 + addBollardX * .5);
+
+            newShip.setX(baseX + (offsetX * scale) + (scale * .5 * addBollardX +(scale/2)));
+            newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
         }
 
         pane.getChildren().add(newShip);

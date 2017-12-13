@@ -320,7 +320,7 @@ public class appController implements Initializable {
         part = berthString.substring(4);
         System.out.println(part);
         if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner") ||
-            part.equalsIgnoreCase(" tip" ) || part.equalsIgnoreCase("n mid" ) || part.equalsIgnoreCase("s mid" ) || part.equalsIgnoreCase("n1" ) || part.equalsIgnoreCase("n2" )){
+                part.equalsIgnoreCase(" tip" ) || part.equalsIgnoreCase("n mid" ) || part.equalsIgnoreCase("s mid" ) || part.equalsIgnoreCase("n1" ) || part.equalsIgnoreCase("n2" )){
             //it ok
             System.out.println("IS Bollsarddfjskjngldmfsgkd");
         }else{
@@ -848,69 +848,159 @@ public class appController implements Initializable {
             dvalidity = 1;
         }
         boolean flag = false;
-
-
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        if (canSave){
-            try {
-                connection = ConnectionConfiguration.getConnection();
-                for(int i = 0; i < dvalidity; i++){
-                    preparedStatement = connection.prepareStatement("INSERT INTO ship (vessel_name, voyage_no, nationality, GRT, " +
-                            "LOA, last_port, next_port, berth_pref, master, NRT, DWT, beam, ETA, ETD, draft_fwd, draft_aft, berth_post," +
-                            "bollard, remarks, liner)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    preparedStatement.setString(1, dname);
-                    preparedStatement.setString(2, dvoyage);
-                    preparedStatement.setString(3, dnationality);
-                    preparedStatement.setFloat(4, dgrt);
-                    preparedStatement.setFloat(5, dloa);
-                    preparedStatement.setString(6, dlp);
-                    preparedStatement.setString(7, dnp);
-                    preparedStatement.setString(8, dberth);
-                    preparedStatement.setString(9, dmaster);
-                    preparedStatement.setFloat(10, dnrt);
-                    preparedStatement.setFloat(11, ddwt);
-                    preparedStatement.setFloat(12, dbeam);
-                    preparedStatement.setTimestamp(13, deta);
-                    preparedStatement.setTimestamp(14, detd);
-                    preparedStatement.setFloat(15, ddfwd);
-                    preparedStatement.setFloat(16, ddaft);
-                    preparedStatement.setString(17, dberthpost);
-                    preparedStatement.setString(18, dbollard);
-                    preparedStatement.setString(19, dremarks);
-                    preparedStatement.setString(20, dfilled);
+//===========================================================================================================================
 
-                    flag = preparedStatement.execute();
+        //System.out.println("deta" + deta);
+        // System.out.println("detd" + detd);
+        System.out.println("dbollard" + dbollard);
+        ResultSet result;
+        boolean fg = false;
+        ArrayList<Ship> dataSearched = new ArrayList<>();
+        try {
+            connection = ConnectionConfiguration.getConnection();
 
-                    int value = 1;
-                    if(fill.getValue().equals("Passenger")){
-                        if (schedule.getValue() == "Everyday"){
-                            System.out.println("Everyday");
-                            value = 1;
-                        }else {
-                            if (index-list.length == 0){
-                                index = 0;
-                            }
-                            value = list[index];
-                            System.out.println("not everyday");
-                        }
+            System.out.println(deta.toString());
+            System.out.println(detd.toString());
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE ETA < ? and ETD > ?");
+            preparedStatement.setTimestamp(1, detd);
+            preparedStatement.setTimestamp(2, deta);
+            result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+
+                System.out.println("results: " + result.getTimestamp(14).toString());
+                System.out.println("results: " + result.getTimestamp(15).toString());
+
+                dataSearched.add(new Ship(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getFloat(5),
+                        result.getFloat(6), result.getString(7), result.getString(8), result.getString(9),
+                        result.getString(10), result.getFloat(11), result.getFloat(12), result.getFloat(13),
+                        result.getTimestamp(14), result.getTimestamp(15), result.getFloat(16), result.getFloat(17),
+                        result.getString(18), result.getString(19), result.getString(20), result.getString(21)));
+            }
+
+            if (dataSearched.size() == 0) {
+                System.out.println("Walay sulodddddddddddddddddddd");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error!!!!!!!!!!!!!!!!!");
+        }
+
+
+        //ArrayList<Ship> tempShips = new ArrayList<>();
+        ArrayList<Double> bol;
+
+        for (Ship tempShip : dataSearched) {
+            if (dberth.equalsIgnoreCase("B-20 Tip") || dberth.equalsIgnoreCase("B-20N Corner") ||
+                    dberth.equalsIgnoreCase("B-20N Tip") || dberth.equalsIgnoreCase("B-26N Mid") ||
+                    dberth.equalsIgnoreCase("B-20S Tip") || dberth.equalsIgnoreCase("B-20S Corner") ||
+                    dberth.equalsIgnoreCase("B-26S Mid") || dberth.equalsIgnoreCase("B-23 Tip") ||
+                    dberth.equalsIgnoreCase("B-23N Tip") || dberth.equalsIgnoreCase("B-23N Corner") ||
+                    dberth.equalsIgnoreCase("B-23S Tip") || dberth.equalsIgnoreCase("B-23S Corner") ||
+                    dberth.equalsIgnoreCase("B-26 Tip") || dberth.equalsIgnoreCase("B-26N Tip") ||
+                    dberth.equalsIgnoreCase("B-26N Corner") || dberth.equalsIgnoreCase("B-26S Tip") ||
+                    dberth.equalsIgnoreCase("B-26S Corner") || dberth.equalsIgnoreCase("B-20N1") ||
+                    dberth.equalsIgnoreCase("B-20N2")) {
+                if (tempShip.getBerth_pref().equalsIgnoreCase(dberth)) {
+                    flag = true;
+                    fg = true;
+                    System.out.println("Berth takennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+                    break;
+                }
+                continue;
+            } else {
+                System.out.println("dbollard: " + dbollard + " dberth: " + dberth);
+                System.out.println("tempShip bol: " + tempShip.getBollard() + " tempShip berth : " + tempShip.getBerth_pref());
+                ArrayList<Double> bollard = parseBollard(dbollard);//incoming na barko
+                bol = parseBollard(tempShip.getBollard());//naa sa dataSearched
+                if (bol.get(0) <= bollard.get(1) && bol.get(1) >= bollard.get(0)) {
+                    if (!(tempShip.getBerth_post().equalsIgnoreCase("shipside"))) {
+                        System.out.println("Bollards are takennnnnnnnnnnnnnnnnnnnnn");
+                        flag = true;
+                        fg = true;
+                        //System.out.println("DI lage pwedeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.initOwner(recentLogs.getScene().getWindow());
+                        alert.setContentText("Bollards are already taken. Ship cannot be added.\n");
+                        alert.showAndWait();
+                        break;
                     }
 
-                    Calendar cal1 = Calendar.getInstance();
-                    cal1.setTime(deta);
-                    cal1.add(Calendar.DATE, value);
-                    deta.setTime(cal1.getTime().getTime());
-
-                    Calendar cal2 = Calendar.getInstance();
-                    cal2.setTime(detd);
-                    cal2.add(Calendar.DATE, value);
-                    detd.setTime(cal2.getTime().getTime());
-
-                    System.out.println("Added");
-                    index++;
+                } else {
+                    flag = false;
+                    fg = false;
+                    break;
                 }
+            }
+            dataSearched = null;
+        }
 
-                if (flag == false){
+//===============================================================================================================================================================
+        if(canSave){
+            try {
+
+                if (flag == false && fg == false) {
+                    connection = ConnectionConfiguration.getConnection();
+                    for (int i = 0; i < dvalidity; i++) {
+                        preparedStatement = connection.prepareStatement("INSERT INTO ship (vessel_name, voyage_no, nationality, GRT, " +
+                                "LOA, last_port, next_port, berth_pref, master, NRT, DWT, beam, ETA, ETD, draft_fwd, draft_aft, berth_post," +
+                                "bollard, remarks, liner)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        preparedStatement.setString(1, dname);
+                        preparedStatement.setString(2, dvoyage);
+                        preparedStatement.setString(3, dnationality);
+                        preparedStatement.setFloat(4, dgrt);
+                        preparedStatement.setFloat(5, dloa);
+                        preparedStatement.setString(6, dlp);
+                        preparedStatement.setString(7, dnp);
+                        preparedStatement.setString(8, dberth);
+                        preparedStatement.setString(9, dmaster);
+                        preparedStatement.setFloat(10, dnrt);
+                        preparedStatement.setFloat(11, ddwt);
+                        preparedStatement.setFloat(12, dbeam);
+                        preparedStatement.setTimestamp(13, deta);
+                        preparedStatement.setTimestamp(14, detd);
+                        preparedStatement.setFloat(15, ddfwd);
+                        preparedStatement.setFloat(16, ddaft);
+                        preparedStatement.setString(17, dberthpost);
+                        preparedStatement.setString(18, dbollard);
+                        preparedStatement.setString(19, dremarks);
+                        preparedStatement.setString(20, dfilled);
+
+                        flag = preparedStatement.execute();
+
+                        int value = 1;
+                        if (fill.getValue().equals("Passenger")) {
+                            if (schedule.getValue() == "Everyday") {
+                                System.out.println("Everyday");
+                                value = 1;
+                            } else {
+                                if (index - list.length == 0) {
+                                    index = 0;
+                                }
+                                value = list[index];
+                                System.out.println("not everyday");
+                            }
+                        }
+
+                        Calendar cal1 = Calendar.getInstance();
+                        cal1.setTime(deta);
+                        cal1.add(Calendar.DATE, value);
+                        deta.setTime(cal1.getTime().getTime());
+
+                        Calendar cal2 = Calendar.getInstance();
+                        cal2.setTime(detd);
+                        cal2.add(Calendar.DATE, value);
+                        detd.setTime(cal2.getTime().getTime());
+
+                        System.out.println("Added");
+                        index++;
+                    }
+
+                    //  if (flag == false){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setHeaderText(null);
@@ -942,18 +1032,21 @@ public class appController implements Initializable {
                     etdMinute.setValue("00");
                     loadDataFromDatabase();
                     canSave = true;
-                }else{
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText(null);
-                    alert.initOwner(recentLogs.getScene().getWindow());
-                    alert.setContentText("Process unsuccessful! Please fill the necessary details.");
-                    alert.showAndWait();
+                } else {
+                    if (fg == false) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.initOwner(recentLogs.getScene().getWindow());
+                        alert.setContentText("Process unsuccessful! Please fill the necessary details.");
+                        alert.showAndWait();
+                    }
                 }
 
-            }catch (Exception e){
+
+            } catch (Exception e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 if (preparedStatement != null) {
                     try {
                         preparedStatement.close();
@@ -968,8 +1061,7 @@ public class appController implements Initializable {
                         e.printStackTrace();
                     }
                 }
-        }
-
+            }
         }
     }
 
@@ -1167,5 +1259,45 @@ public class appController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    // parse for bollard
+    public ArrayList<Double> parseBollard(String strVal) {
+        ArrayList<Double> arrVal = new ArrayList<Double>();
+
+        String from = " ", to = " ";
+        System.out.println( " bollard string : "+ strVal);
+        if (strVal.length() > 0) {
+            for (int i = 0; i < strVal.length(); i++) {
+                if (strVal.charAt(i) >= '0' && strVal.charAt(i) <= '9' || strVal.charAt(i) == '.') {
+                    from += strVal.charAt(i);
+                } else if (strVal.charAt(i) == '-') {
+                    i++;
+                    for (int j = i; j < strVal.length(); j++) {
+                        if (strVal.charAt(j) >= '0' && strVal.charAt(j) <= '9' || strVal.charAt(j) == '.') {
+                            to += strVal.charAt(j);
+                        }
+                    }
+                    break;
+
+                }
+            }
+            //parse store print
+
+            if (from != null) {
+                arrVal.add(Double.parseDouble(from));
+                if (to != " ") {
+                    arrVal.add(Double.parseDouble(to));
+                }
+            }
+
+            for (Double d : arrVal) {
+                System.out.print(d + " ");
+
+            }
+            System.out.println();
+
+        }
+        return arrVal;
     }
 }
