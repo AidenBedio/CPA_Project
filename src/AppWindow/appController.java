@@ -158,6 +158,8 @@ public class appController implements Initializable {
     private Text scheduletxt;
     @FXML
     private Text validitytxt;
+    @FXML
+    private TextField searchField;
 
     //error messages
     @FXML
@@ -188,6 +190,7 @@ public class appController implements Initializable {
     private String nextScene;
 
     private ObservableList<Ship> data;
+    private ObservableList<Ship> search;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -1063,5 +1066,63 @@ public class appController implements Initializable {
 
         loadNextScreen();
 
+    }
+
+    @FXML
+    private void searchFilter(ActionEvent event){
+
+        String input = new String(searchField.getText());
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            search = FXCollections.observableArrayList();
+            connection = ConnectionConfiguration.getConnection();
+
+            preparedStatement = connection.prepareStatement("SELECT * FROM ship WHERE lower(vessel_name) = ? OR vessel_name = ? ORDER BY ETA DESC LIMIT 1");
+            preparedStatement.setString(1, input);
+            preparedStatement.setString(2, input);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                search.add(new Ship(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getFloat(5),
+                        resultSet.getFloat(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
+                        resultSet.getString(10), resultSet.getFloat(11), resultSet.getFloat(12), resultSet.getFloat(13),
+                        resultSet.getTimestamp(14), resultSet.getTimestamp(15), resultSet.getFloat(16), resultSet.getFloat(17),
+                        resultSet.getString(18), resultSet.getString(19), resultSet.getString(20), resultSet.getString(21)));
+                //System.out.println(search.get(0).getVoyage_num());
+            }
+        }catch (SQLException e){
+            System.err.println("Error"+e);
+        }
+
+        Name.setCellValueFactory(new PropertyValueFactory<>("vessel_name"));
+        ETA.setCellValueFactory(new PropertyValueFactory<>("ETA"));
+        ETD.setCellValueFactory(new PropertyValueFactory<>("ETD"));
+
+        recentLogs.setItems(null);
+        recentLogs.setItems(search);
+
+        if (preparedStatement != null){
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
