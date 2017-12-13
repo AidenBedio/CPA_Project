@@ -192,6 +192,8 @@ public class appController implements Initializable {
     private Text shipsideErrortxt;
     @FXML
     private Text shipsideErrortxt2;
+    @FXML
+    private  Text shipsideErrortxt3;
 
     private ConnectionConfiguration connect;
 
@@ -242,6 +244,7 @@ public class appController implements Initializable {
         shipsidetxt.setOpacity(0);
         shipsideErrortxt.setOpacity(0);
         shipsideErrortxt2.setOpacity(0);
+        shipsideErrortxt3.setOpacity(0);
         shipside.setEditable(true);
 
         etaHour.getItems().removeAll(etaHour.getItems());
@@ -451,6 +454,7 @@ public class appController implements Initializable {
         shipsidetxt.setOpacity(0);
         shipsideErrortxt.setOpacity(0);
         shipsideErrortxt2.setOpacity(0);
+        shipsideErrortxt3.setOpacity(0);
         shipside.setEditable(true);
 
         //FIXME (try to add labels under each field that are set to opacity 0, pops out every time 'add' is clicked and a field has an invalid input
@@ -704,6 +708,17 @@ public class appController implements Initializable {
                     canSave = false;
                 }else{
                     shipsideString = shipside.getText();
+                    boolean go = false;
+                    for (Ship s: data){
+                        if (shipside.getText().equalsIgnoreCase(s.getVessel_name())){
+                            go = true;
+                        }
+                    }
+                    if (go == false){
+                        shipsidetxt.setOpacity(1);
+                        shipsideErrortxt3.setOpacity(1);
+                        canSave = false;
+                    }
                 }
                 shipside.setEditable(true);
             }else{

@@ -403,6 +403,11 @@
                   <Font size="10.0" />
                </font>
             </Text>
+            <Text fx:id="shipsideErrortxt3" fill="RED" layoutX="110.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ship is not available">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <TextField fx:id="searchField" layoutX="983.0" layoutY="131.0" prefHeight="25.0" prefWidth="296.0" />
