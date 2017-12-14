@@ -319,7 +319,8 @@ public class appController implements Initializable {
         }
         part = berthString.substring(4);
         System.out.println(part);
-        if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner") || part.equalsIgnoreCase(" tip")){
+        if (part.equalsIgnoreCase("N tip") || part.equalsIgnoreCase("N corner") || part.equalsIgnoreCase("S tip") || part.equalsIgnoreCase("S corner") ||
+            part.equalsIgnoreCase(" tip" ) || part.equalsIgnoreCase("n mid" ) || part.equalsIgnoreCase("s mid" ) || part.equalsIgnoreCase("n1" ) || part.equalsIgnoreCase("n2" )){
             //it ok
             System.out.println("IS Bollsarddfjskjngldmfsgkd");
         }else{
@@ -365,6 +366,8 @@ public class appController implements Initializable {
                 berth *= ten;
                 berth += (berthString.charAt(i) - 48);
                 ten *= 10;
+            }else{
+                break;
             }
         }
         return berth;
