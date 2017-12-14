@@ -84,6 +84,8 @@ public class appController implements Initializable {
     @FXML
     private TextField txt_remarks;
     @FXML
+    private TextField shipside;
+    @FXML
     private ComboBox<String> fill;
     @FXML
     private DatePicker etaDate;
@@ -184,6 +186,12 @@ public class appController implements Initializable {
     private Text scheduleErrortxt;
     @FXML
     private Text validityErrortxt;
+    @FXML
+    private Text shipsidetxt;
+    @FXML
+    private Text shipsideErrortxt;
+    @FXML
+    private Text shipsideErrortxt2;
 
     private ConnectionConfiguration connect;
 
@@ -231,6 +239,10 @@ public class appController implements Initializable {
         scheduleErrortxt.setOpacity(0);
         validityErrortxt.setOpacity(0);
 
+        shipsidetxt.setOpacity(0);
+        shipsideErrortxt.setOpacity(0);
+        shipsideErrortxt2.setOpacity(0);
+        shipside.setEditable(true);
 
         etaHour.getItems().removeAll(etaHour.getItems());
         etaHour.getItems().addAll("00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23");
@@ -247,7 +259,7 @@ public class appController implements Initializable {
                 "51","52","53","54","55","56","57","58","59");
 
         berthPosition.getItems().removeAll(berthPosition.getItems());
-        berthPosition.getItems().addAll("portside","mediterranean","starboard");
+        berthPosition.getItems().addAll("portside","mediterranean","starboard","shipside");
 
         connect = new ConnectionConfiguration();
         fill.getItems().removeAll(fill.getItems());
@@ -425,6 +437,7 @@ public class appController implements Initializable {
         grtErrortxt.setOpacity(0);
         loaErrortxt.setOpacity(0);
         bollardNumberErrortxt.setOpacity(0);
+        bollardNumberErrortxt2.setOpacity(0);
         nrtErrortxt.setOpacity(0);
         dwtErrortxt.setOpacity(0);
         beamErrortxt.setOpacity(0);
@@ -432,6 +445,10 @@ public class appController implements Initializable {
         draftAftErrortxt.setOpacity(0);
         scheduleErrortxt.setOpacity(0);
         validityErrortxt.setOpacity(0);
+        shipsidetxt.setOpacity(0);
+        shipsideErrortxt.setOpacity(0);
+        shipsideErrortxt2.setOpacity(0);
+        shipside.setEditable(true);
 
         //FIXME (try to add labels under each field that are set to opacity 0, pops out every time 'add' is clicked and a field has an invalid input
 
@@ -671,11 +688,30 @@ public class appController implements Initializable {
         }
 
         String dberthpost = null;
+        String shipsideString = null;
         if (berthPosition.getValue() == null|| berthPosition.getValue().equals("")){
             canSave = false;
             berthNumbertxt.setOpacity(1);
         }else{
             dberthpost = new String(berthPosition.getValue());
+            if (dberthpost.equals("shipside")){
+                if (shipside.getText().equals(null) || shipside.equals("") || shipside == null || shipside.getText().length() == 0){
+                    shipsidetxt.setOpacity(1);
+                    shipsideErrortxt.setOpacity(1);
+                }else{
+                    shipsideString = shipside.getText();
+                }
+                shipside.setEditable(true);
+            }else{
+                if (shipside.getText().equals(null) || shipside.equals("") || shipside == null || shipside.getText().length() == 0){
+                    //okay
+                }else{
+                    shipsidetxt.setOpacity(1);
+                    shipsideErrortxt2.setOpacity(1);
+                    shipside.clear();
+                }
+                shipside.setEditable(false);
+            }
         }
 
         String dfilled = null;
@@ -812,121 +848,124 @@ public class appController implements Initializable {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        try {
-            connection = ConnectionConfiguration.getConnection();
-            for(int i = 0; i < dvalidity; i++){
-                preparedStatement = connection.prepareStatement("INSERT INTO ship (vessel_name, voyage_no, nationality, GRT, " +
-                        "LOA, last_port, next_port, berth_pref, master, NRT, DWT, beam, ETA, ETD, draft_fwd, draft_aft, berth_post," +
-                        "bollard, remarks, liner)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                preparedStatement.setString(1, dname);
-                preparedStatement.setString(2, dvoyage);
-                preparedStatement.setString(3, dnationality);
-                preparedStatement.setFloat(4, dgrt);
-                preparedStatement.setFloat(5, dloa);
-                preparedStatement.setString(6, dlp);
-                preparedStatement.setString(7, dnp);
-                preparedStatement.setString(8, dberth);
-                preparedStatement.setString(9, dmaster);
-                preparedStatement.setFloat(10, dnrt);
-                preparedStatement.setFloat(11, ddwt);
-                preparedStatement.setFloat(12, dbeam);
-                preparedStatement.setTimestamp(13, deta);
-                preparedStatement.setTimestamp(14, detd);
-                preparedStatement.setFloat(15, ddfwd);
-                preparedStatement.setFloat(16, ddaft);
-                preparedStatement.setString(17, dberthpost);
-                preparedStatement.setString(18, dbollard);
-                preparedStatement.setString(19, dremarks);
-                preparedStatement.setString(20, dfilled);
+        if (canSave){
+            try {
+                connection = ConnectionConfiguration.getConnection();
+                for(int i = 0; i < dvalidity; i++){
+                    preparedStatement = connection.prepareStatement("INSERT INTO ship (vessel_name, voyage_no, nationality, GRT, " +
+                            "LOA, last_port, next_port, berth_pref, master, NRT, DWT, beam, ETA, ETD, draft_fwd, draft_aft, berth_post," +
+                            "bollard, remarks, liner)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    preparedStatement.setString(1, dname);
+                    preparedStatement.setString(2, dvoyage);
+                    preparedStatement.setString(3, dnationality);
+                    preparedStatement.setFloat(4, dgrt);
+                    preparedStatement.setFloat(5, dloa);
+                    preparedStatement.setString(6, dlp);
+                    preparedStatement.setString(7, dnp);
+                    preparedStatement.setString(8, dberth);
+                    preparedStatement.setString(9, dmaster);
+                    preparedStatement.setFloat(10, dnrt);
+                    preparedStatement.setFloat(11, ddwt);
+                    preparedStatement.setFloat(12, dbeam);
+                    preparedStatement.setTimestamp(13, deta);
+                    preparedStatement.setTimestamp(14, detd);
+                    preparedStatement.setFloat(15, ddfwd);
+                    preparedStatement.setFloat(16, ddaft);
+                    preparedStatement.setString(17, dberthpost);
+                    preparedStatement.setString(18, dbollard);
+                    preparedStatement.setString(19, dremarks);
+                    preparedStatement.setString(20, dfilled);
 
-                flag = preparedStatement.execute();
+                    flag = preparedStatement.execute();
 
-                int value = 1;
-                if(fill.getValue().equals("Passenger")){
-                    if (schedule.getValue() == "Everyday"){
-                        System.out.println("Everyday");
-                        value = 1;
-                    }else {
-                        if (index-list.length == 0){
-                            index = 0;
+                    int value = 1;
+                    if(fill.getValue().equals("Passenger")){
+                        if (schedule.getValue() == "Everyday"){
+                            System.out.println("Everyday");
+                            value = 1;
+                        }else {
+                            if (index-list.length == 0){
+                                index = 0;
+                            }
+                            value = list[index];
+                            System.out.println("not everyday");
                         }
-                        value = list[index];
-                        System.out.println("not everyday");
+                    }
+
+                    Calendar cal1 = Calendar.getInstance();
+                    cal1.setTime(deta);
+                    cal1.add(Calendar.DATE, value);
+                    deta.setTime(cal1.getTime().getTime());
+
+                    Calendar cal2 = Calendar.getInstance();
+                    cal2.setTime(detd);
+                    cal2.add(Calendar.DATE, value);
+                    detd.setTime(cal2.getTime().getTime());
+
+                    System.out.println("Added");
+                    index++;
+                }
+
+                if (flag == false){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.initOwner(recentLogs.getScene().getWindow());
+                    alert.setContentText("Added successfully!");
+                    alert.showAndWait();
+                    // new AutoEmail("rizelleannbahin@gmail.com", "approval");
+                    txt_name.clear();
+                    txt_voyage.clear();
+                    nation.clear();
+                    txt_grt.clear();
+                    txt_loa.clear();
+                    txt_lp.clear();
+                    txt_np.clear();
+                    txt_berth.clear();
+                    txt_master.clear();
+                    txt_nrt.clear();
+                    txt_dwt.clear();
+                    txt_beam.clear();
+                    txt_bollard.clear();
+                    txt_remarks.clear();
+                    validity.clear();
+                    txt_bollard.clear();
+                    txt_dfwd.clear();
+                    txt_daft.clear();
+                    etaHour.setValue("00");
+                    etaMinute.setValue("00");
+                    etdHour.setValue("00");
+                    etdMinute.setValue("00");
+                    loadDataFromDatabase();
+                    canSave = true;
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.initOwner(recentLogs.getScene().getWindow());
+                    alert.setContentText("Process unsuccessful! Please fill the necessary details.");
+                    alert.showAndWait();
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                if (preparedStatement != null) {
+                    try {
+                        preparedStatement.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
                 }
-
-                Calendar cal1 = Calendar.getInstance();
-                cal1.setTime(deta);
-                cal1.add(Calendar.DATE, value);
-                deta.setTime(cal1.getTime().getTime());
-
-                Calendar cal2 = Calendar.getInstance();
-                cal2.setTime(detd);
-                cal2.add(Calendar.DATE, value);
-                detd.setTime(cal2.getTime().getTime());
-
-                System.out.println("Added");
-                index++;
-            }
-
-            if (flag == false){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.initOwner(recentLogs.getScene().getWindow());
-                alert.setContentText("Added successfully!");
-                alert.showAndWait();
-                // new AutoEmail("rizelleannbahin@gmail.com", "approval");
-                txt_name.clear();
-                txt_voyage.clear();
-                nation.clear();
-                txt_grt.clear();
-                txt_loa.clear();
-                txt_lp.clear();
-                txt_np.clear();
-                txt_berth.clear();
-                txt_master.clear();
-                txt_nrt.clear();
-                txt_dwt.clear();
-                txt_beam.clear();
-                txt_bollard.clear();
-                txt_remarks.clear();
-                validity.clear();
-                txt_bollard.clear();
-                txt_dfwd.clear();
-                txt_daft.clear();
-                etaHour.setValue("00");
-                etaMinute.setValue("00");
-                etdHour.setValue("00");
-                etdMinute.setValue("00");
-                loadDataFromDatabase();
-                canSave = true;
-            }else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.initOwner(recentLogs.getScene().getWindow());
-                alert.setContentText("Process unsuccessful! Please fill the necessary details.");
-                alert.showAndWait();
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+        }
+
         }
     }
 

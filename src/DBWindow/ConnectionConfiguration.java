@@ -10,7 +10,7 @@ public class ConnectionConfiguration {
 
         Properties properties = new Properties();
         properties.setProperty("user", "root");
-        properties.setProperty("password", "80396");
+        properties.setProperty("password", "14344");
         properties.setProperty("useSSL", "false");
         properties.setProperty("autoReconnect", "true");
 

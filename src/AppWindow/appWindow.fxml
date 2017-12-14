@@ -382,6 +382,27 @@
                   <Font size="24.0" />
                </font>
             </Text>
+            <Label layoutX="36.0" layoutY="366.0" text="Ship Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipside" layoutX="111.0" layoutY="364.0" prefHeight="25.0" prefWidth="349.0" />
+            <Text fx:id="shipsidetxt" fill="#ee0000" layoutX="100.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="shipsideErrortxt" fill="RED" layoutX="111.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ship name needed if berthing position is shipside">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="shipsideErrortxt2" fill="RED" layoutX="112.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ship name not needed since berthing position is not shipside">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <TextField fx:id="searchField" layoutX="983.0" layoutY="131.0" prefHeight="25.0" prefWidth="296.0" />
