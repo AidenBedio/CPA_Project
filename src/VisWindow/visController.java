@@ -757,7 +757,7 @@ public class visController implements Initializable{
             newShip.setScaleY(1 + addBollardX * .5);
 
             newShip.setX(baseX + (offsetX * scale) + (scale * .5 * addBollardX +(scale/2)));
-            newShip.setY(baseY - ((scale/2 * (addBollardY * .5)) -(scale/2)));
+            newShip.setY(baseY - ((950/35)) - ((scale/2 * (addBollardY * .5)) -(scale/2)));
         }
 
         pane.getChildren().add(newShip);

@@ -710,8 +710,12 @@ public class appController implements Initializable {
                     shipsideString = shipside.getText();
                     boolean go = false;
                     for (Ship s: data){
-                        if (shipside.getText().equalsIgnoreCase(s.getVessel_name())){
+                        if (shipside.getText().equalsIgnoreCase(s.getVessel_name())){ ////////////////////////////////////////////////////////////////////////
                             go = true;
+                            dbollard = s.getBollard();
+                            System.out.println("orientation: "+ dberthpost);
+                            //dberthpost = s.getBerth_post();
+                            break;
                         }
                     }
                     if (go == false){
@@ -908,7 +912,8 @@ public class appController implements Initializable {
         ArrayList<Double> bol;
 
         for (Ship tempShip : dataSearched) {
-            if (dberth.equalsIgnoreCase("B-20 Tip") || dberth.equalsIgnoreCase("B-20N Corner") ||
+            System.out.println("dberth: " + dberth);
+            if (dbollard == null && dberth.equalsIgnoreCase("B-20 Tip") || dberth.equalsIgnoreCase("B-20N Corner") ||
                     dberth.equalsIgnoreCase("B-20N Tip") || dberth.equalsIgnoreCase("B-26N Mid") ||
                     dberth.equalsIgnoreCase("B-20S Tip") || dberth.equalsIgnoreCase("B-20S Corner") ||
                     dberth.equalsIgnoreCase("B-26S Mid") || dberth.equalsIgnoreCase("B-23 Tip") ||
@@ -917,21 +922,43 @@ public class appController implements Initializable {
                     dberth.equalsIgnoreCase("B-26 Tip") || dberth.equalsIgnoreCase("B-26N Tip") ||
                     dberth.equalsIgnoreCase("B-26N Corner") || dberth.equalsIgnoreCase("B-26S Tip") ||
                     dberth.equalsIgnoreCase("B-26S Corner") || dberth.equalsIgnoreCase("B-20N1") ||
-                    dberth.equalsIgnoreCase("B-20N2")) {
+                    dberth.equalsIgnoreCase("B-20N2") || tempShip.getBerth_pref().equalsIgnoreCase("B-20 Tip") || tempShip.getBerth_pref().equalsIgnoreCase("B-20N Corner") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-20N Tip") || tempShip.getBerth_pref().equalsIgnoreCase("B-26N Mid") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-20S Tip") || tempShip.getBerth_pref().equalsIgnoreCase("B-20S Corner") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-26S Mid") || tempShip.getBerth_pref().equalsIgnoreCase("B-23 Tip") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-23N Tip") || tempShip.getBerth_pref().equalsIgnoreCase("B-23N Corner") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-23S Tip") || tempShip.getBerth_pref().equalsIgnoreCase("B-23S Corner") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-26 Tip") || tempShip.getBerth_pref().equalsIgnoreCase("B-26N Tip") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-26N Corner") || tempShip.getBerth_pref().equalsIgnoreCase("B-26S Tip") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-26S Corner") || tempShip.getBerth_pref().equalsIgnoreCase("B-20N1") ||
+                    tempShip.getBerth_pref().equalsIgnoreCase("B-20N2")) {
                 if (tempShip.getBerth_pref().equalsIgnoreCase(dberth)) {
                     flag = true;
                     fg = true;
                     System.out.println("Berth takennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+                    fg = true;
+                    //System.out.println("DI lage pwedeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.initOwner(recentLogs.getScene().getWindow());
+                    alert.setContentText("Berth position is already taken. Ship cannot be added.\n");
+                    alert.showAndWait();
                     break;
                 }
+                /*flag = false;
+                fg = false;*/
                 continue;
             } else {
                 System.out.println("dbollard: " + dbollard + " dberth: " + dberth);
                 System.out.println("tempShip bol: " + tempShip.getBollard() + " tempShip berth : " + tempShip.getBerth_pref());
                 ArrayList<Double> bollard = parseBollard(dbollard);//incoming na barko
                 bol = parseBollard(tempShip.getBollard());//naa sa dataSearched
-                if (bol.get(0) <= bollard.get(1) && bol.get(1) >= bollard.get(0)) {
-                    if (!(tempShip.getBerth_post().equalsIgnoreCase("shipside"))) {
+                System.out.println("dberthpost: not shiipsise -> " + dberthpost);
+
+                if(!dberthpost.equalsIgnoreCase("shipside")) {
+                    if (bol.get(0) <= bollard.get(1) && bol.get(1) >= bollard.get(0)) {
+                        // if (!(dberthpost.equalsIgnoreCase("shipside"))) {
                         System.out.println("Bollards are takennnnnnnnnnnnnnnnnnnnnn");
                         flag = true;
                         fg = true;
@@ -943,15 +970,19 @@ public class appController implements Initializable {
                         alert.setContentText("Bollards are already taken. Ship cannot be added.\n");
                         alert.showAndWait();
                         break;
-                    }
+                    /*    } else {
+                            flag = false;
+                            fg = false;
+                            break;*/
+                        //   }
 
-                } else {
-                    flag = false;
-                    fg = false;
-                    break;
+                    } else {
+                        flag = false;
+                        fg = false;
+                        //break;
+                    }
                 }
             }
-            dataSearched = null;
         }
 
 //===============================================================================================================================================================
