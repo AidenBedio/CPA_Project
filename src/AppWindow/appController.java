@@ -698,6 +698,7 @@ public class appController implements Initializable {
                 if (shipside.getText().equals(null) || shipside.equals("") || shipside == null || shipside.getText().length() == 0){
                     shipsidetxt.setOpacity(1);
                     shipsideErrortxt.setOpacity(1);
+                    canSave = false;
                 }else{
                     shipsideString = shipside.getText();
                 }
